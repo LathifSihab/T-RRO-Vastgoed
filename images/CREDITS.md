@@ -1,22 +1,29 @@
 # Beeldbronnen
 
-Tijdelijke demobeelden van [Unsplash](https://unsplash.com) (Unsplash License: vrij te gebruiken, ook commercieel, naamsvermelding niet verplicht).
-Vervang ze door eigen foto's voor livegang — vooral de panden, verhalen en het portret, want dat zijn geen echte panden of klanten.
+Foto's: **Fotografie by Chelsea**, aangeleverd door TÈRRO. Merkbeelden (`FB banner.png`, `donkere beachflag.png`): aangeleverd door TÈRRO.
+De originelen staan in `../_originelen/` (niet mee online zetten; die map staat in `.gitignore`).
+De webversies hieronder zijn verkleind (max. 1800 px, hero 2000 px) en gecomprimeerd.
 
-| Bestand | Bron |
+Let op: de panden en verhalen tonen voorlopig merkfoto's, geen foto's van het pand of de klanten zelf.
+Vervang ze zodra echte foto's beschikbaar zijn (bestandsnaam behouden, of `beeld` aanpassen in `js/main.js`).
+
+| Webbestand | Origineel |
 |---|---|
-| images/hero-lezen.jpg | https://unsplash.com/photos/FzvVv0G3hgQ |
-| images/interieur.jpg | https://unsplash.com/photos/z6Yn9hhlrJw |
-| images/portret.jpg | https://unsplash.com/photos/50TkCaP8M3A |
-| images/gevel.jpg | https://unsplash.com/photos/BFZ8WleLmMI |
-| images/streek-boomgaard.jpg | https://unsplash.com/photos/rjk3O3jTc8o |
-| images/kantoor-koffie.jpg | https://unsplash.com/photos/1iqbgfUOGFM |
-| images/pand-herenhuis-hasselt.jpg | https://unsplash.com/photos/I-4O6USc1Qk |
-| images/pand-hoeve-borgloon.jpg | https://unsplash.com/photos/ookhLVfOr9Q |
-| images/pand-appartement-tongeren.jpg | https://unsplash.com/photos/12WFO8yWrsw |
-| images/pand-pastorij-sint-truiden.jpg | https://unsplash.com/photos/lKW6euiz6Ps |
-| images/pand-nieuwbouw-lanaken.jpg | https://unsplash.com/photos/eWOgoFHlE8g |
-| images/pand-loft-hasselt.jpg | https://unsplash.com/photos/1GY7rUTRnRI |
-| images/verhaal-ann-en-pieter.jpg | https://unsplash.com/photos/-NwK3jWezuI |
-| images/verhaal-familie-vandereyt.jpg | https://unsplash.com/photos/OssO-J9eNyI |
-| images/verhaal-marleen.jpg | https://unsplash.com/photos/J6T78kdQXIQ |
+| images/hero-home.jpg | 73-FOTOGRAFIEBYCHELSEA-4387.JPG |
+| images/waardescan-laptop.jpg | 1-FOTOGRAFIEBYCHELSEA-4172.JPG |
+| images/portret-makelaar.jpg | 84-FOTOGRAFIEBYCHELSEA-4445.JPG |
+| images/waardescan-bord-koffie.jpg | 24-FOTOGRAFIEBYCHELSEA-4214.JPG |
+| images/woonprofiel-wandeling.jpg | 71-FOTOGRAFIEBYCHELSEA-4385.JPG |
+| images/contact-koffie-kaartjes.jpg | 58-FOTOGRAFIEBYCHELSEA-4306.JPG |
+| images/pand-herenhuis-hasselt.jpg | 90-FOTOGRAFIEBYCHELSEA-4469.JPG |
+| images/pand-hoeve-borgloon.jpg | `FB banner.png` — uitsnede olijfboom |
+| images/pand-appartement-tongeren.jpg | `donkere beachflag.png` — uitsnede koffiecorner (726 × 513 px, klein: wordt zacht op de detailpagina) |
+| images/pand-pastorij-sint-truiden.jpg | 46-FOTOGRAFIEBYCHELSEA-4279.JPG |
+| images/pand-nieuwbouw-lanaken.jpg | 36-FOTOGRAFIEBYCHELSEA-4259.JPG |
+| images/pand-loft-hasselt.jpg | 2-FOTOGRAFIEBYCHELSEA-4174.JPG |
+| images/verhaal-ann-en-pieter.jpg | 20-FOTOGRAFIEBYCHELSEA-4205.JPG |
+| images/verhaal-familie-vandereyt.jpg | 12-FOTOGRAFIEBYCHELSEA-4190.JPG |
+| images/verhaal-marleen.jpg | 15-FOTOGRAFIEBYCHELSEA-4196.JPG |
+| images/og-terro.jpg | `FB banner.png` — deelafbeelding voor sociale media (1200 × 630) |
+
+Niet gebruikt: 4, 54, 72, 74, 77, 79 (staan wel in `_originelen/`).

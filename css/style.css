@@ -15,23 +15,32 @@ img{max-width:100%;}
    Bewust één lichte modus: geen donkere variant.
    ============================================================ */
 :root{
-  /* grond */
-  --ecru:#F6F2EA;
-  --linnen:#EFE9DE;
-  --zand:#E6DED0;
+  /* grond — uit het kleurenpalet van de merkstijl */
+  --ecru:#F7F4EF;
+  --linnen:#ECE6DD;
+  --zand:#E4DCD0;
 
   /* tekst */
-  --houtskool:#2A2724;
-  --houtskool-zacht:#4A453E;
+  --houtskool:#2B231F;
+  --houtskool-zacht:#5A4F47;
 
-  /* accent — het beeldmerkgoud voor vlakken en lijnen,
-     een fractie dieper voor kleine tekst (leesbaarheid AA) */
-  --goud:#8A6D33;
-  --goud-tekst:#6B521C;
-  --goud-diep:#755C2B;
-  --goud-knop:#6B5324;
-  --goud-knop-hover:#56421B;
-  --goud-haar:#C6AE7C;
+  /* accent — #B08D57 is het merkgoud voor lijnen, iconen en het logo.
+     Op lichte grond is het te licht voor kleine tekst, daarom een
+     diepere variant voor tekst en knoppen (leesbaarheid AA). */
+  --goud:#B08D57;
+  --goud-tekst:#765A31;
+  --goud-diep:#765A31;
+  --goud-knop:#7A5C30;
+  --goud-knop-hover:#5F4725;
+  --goud-haar:#D6C3A2;
+
+  /* hoogtelijnen uit het beeldmerk, als zacht decor op donkere vlakken */
+  --hoogtelijnen:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 300' fill='none' stroke='%23B08D57' stroke-opacity='.32' stroke-width='1'%3E%3Cpath d='M-10 140 C70 100 150 110 230 150 S390 200 470 160 S580 110 620 125'/%3E%3Cpath d='M-10 165 C70 128 150 136 230 176 S390 226 470 186 S580 138 620 152'/%3E%3Cpath d='M-10 192 C66 158 146 164 226 202 S386 252 466 214 S576 168 620 180'/%3E%3Cpath d='M-10 220 C60 190 140 194 220 230 S380 280 460 244 S570 200 620 210'/%3E%3Cpath d='M-10 250 C56 224 132 226 210 258 S370 310 450 278'/%3E%3Cpath d='M-10 280 C50 260 120 260 196 288'/%3E%3C/svg%3E");
+
+  /* donkere vlakken */
+  --donker:#2B231F;
+  --donker-tekst:#ECE6DD;
+  --donker-zacht:#BDB2A6;
 
   /* status */
   --salie:#5F6B55;
@@ -39,7 +48,7 @@ img{max-width:100%;}
   --terracotta:#96503A;
   --terracotta-vlak:#F2E5DF;
 
-  --lijn:#DCD3C3;
+  --lijn:#DDD3C5;
 
   --sectie:clamp(80px,10vw,156px);
   --gutter:clamp(20px,5vw,64px);
@@ -54,10 +63,10 @@ body{
   margin:0;
   background:var(--ecru);
   color:var(--houtskool);
-  font-family:'Jost','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-family:'Montserrat','Helvetica Neue',Helvetica,Arial,sans-serif;
   font-weight:400;
-  font-size:17px;
-  line-height:1.78;
+  font-size:16px;
+  line-height:1.8;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -127,6 +136,8 @@ img{max-width:100%;display:block;}
 
 .stil{color:var(--houtskool-zacht);}
 
+.streep{display:block;width:34px;height:1px;background:var(--goud);}
+
 /* ---------- knoppen ---------- */
 .knop{
   display:inline-flex;
@@ -151,6 +162,14 @@ img{max-width:100%;display:block;}
   border-color:var(--goud-knop);
 }
 .knop--goud:hover{background:var(--goud-knop-hover);border-color:var(--goud-knop-hover);}
+
+/* op donkere grond: exact merkgoud met donkere tekst (contrast 5:1) */
+.knop--licht{
+  background:var(--goud);
+  color:var(--donker);
+  border-color:var(--goud);
+}
+.knop--licht:hover{background:#C4A574;border-color:#C4A574;}
 
 .knop--lijn{
   background:transparent;
@@ -178,11 +197,15 @@ img{max-width:100%;display:block;}
 }
 .tekstlink:hover{border-color:var(--goud);color:var(--goud-tekst);}
 .tekstlink .pijl{transition:transform .4s ease;}
+.tekstlink--licht{color:var(--donker-tekst);border-bottom-color:rgba(176,141,87,.7);}
+.tekstlink--licht:hover{color:var(--goud);border-color:var(--goud);}
+.eyebrow--licht{color:var(--goud);}
 .tekstlink:hover .pijl{transform:translateX(4px);}
 
 /* ---------- logo ---------- */
 .merk{display:flex;align-items:center;gap:13px;text-decoration:none;}
-.merk-mark{width:34px;height:34px;flex:none;}
+.merk{color:var(--houtskool);}
+.merk-mark{width:38px;height:38px;flex:none;}
 .merk-tekst{display:flex;flex-direction:column;gap:2px;}
 .merk-woord{
   font-family:'Cormorant Garamond',Georgia,serif;
@@ -215,7 +238,7 @@ img{max-width:100%;display:block;}
   position:absolute;
   inset:0;
   z-index:-1;
-  background:rgba(246,242,234,.93);
+  background:rgba(247,244,239,.93);
   -webkit-backdrop-filter:saturate(120%) blur(10px);
   backdrop-filter:saturate(120%) blur(10px);
 }
@@ -280,7 +303,7 @@ img{max-width:100%;display:block;}
   max-width:100%;
   aspect-ratio:var(--ratio,4/5);
   background:
-    linear-gradient(107deg,transparent calc(50% - .5px),rgba(138,109,51,.20) calc(50% - .5px),rgba(138,109,51,.20) calc(50% + .5px),transparent calc(50% + .5px)),
+    linear-gradient(107deg,transparent calc(50% - .5px),rgba(176,141,87,.28) calc(50% - .5px),rgba(176,141,87,.28) calc(50% + .5px),transparent calc(50% + .5px)),
     linear-gradient(152deg,#F1EBE1 0%,#E4DBCB 100%);
   overflow:hidden;
 }
@@ -293,7 +316,7 @@ img{max-width:100%;display:block;}
   font-size:12px;
   letter-spacing:.2em;
   text-transform:uppercase;
-  color:rgba(42,39,36,.42);
+  color:rgba(43,35,31,.5);
 }
 .beeld > img{
   position:absolute;
@@ -307,8 +330,132 @@ img{max-width:100%;display:block;}
 .beeld--vierkant{--ratio:1/1;}
 .beeld--hoog{--ratio:3/4;}
 
-/* ---------- perceellijn (uit het beeldmerk) ---------- */
-.perceel{display:block;width:100%;height:auto;color:var(--goud-haar);}
+
+/* ---------- donkere hero (startpagina) ---------- */
+.hero-donker{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  display:grid;
+  align-items:center;
+  min-height:min(calc(100svh - 80px),820px);
+  background:var(--donker);
+  color:var(--donker-tekst);
+  text-align:center;
+}
+.hero-donker-beeld{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:58% center;
+}
+.hero-donker::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(ellipse at center,rgba(43,35,31,.62) 0%,rgba(43,35,31,.82) 70%),
+    linear-gradient(180deg,rgba(43,35,31,.2),rgba(43,35,31,.6));
+}
+.hero-donker-inhoud{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+  padding-block:clamp(64px,9vw,120px);
+}
+.hero-merk{width:clamp(76px,9vw,104px);height:auto;color:var(--donker-tekst);}
+.hero-donker h1{color:var(--donker-tekst);font-weight:300;}
+.hero-donker .lead{color:#DDD4C9;max-width:54ch;}
+.hero-donker-acties{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:18px 32px;
+  margin-top:10px;
+}
+
+.merkwaarden{
+  display:grid;
+  /* donker paneel lijnt links uit met de inhoud (.wrap) en krijgt vaste leesbreedte */
+  grid-template-columns:calc(max(0px,(100vw - var(--maat)) / 2) + 460px) minmax(0,1fr);
+  background:var(--linnen);
+}
+.merkwaarden-intro{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:22px;
+  padding:clamp(48px,6vw,80px) clamp(28px,4vw,56px);
+  padding-left:max(var(--gutter),calc((100vw - var(--maat)) / 2 + var(--gutter)));
+  background:var(--donker) var(--hoogtelijnen) no-repeat right -80px bottom -40px / 520px auto;
+  color:var(--donker-zacht);
+  font-size:14px;
+  line-height:1.9;
+}
+.merkwaarden-titel{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(16px,1.6vw,19px);
+  font-weight:400;
+  line-height:1.6;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--goud);
+}
+.merkwaarden-lijst{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  align-content:center;
+  margin:0;
+  padding:clamp(40px,5vw,64px) var(--gutter) clamp(40px,5vw,64px) clamp(8px,2vw,24px);
+  list-style:none;
+}
+.merkwaarden-lijst li{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  padding:8px clamp(14px,1.8vw,26px);
+  text-align:center;
+}
+.merkwaarden-lijst li + li{border-left:1px solid var(--lijn);}
+.merkwaarden-lijst svg{
+  width:48px;
+  height:48px;
+  fill:none;
+  stroke:var(--goud);
+  stroke-width:1.3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  margin-bottom:4px;
+}
+.merkwaarden-lijst h3{
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--houtskool);
+}
+.merkwaarden-lijst p{font-size:14px;line-height:1.75;color:var(--houtskool-zacht);max-width:22ch;}
+@media (max-width:1280px){
+  .merkwaarden{grid-template-columns:1fr;}
+  .merkwaarden-intro{padding-inline:var(--gutter);}
+  .merkwaarden-lijst{grid-template-columns:repeat(2,minmax(0,1fr));padding-inline:var(--gutter);row-gap:0;}
+  .merkwaarden-lijst li{padding-block:28px;}
+  .merkwaarden-lijst li:nth-child(odd){border-left:0;}
+  .merkwaarden-lijst li:nth-child(n+3){border-top:1px solid var(--lijn);}
+}
+@media (max-width:560px){
+  .merkwaarden-lijst{grid-template-columns:1fr;}
+  .merkwaarden-lijst li{border-left:0 !important;}
+  .merkwaarden-lijst li + li{border-top:1px solid var(--lijn);}
+}
 
 /* ---------- hero ---------- */
 .hero{
@@ -545,9 +692,20 @@ img{max-width:100%;display:block;}
 
 /* ---------- voet ---------- */
 .voet{
-  background:var(--linnen);
+  background:var(--donker) var(--hoogtelijnen) no-repeat left -120px bottom -60px / 640px auto;
+  color:var(--donker-zacht);
   padding-block:clamp(56px,7vw,92px) 34px;
   margin-top:var(--sectie);
+}
+.voet .merk{color:var(--donker-tekst);}
+.voet .merk-woord{color:var(--donker-tekst);}
+.voet .merk-sub{color:var(--goud);}
+.voet-slogan{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:22px;
+  line-height:1.35;
+  color:var(--donker-tekst);
+  max-width:20ch;
 }
 .voet-rooster{
   display:grid;
@@ -556,33 +714,71 @@ img{max-width:100%;display:block;}
 }
 @media (max-width:800px){.voet-rooster{grid-template-columns:1fr 1fr;}}
 @media (max-width:520px){.voet-rooster{grid-template-columns:1fr;}}
-.voet-kolom{display:flex;flex-direction:column;gap:12px;}
+.voet-kolom{display:flex;flex-direction:column;gap:12px;font-size:14px;}
 .voet-kolom h4{
-  font-family:'Jost',sans-serif;
+  font-family:'Montserrat',sans-serif;
   font-size:12px;
+  font-weight:500;
   letter-spacing:.2em;
   text-transform:uppercase;
-  color:var(--goud-tekst);
+  color:var(--goud);
   margin-bottom:6px;
 }
 .voet-kolom a{
   font-size:14px;
   text-decoration:none;
-  color:var(--houtskool-zacht);
+  color:var(--donker-zacht);
   transition:color .3s ease;
   width:fit-content;
 }
-.voet-kolom a:hover{color:var(--houtskool);}
-.voet-onder{
+.voet-kolom a:hover{color:var(--donker-tekst);}
+
+/* contactband zoals onderaan de merkstijl */
+.voet-band{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px 32px;
   margin-top:clamp(40px,5vw,66px);
-  padding-top:24px;
-  border-top:1px solid var(--lijn);
+  padding-top:26px;
+  border-top:1px solid rgba(176,141,87,.28);
+}
+.voet-gegevens{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 0;
+  font-size:12px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--goud);
+}
+.voet-gegevens span + span::before{content:"•";margin-inline:18px;opacity:.7;}
+@media (max-width:760px){
+  .voet-gegevens{flex-direction:column;}
+  .voet-gegevens span + span::before{content:none;}
+}
+.sociaal{display:flex;gap:12px;}
+.sociaal a{
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border:1px solid rgba(176,141,87,.55);
+  border-radius:50%;
+  color:var(--goud);
+  transition:background-color .3s ease,color .3s ease;
+}
+.sociaal a:hover{background:var(--goud);color:var(--donker);}
+.sociaal svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+.voet-onder{
+  margin-top:22px;
   display:flex;
   flex-wrap:wrap;
   gap:12px 28px;
   justify-content:space-between;
-  font-size:13px;
-  color:var(--houtskool-zacht);
+  font-size:12px;
+  color:#A89C90;
 }
 
 /* ---------- terug ---------- */
@@ -610,6 +806,93 @@ img{max-width:100%;display:block;}
   }
 }
 
+/* ---------- hero-illustraties + intro-animatie ----------
+   Gouden lijntekeningen in de stijl van het beeldmerk. main.js geeft elk
+   lijnstuk pathLength="1" en een volgnummer (--i); daarmee tekent de lijn
+   zichzelf. De animatie start opnieuw telkens een pagina zichtbaar wordt,
+   omdat [hidden] het blok uit de weergave haalt. */
+.pagina-kop{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:clamp(24px,5vw,72px);
+}
+.illu{
+  display:block;
+  width:clamp(260px,32vw,420px);
+  height:auto;
+  aspect-ratio:4/3;
+  fill:none;
+  stroke:var(--goud);
+  stroke-width:1.3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  overflow:visible;
+}
+.illu *{vector-effect:non-scaling-stroke;}
+.stapel > .illu{align-self:flex-start;}
+.illu--over{width:min(100%,400px);margin-top:8px;}
+.illu--boven-form{width:min(100%,380px);align-self:center !important;}
+
+.illu [pathLength]{
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+  animation:teken 1.5s cubic-bezier(.45,.05,.25,1) forwards;
+  animation-delay:calc(var(--i,0) * 60ms + 250ms);
+}
+@keyframes teken{to{stroke-dashoffset:0;}}
+
+/* kleine blijvende bewegingen, pas nadat de tekening klaar is */
+.illu .illu-damp{animation:verschijn .8s ease 1.6s both,damp 3.2s ease-in-out 2.6s infinite;}
+.illu .illu-damp--2{animation-delay:1.8s,3.4s;}
+@keyframes verschijn{from{opacity:0;}to{opacity:1;}}
+@keyframes damp{0%,100%{transform:translateY(0);opacity:1;}50%{transform:translateY(-5px);opacity:.45;}}
+.illu-dobber{animation:dobber 3.6s ease-in-out 2.4s infinite;}
+@keyframes dobber{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+.illu-wieg{transform-origin:252px 150px;animation:wieg 5s ease-in-out 2.4s infinite;}
+@keyframes wieg{0%,100%{transform:rotate(0);}50%{transform:rotate(-4deg);}}
+.illu .illu-zweef{animation:verschijn .8s ease 1.4s both,zweef 6s ease-in-out 2.2s infinite;}
+.illu .illu-zweef--2{animation-duration:.8s,7s;}
+@keyframes zweef{0%,100%{transform:translate(0,0);}50%{transform:translate(8px,-4px);}}
+.illu .illu-stip{stroke-dasharray:.02 .03 !important;animation:verschijn 1s ease 1.6s both !important;}
+/* lijnen die zelf bewegen, tekenen niet: ze verschijnen alleen */
+.illu .illu-damp[pathLength],.illu .illu-zweef[pathLength]{stroke-dasharray:none;stroke-dashoffset:0;}
+
+/* intro: tekst schuift zacht omhoog, element na element */
+.intro > *{animation:opkomen .9s cubic-bezier(.2,.7,.2,1) both;}
+.intro > :nth-child(2){animation-delay:.08s;}
+.intro > :nth-child(3){animation-delay:.16s;}
+.intro > :nth-child(4){animation-delay:.24s;}
+.intro > :nth-child(5){animation-delay:.32s;}
+.intro > :nth-child(n+6){animation-delay:.4s;}
+.intro > .illu{animation:none;}
+.intro-laat{animation:opkomen 1s cubic-bezier(.2,.7,.2,1) .3s both;}
+@keyframes opkomen{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+
+/* startpagina: foto zakt rustig in, beeldmerk tekent zich, tekst volgt */
+.hero-donker-beeld{animation:rustig-in 7s cubic-bezier(.2,.6,.2,1) both;}
+@keyframes rustig-in{from{opacity:0;transform:scale(1.08);}25%{opacity:1;}to{opacity:1;transform:scale(1);}}
+.hero-merk [pathLength]{
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+  animation:teken 1.4s cubic-bezier(.45,.05,.25,1) forwards;
+  animation-delay:calc(var(--i,0) * 70ms + 200ms);
+}
+.hero-merk-t{animation:verschijn 1s ease 1.1s both;}
+.hero-donker-inhoud.intro > .hero-merk{animation:none;}
+.hero-donker-inhoud.intro > :nth-child(2){animation-delay:.9s;}
+.hero-donker-inhoud.intro > .streep{animation:streep-groei .9s cubic-bezier(.2,.7,.2,1) 1.05s both;}
+.hero-donker-inhoud.intro > :nth-child(4){animation-delay:1.15s;}
+.hero-donker-inhoud.intro > :nth-child(5){animation-delay:1.3s;}
+.hero-donker-inhoud.intro > :nth-child(6){animation-delay:1.45s;}
+@keyframes streep-groei{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+
+@media (max-width:760px){
+  .pagina-kop{grid-template-columns:1fr;}
+  .pagina-kop .illu{width:min(100%,320px);justify-self:center;order:-1;}
+  .illu--boven-form{width:min(100%,300px);}
+}
+
 @media (prefers-reduced-motion:reduce){
-  *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+  *{animation-duration:.01ms !important;animation-delay:0s !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
 }

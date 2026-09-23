@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <meta name="description" content="TÈRRO — persoonlijk vastgoed met een verhaal. Wij vertrekken niet bij een woning, maar bij een mens. Waardescan, begeleiding bij verkoop en verhuur in Hasselt en omgeving.">
-<meta name="theme-color" content="#F6F2EA">
+<meta name="theme-color" content="#F7F4EF">
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
 <meta property="og:type" content="website">
@@ -13,26 +13,49 @@
 <meta property="og:site_name" content="TÈRRO">
 <meta property="og:title" content="TÈRRO — Gegrond in vastgoed">
 <meta property="og:description" content="Persoonlijk vastgoed met een verhaal. Hier begint thuis.">
+<!-- deelafbeelding (Facebook, LinkedIn, WhatsApp): moet een volledige URL zijn;
+     pas het domein aan als de site niet op terro.be draait -->
+<meta property="og:image" content="https://terro.be/images/og-terro.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TÈRRO — Gegrond in vastgoed">
+<meta name="twitter:card" content="summary_large_image">
 
 <title>TÈRRO Vastgoed</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- beeldmerk: één keer gedefinieerd, overal hergebruikt met <use href="#merk">.
+     De T volgt de tekstkleur (currentColor), lijnen en kader zijn merkgoud. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <clipPath id="merk-clip"><rect x="4" y="4" width="92" height="92" rx="13"></rect></clipPath>
+    <symbol id="merk" viewBox="0 0 100 100">
+      <g clip-path="url(#merk-clip)" fill="none" stroke="#B08D57" stroke-width="1" stroke-linecap="round">
+        <path d="M2 59 C14 51 26 53 38 59 C50 65 60 63 72 59 C82 56 92 57 102 61"></path>
+        <path d="M2 66 C14 59 26 61 38 67 C50 73 62 71 74 67 C84 64 92 66 102 70"></path>
+        <path d="M2 73 C12 67 24 69 36 75 C48 81 62 79 76 75 C86 72 94 75 102 79"></path>
+        <path d="M2 81 C12 76 22 78 34 83 C46 88 60 87 72 84 C84 81 93 84 102 89"></path>
+        <path d="M2 90 C10 86 20 87 30 91 C40 95 50 96 60 97"></path>
+        <path d="M70 99 C76 93 88 92 102 96"></path>
+        <path d="M84 72 C88 76 90 82 88 90"></path>
+      </g>
+      <rect x="4" y="4" width="92" height="92" rx="13" fill="none" stroke="#B08D57" stroke-width="1.6"></rect>
+      <text x="50" y="61" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="66" fill="currentColor">T</text>
+    </symbol>
+  </defs>
+</svg>
 
 <!-- ============================== KOP ============================== -->
 <header class="kop" id="kop">
   <div class="wrap kop-binnen">
     <a class="merk" href="#home" aria-label="TÈRRO — naar de startpagina">
-      <svg class="merk-mark" viewBox="0 0 100 100" aria-hidden="true">
-        <rect x="6" y="6" width="88" height="88" fill="none" stroke="#8A6D33" stroke-width="2"></rect>
-        <path d="M6 44 L50 68 L94 38" fill="none" stroke="#8A6D33" stroke-width="2"></path>
-        <path d="M50 68 L50 94" fill="none" stroke="#8A6D33" stroke-width="2"></path>
-        <text x="50" y="68" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="66" fill="#2A2724">T</text>
-      </svg>
+      <svg class="merk-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#merk"></use></svg>
       <span class="merk-tekst">
         <span class="merk-woord">TÈRRO</span>
         <span class="merk-sub">Gegrond in vastgoed</span>
@@ -61,25 +84,51 @@
 <!-- ============================== HOME ============================== -->
 <section class="zicht" id="zicht-home" hidden>
 
-  <div class="wrap hero">
-    <div class="stapel stapel-32">
-      <p class="eyebrow">Gegrond in vastgoed</p>
-      <h1>Hier begint<br>thuis.</h1>
-      <p class="lead meet">Wij vertrekken niet bij een woning, maar bij een mens. Bij wie je bent, hoe je wil wonen en welk hoofdstuk er nu openligt. De woning volgt daarna vanzelf.</p>
-      <div class="stapel stapel-24" style="align-items:flex-start;">
-        <a class="knop knop--goud" href="#contact">Vertel ons jouw verhaal</a>
-        <a class="tekstlink" href="#aanbod">Bekijk het aanbod <span class="pijl" aria-hidden="true">→</span></a>
+  <div class="hero-donker">
+    <img class="hero-donker-beeld" src="images/hero-home.jpg" alt="" fetchpriority="high">
+    <div class="wrap hero-donker-inhoud intro">
+      <svg class="hero-merk" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><!-- eigen kopie van het beeldmerk, zodat alleen dit exemplaar zichzelf tekent --><rect x="4" y="4" width="92" height="92" rx="13" fill="none" stroke="#B08D57" stroke-width="1.6"></rect><g clip-path="url(#merk-clip)" fill="none" stroke="#B08D57" stroke-width="1" stroke-linecap="round"><path d="M2 59 C14 51 26 53 38 59 C50 65 60 63 72 59 C82 56 92 57 102 61"></path><path d="M2 66 C14 59 26 61 38 67 C50 73 62 71 74 67 C84 64 92 66 102 70"></path><path d="M2 73 C12 67 24 69 36 75 C48 81 62 79 76 75 C86 72 94 75 102 79"></path><path d="M2 81 C12 76 22 78 34 83 C46 88 60 87 72 84 C84 81 93 84 102 89"></path><path d="M2 90 C10 86 20 87 30 91 C40 95 50 96 60 97"></path><path d="M70 99 C76 93 88 92 102 96"></path><path d="M84 72 C88 76 90 82 88 90"></path></g><text class="hero-merk-t" x="50" y="61" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="66" fill="currentColor">T</text></svg>
+      <p class="eyebrow eyebrow--licht">Gegrond in vastgoed.</p>
+      <span class="streep" aria-hidden="true"></span>
+      <h1>Hier begint thuis.</h1>
+      <p class="lead">Wij vertrekken niet bij een woning, maar bij een mens. Bij wie je bent, hoe je wil wonen en welk hoofdstuk er nu openligt. De woning volgt daarna vanzelf.</p>
+      <div class="hero-donker-acties">
+        <a class="knop knop--licht" href="#contact">Vertel ons jouw verhaal</a>
+        <a class="tekstlink tekstlink--licht" href="#aanbod">Bekijk het aanbod <span class="pijl" aria-hidden="true">→</span></a>
       </div>
     </div>
-    <div class="beeld beeld--hoog" data-slot="Beeldslot 01 · staand lifestylebeeld"><img src="images/hero-lezen.jpg" alt="Vrouw leest een boek bij het raam, thuis in ochtendlicht" fetchpriority="high" style="object-position:72% center;"></div>
   </div>
 
-  <div class="wrap">
-    <svg class="perceel" viewBox="0 0 1200 90" aria-hidden="true">
-      <path d="M0 18 L560 72 L1200 30" fill="none" stroke="currentColor" stroke-width="1"></path>
-      <path d="M560 72 L560 90" fill="none" stroke="currentColor" stroke-width="1"></path>
-    </svg>
-  </div>
+  <!-- ============ WAARDEN ============ -->
+  <section class="merkwaarden" aria-labelledby="merkwaarden-titel">
+    <div class="merkwaarden-intro">
+      <span class="streep" aria-hidden="true"></span>
+      <h2 class="merkwaarden-titel" id="merkwaarden-titel">Waar vertrouwen thuis komt.</h2>
+      <p>Wij begeleiden met aandacht, kennis en discretie.<br>Voor eigendommen met karakter.<br>Voor mensen met een verhaal.<br>Voor nieuwe hoofdstukken.</p>
+    </div>
+    <ul class="merkwaarden-lijst">
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 10h22a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H17l-6 5v-5H6a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z"></path><path d="M35 18h7a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v5l-6-5h-8a3 3 0 0 1-3-3v-1"></path><path d="M11 18h.01M17 18h.01M23 18h.01"></path></svg>
+        <h3>Écht gesprek</h3>
+        <p>We luisteren. Naar jouw verhaal, jouw wensen en jouw plannen.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 22 24 6l19 16"></path><path d="M10 18v24h28V18"></path><path d="M24 35s-7-4.3-7-8.8A3.8 3.8 0 0 1 24 24a3.8 3.8 0 0 1 7 2.2C31 30.7 24 35 24 35z"></path></svg>
+        <h3>Vertrouwen</h3>
+        <p>Transparant, eerlijk en discreet. Vertrouwen is onze basis.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 12c-4-3-10-4-18-4v28c8 0 14 1 18 4 4-3 10-4 18-4V8c-8 0-14 1-18 4z"></path><path d="M24 12v28"></path><path d="M31 6v14l3-2 3 2V7"></path></svg>
+        <h3>Vakmanschap</h3>
+        <p>Kennis, ervaring en oog voor detail. Wij doen het goed of we doen het niet.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 44V16"></path><path d="M24 30c-8 0-12-4-12-12 8 0 12 4 12 12z"></path><path d="M24 22c0-8 4-12 12-12 0 8-4 12-12 12z"></path><path d="M24 16c-3-3-3-7 0-10 3 3 3 7 0 10z"></path></svg>
+        <h3>Duurzaam</h3>
+        <p>We denken verder dan de transactie. We bouwen aan relaties die blijven.</p>
+      </li>
+    </ul>
+  </section>
 
   <section class="wrap sectie">
     <div class="duo duo--verspringend">
@@ -135,7 +184,7 @@
   <section class="vlak">
     <div class="wrap sectie">
       <div class="duo duo--omkeren">
-        <div class="beeld beeld--breed" data-slot="Beeldslot 02 · interieurdetail"><img src="images/interieur.jpg" alt="Rustige woonkamer in zachte, natuurlijke tinten" loading="lazy"></div>
+        <div class="beeld beeld--breed" data-slot="Beeldslot 02 · interieurdetail"><img src="images/waardescan-laptop.jpg" alt="Laptop met woningfoto's, een TÈRRO-visitekaartje en een kop koffie" loading="lazy"></div>
         <div class="stapel stapel-24">
           <p class="eyebrow">Waardescan</p>
           <h2>Wat is je woning vandaag écht waard?</h2>
@@ -170,10 +219,13 @@
 <!-- ============================== AANBOD ============================== -->
 <section class="zicht" id="zicht-aanbod" hidden>
   <div class="wrap sectie--kort stapel stapel-48">
-    <div class="stapel stapel-24 meet">
-      <p class="eyebrow">Aanbod</p>
-      <h1>Aanbod</h1>
-      <p class="lead">Wij werken met een bewust klein aanbod. Elk pand krijgt de voorbereiding, de fotografie en de tijd die het verdient.</p>
+    <div class="pagina-kop">
+      <div class="stapel stapel-24 meet intro">
+        <p class="eyebrow">Aanbod</p>
+        <h1>Aanbod</h1>
+        <p class="lead">Wij werken met een bewust klein aanbod. Elk pand krijgt de voorbereiding, de fotografie en de tijd die het verdient.</p>
+      </div>
+      <svg class="illu illu--aanbod" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M20 236 H380"/> <path d="M40 236 V150 H52 V138 H64 V126 H76 V114 H104 V126 H116 V138 H128 V150 H140 V236"/> <circle cx="90" cy="134" r="6"/> <rect x="56" y="160" width="18" height="24"/><rect x="106" y="160" width="18" height="24"/> <path d="M81 236 V206 Q90 194 99 206 V236"/> <path d="M150 236 V132 L200 82 L250 132 V236"/> <path d="M226 108 V86 H238 V120"/> <circle cx="200" cy="116" r="8"/> <rect x="164" y="146" width="22" height="28"/><rect x="214" y="146" width="22" height="28"/> <rect x="188" y="194" width="24" height="42"/><path d="M164 194 H186 M214 194 H236"/> <path d="M256 122 H366"/><path d="M262 236 V122 M360 122 V236"/> <rect x="276" y="138" width="32" height="42"/><rect x="316" y="138" width="30" height="42"/> <rect x="276" y="194" width="32" height="28"/><rect x="320" y="192" width="22" height="44"/> <path d="M292 138 V180 M276 159 H308"/> <path d="M20 252 C90 244 150 258 220 250 S330 242 380 252"/><path d="M50 270 C120 262 180 276 250 268 S340 262 360 266"/></svg>
     </div>
 
     <div class="filters" id="filters" role="group" aria-label="Filter het aanbod">
@@ -197,12 +249,13 @@
 <section class="zicht" id="zicht-over" hidden>
 
   <div class="wrap hero">
-    <div class="stapel stapel-32">
+    <div class="stapel stapel-32 intro">
       <p class="eyebrow">Over TÈRRO</p>
       <h1>Vertel ons jouw verhaal.</h1>
       <p class="lead meet">TÈRRO ontstond uit een eenvoudige vaststelling: in vastgoed gaat het bijna altijd over vierkante meters, en bijna nooit over mensen. Wij draaien dat om.</p>
+      <svg class="illu illu--over" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M30 236 H370"/> <path d="M122 236 C124 214 118 192 124 160"/> <path d="M123 188 C115 178 106 170 98 156"/><path d="M123 174 C135 163 145 156 156 146"/> <path d="M72 150 C60 120 90 92 120 102 C136 72 182 80 182 112 C206 122 200 162 172 162 C160 178 132 174 124 164 C110 178 78 174 72 150 Z"/> <path d="M121 236 C110 254 92 260 70 264"/><path d="M123 236 C130 256 148 264 172 268"/><path d="M122 236 C121 256 119 272 116 286"/> <path d="M226 236 V178 L270 142 L314 178 V236"/> <path d="M218 184 L270 140 L322 184"/> <path d="M296 160 V144 H306 V168"/> <rect x="240" y="192" width="14" height="16"/><rect x="288" y="192" width="14" height="16"/> <path d="M262 236 V206 H280 V236"/> <path d="M271 236 C266 252 254 262 238 272"/> <circle cx="336" cy="92" r="20"/> <path d="M60 256 C130 248 190 262 260 254 S340 248 372 256"/><path d="M92 278 C160 270 220 284 290 276"/></svg>
     </div>
-    <div class="beeld beeld--hoog" data-slot="Beeldslot 03 · portret"><img src="images/portret.jpg" alt="Portret van een glimlachende makelaar" loading="lazy" style="object-position:80% center;"></div>
+    <div class="beeld beeld--hoog intro-laat" data-slot="Beeldslot 03 · portret"><img src="images/portret-makelaar.jpg" alt="Makelaar van TÈRRO met een bos bloemen voor een witte gevel" loading="lazy"></div>
   </div>
 
   <section class="wrap sectie--kort">
@@ -278,10 +331,13 @@
 <!-- ============================== VERHALEN ============================== -->
 <section class="zicht" id="zicht-verhalen" hidden>
   <div class="wrap sectie--kort stapel stapel-48">
-    <div class="stapel stapel-24 meet">
-      <p class="eyebrow">Verhalen</p>
-      <h1>Verhalen</h1>
-      <p class="lead">Wie woonde hier voor jou? En wie woont hier straks? Gesprekken met de mensen die wij begeleidden, over verhuizen, loslaten en opnieuw beginnen.</p>
+    <div class="pagina-kop">
+      <div class="stapel stapel-24 meet intro">
+        <p class="eyebrow">Verhalen</p>
+        <h1>Verhalen</h1>
+        <p class="lead">Wie woonde hier voor jou? En wie woont hier straks? Gesprekken met de mensen die wij begeleidden, over verhuizen, loslaten en opnieuw beginnen.</p>
+      </div>
+      <svg class="illu illu--verhalen" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M200 130 C172 116 128 112 86 118 V240 C128 234 172 238 200 252"/> <path d="M200 130 C228 116 272 112 314 118 V240 C272 234 228 238 200 252"/> <path d="M200 130 V252"/> <path d="M78 126 V248 C124 242 170 246 200 260 C230 246 276 242 322 248 V126"/> <path d="M104 176 C132 173 160 176 184 182"/><path d="M104 194 C132 191 160 194 184 200"/><path d="M104 212 C130 209 156 212 184 218"/> <path d="M226 190 V160 L256 134 L286 160 V190"/> <path d="M250 190 V174 H262 V190"/> <path d="M218 204 C246 199 274 198 298 200"/><path d="M218 220 C246 215 274 214 298 216"/> <path class="illu-zweef" d="M144 76 q8 -8 16 0 q8 -8 16 0"/> <path class="illu-zweef illu-zweef--2" d="M190 56 q6 -6 12 0 q6 -6 12 0"/> <path d="M60 280 C130 272 190 286 260 278 S330 272 344 276"/></svg>
     </div>
     <div class="rooster" id="verhalenRooster"></div>
   </div>
@@ -296,63 +352,66 @@
 <section class="zicht" id="zicht-waardescan" hidden>
   <div class="wrap sectie--kort">
     <div class="duo duo--verspringend">
-      <div class="stapel stapel-24">
+      <div class="stapel stapel-24 intro">
         <p class="eyebrow">Waardescan</p>
         <h1>Waardescan</h1>
         <p class="lead meet">Een onderbouwde waardebepaling na een bezoek ter plaatse — geen algoritme dat je postcode opzoekt.</p>
         <p class="stil meet">We bekijken de staat van het gebouw, de ligging, de vergunningen en wat er in jouw straat effectief verkocht is. Je krijgt een rapport met een realistische vork en uitleg bij elk cijfer. Vrijblijvend, ook als je nog twijfelt of je wil verkopen.</p>
-        <div class="beeld beeld--breed" data-slot="Beeldslot 04 · gevel of detail"><img src="images/gevel.jpg" alt="Bakstenen gevel van een Vlaams herenhuis" loading="lazy"></div>
+        <div class="beeld beeld--breed" data-slot="Beeldslot 04 · gevel of detail"><img src="images/waardescan-bord-koffie.jpg" alt="Kop koffie naast een TÈRRO-bord Te koop en een visitekaartje" loading="lazy" style="object-position:center 36%;"></div>
       </div>
 
-      <form class="formulier" id="formWaardescan" novalidate>
-        <div class="veld-rij">
-          <div class="veld">
-            <label for="ws-naam">Naam</label>
-            <input id="ws-naam" name="naam" type="text" autocomplete="name" required>
+      <div class="stapel stapel-48 intro-laat">
+        <svg class="illu illu--waardescan illu--boven-form" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M40 244 H320"/> <path d="M84 244 V112 L150 64 L216 112 V244"/> <rect x="104" y="132" width="28" height="34"/><rect x="168" y="132" width="28" height="34"/> <rect x="104" y="186" width="28" height="34"/> <rect x="166" y="196" width="32" height="48"/> <circle cx="150" cy="100" r="8"/> <g class="illu-wieg"> <circle cx="252" cy="150" r="54"/> <circle cx="252" cy="150" r="46"/> <path d="M290 188 L334 232"/><path d="M298 180 L342 224"/><path d="M334 232 L342 224"/> <path d="M220 166 L238 152 L254 160 L280 132"/><path d="M270 132 H280 V142"/> </g> <rect x="60" y="262" width="280" height="16"/> <path d="M80 262 V270 M100 262 V268 M120 262 V270 M140 262 V268 M160 262 V270 M180 262 V268 M200 262 V274 M220 262 V268 M240 262 V270 M260 262 V268 M280 262 V270 M300 262 V268 M320 262 V270"/></svg>
+        <form class="formulier" id="formWaardescan" novalidate>
+          <div class="veld-rij">
+            <div class="veld">
+              <label for="ws-naam">Naam</label>
+              <input id="ws-naam" name="naam" type="text" autocomplete="name" required>
+            </div>
+            <div class="veld">
+              <label for="ws-tel">Telefoon</label>
+              <input id="ws-tel" name="telefoon" type="tel" autocomplete="tel">
+            </div>
           </div>
           <div class="veld">
-            <label for="ws-tel">Telefoon</label>
-            <input id="ws-tel" name="telefoon" type="tel" autocomplete="tel">
+            <label for="ws-mail">E-mailadres</label>
+            <input id="ws-mail" name="email" type="email" autocomplete="email" required>
           </div>
-        </div>
-        <div class="veld">
-          <label for="ws-mail">E-mailadres</label>
-          <input id="ws-mail" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="veld">
-          <label for="ws-adres">Adres van de woning</label>
-          <input id="ws-adres" name="adres" type="text" autocomplete="street-address" required>
-        </div>
-        <div class="veld">
-          <label for="ws-type">Type woning</label>
-          <select id="ws-type" name="type">
-            <option>Woning</option>
-            <option>Appartement</option>
-            <option>Hoeve of landelijk pand</option>
-            <option>Bouwgrond</option>
-            <option>Handelspand</option>
-            <option>Anders</option>
-          </select>
-        </div>
-        <div class="veld">
-          <label id="ws-timing-label">Wanneer denk je te verkopen?</label>
-          <div class="keuzes" role="group" aria-labelledby="ws-timing-label">
-            <label class="keuze"><input type="radio" name="timing" value="Binnen 3 maanden"><span>Binnen 3 maanden</span></label>
-            <label class="keuze"><input type="radio" name="timing" value="Dit jaar"><span>Dit jaar</span></label>
-            <label class="keuze"><input type="radio" name="timing" value="Later"><span>Later</span></label>
-            <label class="keuze"><input type="radio" name="timing" value="Weet ik nog niet" checked><span>Weet ik nog niet</span></label>
+          <div class="veld">
+            <label for="ws-adres">Adres van de woning</label>
+            <input id="ws-adres" name="adres" type="text" autocomplete="street-address" required>
           </div>
-        </div>
-        <div class="veld">
-          <label for="ws-verhaal">Wat moeten we weten over deze woning?</label>
-          <textarea id="ws-verhaal" name="verhaal" placeholder="Bijvoorbeeld: recent gerenoveerd, erfenis, nog bewoond…"></textarea>
-        </div>
-        <button class="knop knop--goud" type="submit" style="align-self:flex-start;">Vraag je waardescan aan</button>
-        <p class="stil" style="font-size:13px;">Wij nemen binnen twee werkdagen contact op om een moment af te spreken.</p>
-        <div class="bevestiging" id="wsBevestiging" hidden>
-          <p><strong>Bedankt.</strong> Je aanvraag staat genoteerd — we bellen je binnen twee werkdagen om langs te komen.</p>
-        </div>
-      </form>
+          <div class="veld">
+            <label for="ws-type">Type woning</label>
+            <select id="ws-type" name="type">
+              <option>Woning</option>
+              <option>Appartement</option>
+              <option>Hoeve of landelijk pand</option>
+              <option>Bouwgrond</option>
+              <option>Handelspand</option>
+              <option>Anders</option>
+            </select>
+          </div>
+          <div class="veld">
+            <label id="ws-timing-label">Wanneer denk je te verkopen?</label>
+            <div class="keuzes" role="group" aria-labelledby="ws-timing-label">
+              <label class="keuze"><input type="radio" name="timing" value="Binnen 3 maanden"><span>Binnen 3 maanden</span></label>
+              <label class="keuze"><input type="radio" name="timing" value="Dit jaar"><span>Dit jaar</span></label>
+              <label class="keuze"><input type="radio" name="timing" value="Later"><span>Later</span></label>
+              <label class="keuze"><input type="radio" name="timing" value="Weet ik nog niet" checked><span>Weet ik nog niet</span></label>
+            </div>
+          </div>
+          <div class="veld">
+            <label for="ws-verhaal">Wat moeten we weten over deze woning?</label>
+            <textarea id="ws-verhaal" name="verhaal" placeholder="Bijvoorbeeld: recent gerenoveerd, erfenis, nog bewoond…"></textarea>
+          </div>
+          <button class="knop knop--goud" type="submit" style="align-self:flex-start;">Vraag je waardescan aan</button>
+          <p class="stil" style="font-size:13px;">Wij nemen binnen twee werkdagen contact op om een moment af te spreken.</p>
+          <div class="bevestiging" id="wsBevestiging" hidden>
+            <p><strong>Bedankt.</strong> Je aanvraag staat genoteerd — we bellen je binnen twee werkdagen om langs te komen.</p>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -361,70 +420,73 @@
 <section class="zicht" id="zicht-woonprofiel" hidden>
   <div class="wrap sectie--kort">
     <div class="duo duo--verspringend">
-      <div class="stapel stapel-24">
+      <div class="stapel stapel-24 intro">
         <p class="eyebrow">Woonprofiel</p>
         <h1>Maak jouw woonprofiel</h1>
         <p class="lead meet">Vertel ons hoe je wil wonen. Wij leggen jouw profiel naast elk pand dat binnenkomt.</p>
         <p class="stil meet">Je krijgt van ons geen automatische mail bij elk nieuw zoekertje. We nemen contact op wanneer er iets is dat écht bij je past — soms nog voor het online staat.</p>
-        <div class="beeld beeld--breed" data-slot="Beeldslot 05 · sfeerbeeld streek"><img src="images/streek-boomgaard.jpg" alt="Rijen fruitbomen in een boomgaard" loading="lazy"></div>
+        <div class="beeld beeld--breed" data-slot="Beeldslot 05 · sfeerbeeld streek"><img src="images/woonprofiel-wandeling.jpg" alt="Makelaar van TÈRRO wandelt door het park met bloemen en een bord Te koop" loading="lazy"></div>
       </div>
 
-      <form class="formulier" id="formWoonprofiel" novalidate>
-        <div class="veld-rij">
-          <div class="veld">
-            <label for="wp-naam">Naam</label>
-            <input id="wp-naam" name="naam" type="text" autocomplete="name" required>
+      <div class="stapel stapel-48 intro-laat">
+        <svg class="illu illu--woonprofiel illu--boven-form" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M50 206 C50 156 112 136 154 156 C196 176 206 226 166 246 C126 266 50 256 50 206 Z"/> <path d="M82 206 C82 176 120 166 146 178 C172 190 176 220 152 232 C126 244 82 236 82 206 Z"/> <path d="M110 206 C110 192 128 186 140 194 C152 202 150 218 138 222 C124 226 110 220 110 206 Z"/> <path d="M224 282 C246 250 298 240 344 258"/><path d="M246 292 C266 268 310 260 352 274"/> <path d="M30 150 C60 120 100 110 130 116"/> <path class="illu-stip" d="M146 206 C176 202 204 222 236 216 C252 213 262 212 268 214"/> <g class="illu-dobber"> <path d="M270 206 C250 176 222 150 222 118 A48 48 0 0 1 318 118 C318 150 290 176 270 206 Z"/> <path d="M250 136 V114 L270 98 L290 114 V136 Z"/> <path d="M265 136 V124 H275 V136"/> </g> <ellipse cx="270" cy="216" rx="24" ry="5"/></svg>
+        <form class="formulier" id="formWoonprofiel" novalidate>
+          <div class="veld-rij">
+            <div class="veld">
+              <label for="wp-naam">Naam</label>
+              <input id="wp-naam" name="naam" type="text" autocomplete="name" required>
+            </div>
+            <div class="veld">
+              <label for="wp-tel">Telefoon</label>
+              <input id="wp-tel" name="telefoon" type="tel" autocomplete="tel">
+            </div>
           </div>
           <div class="veld">
-            <label for="wp-tel">Telefoon</label>
-            <input id="wp-tel" name="telefoon" type="tel" autocomplete="tel">
-          </div>
-        </div>
-        <div class="veld">
-          <label for="wp-mail">E-mailadres</label>
-          <input id="wp-mail" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="veld">
-          <label id="wp-doel-label">Ik zoek</label>
-          <div class="keuzes" role="group" aria-labelledby="wp-doel-label">
-            <label class="keuze"><input type="radio" name="doel" value="Te koop" checked><span>Om te kopen</span></label>
-            <label class="keuze"><input type="radio" name="doel" value="Te huur"><span>Om te huren</span></label>
-          </div>
-        </div>
-        <div class="veld">
-          <label id="wp-type-label">Type woning</label>
-          <div class="keuzes" role="group" aria-labelledby="wp-type-label">
-            <label class="keuze"><input type="checkbox" name="type" value="Woning"><span>Woning</span></label>
-            <label class="keuze"><input type="checkbox" name="type" value="Appartement"><span>Appartement</span></label>
-            <label class="keuze"><input type="checkbox" name="type" value="Hoeve"><span>Hoeve</span></label>
-            <label class="keuze"><input type="checkbox" name="type" value="Bouwgrond"><span>Bouwgrond</span></label>
-          </div>
-        </div>
-        <div class="veld-rij">
-          <div class="veld">
-            <label for="wp-budget">Budget tot</label>
-            <input id="wp-budget" name="budget" type="text" inputmode="numeric" placeholder="€ 450.000">
+            <label for="wp-mail">E-mailadres</label>
+            <input id="wp-mail" name="email" type="email" autocomplete="email" required>
           </div>
           <div class="veld">
-            <label for="wp-slaapkamers">Slaapkamers vanaf</label>
-            <select id="wp-slaapkamers" name="slaapkamers">
-              <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5 of meer</option>
-            </select>
+            <label id="wp-doel-label">Ik zoek</label>
+            <div class="keuzes" role="group" aria-labelledby="wp-doel-label">
+              <label class="keuze"><input type="radio" name="doel" value="Te koop" checked><span>Om te kopen</span></label>
+              <label class="keuze"><input type="radio" name="doel" value="Te huur"><span>Om te huren</span></label>
+            </div>
           </div>
-        </div>
-        <div class="veld">
-          <label for="wp-streek">Waar wil je wonen?</label>
-          <input id="wp-streek" name="streek" type="text" placeholder="Hasselt, Borgloon, Haspengouw…">
-        </div>
-        <div class="veld">
-          <label for="wp-verhaal">Vertel ons jouw verhaal</label>
-          <textarea id="wp-verhaal" name="verhaal" placeholder="Waarom verhuis je? Wat mag zeker niet ontbreken?"></textarea>
-        </div>
-        <button class="knop knop--goud" type="submit" style="align-self:flex-start;">Maak jouw woonprofiel</button>
-        <div class="bevestiging" id="wpBevestiging" hidden>
-          <p><strong>Je woonprofiel staat genoteerd.</strong> Vanaf nu kijken we bij elk nieuw pand of het bij jou past.</p>
-        </div>
-      </form>
+          <div class="veld">
+            <label id="wp-type-label">Type woning</label>
+            <div class="keuzes" role="group" aria-labelledby="wp-type-label">
+              <label class="keuze"><input type="checkbox" name="type" value="Woning"><span>Woning</span></label>
+              <label class="keuze"><input type="checkbox" name="type" value="Appartement"><span>Appartement</span></label>
+              <label class="keuze"><input type="checkbox" name="type" value="Hoeve"><span>Hoeve</span></label>
+              <label class="keuze"><input type="checkbox" name="type" value="Bouwgrond"><span>Bouwgrond</span></label>
+            </div>
+          </div>
+          <div class="veld-rij">
+            <div class="veld">
+              <label for="wp-budget">Budget tot</label>
+              <input id="wp-budget" name="budget" type="text" inputmode="numeric" placeholder="€ 450.000">
+            </div>
+            <div class="veld">
+              <label for="wp-slaapkamers">Slaapkamers vanaf</label>
+              <select id="wp-slaapkamers" name="slaapkamers">
+                <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5 of meer</option>
+              </select>
+            </div>
+          </div>
+          <div class="veld">
+            <label for="wp-streek">Waar wil je wonen?</label>
+            <input id="wp-streek" name="streek" type="text" placeholder="Hasselt, Borgloon, Haspengouw…">
+          </div>
+          <div class="veld">
+            <label for="wp-verhaal">Vertel ons jouw verhaal</label>
+            <textarea id="wp-verhaal" name="verhaal" placeholder="Waarom verhuis je? Wat mag zeker niet ontbreken?"></textarea>
+          </div>
+          <button class="knop knop--goud" type="submit" style="align-self:flex-start;">Maak jouw woonprofiel</button>
+          <div class="bevestiging" id="wpBevestiging" hidden>
+            <p><strong>Je woonprofiel staat genoteerd.</strong> Vanaf nu kijken we bij elk nieuw pand of het bij jou past.</p>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -433,58 +495,61 @@
 <section class="zicht" id="zicht-contact" hidden>
   <div class="wrap sectie--kort">
     <div class="duo duo--verspringend">
-      <div class="stapel stapel-32">
+      <div class="stapel stapel-32 intro">
         <p class="eyebrow">Contact</p>
         <h1>Vertel ons jouw verhaal.</h1>
         <p class="lead meet">Bel gerust, of laat hieronder iets achter. Een eerste gesprek is vrijblijvend en kost je niets dan een uur koffie.</p>
 
         <div class="stapel stapel-24" style="max-width:420px;">
           <div class="specs" style="grid-template-columns:1fr;">
-            <div class="spec"><dt>Telefoon</dt><dd><span id="telNummer">011 00 00 00</span></dd></div>
+            <div class="spec"><dt>Telefoon</dt><dd><a href="tel:+32470709999" id="telNummer">0470 70 99 99</a></dd></div>
             <div class="spec"><dt>E-mail</dt><dd><span id="mailAdres">hallo@terro.be</span></dd></div>
-            <div class="spec"><dt>Kantoor</dt><dd>Hasselt</dd></div>
+            <div class="spec"><dt>Kantoor</dt><dd>Dendermondse Steenweg 10<br>9290 Berlare</dd></div>
             <div class="spec"><dt>Op afspraak</dt><dd>ma – za</dd></div>
           </div>
           <button class="knop knop--lijn" id="kopieerKnop" type="button" style="align-self:flex-start;">Kopieer e-mailadres</button>
         </div>
 
-        <div class="beeld beeld--breed" data-slot="Beeldslot 06 · kantoor of omgeving"><img src="images/kantoor-koffie.jpg" alt="Kop koffie op een houten tafel" loading="lazy"></div>
+        <div class="beeld beeld--breed" data-slot="Beeldslot 06 · kantoor of omgeving"><img src="images/contact-koffie-kaartjes.jpg" alt="Cappuccino met TÈRRO-visitekaartjes op een houten tafel" loading="lazy"></div>
       </div>
 
-      <form class="formulier" id="formContact" novalidate>
-        <div class="veld-rij">
-          <div class="veld">
-            <label for="ct-naam">Naam</label>
-            <input id="ct-naam" name="naam" type="text" autocomplete="name" required>
+      <div class="stapel stapel-48 intro-laat">
+        <svg class="illu illu--contact illu--boven-form" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M40 240 H360"/> <path d="M110 180 H174 V214 C174 232 160 240 142 240 C124 240 110 232 110 214 Z"/> <path d="M174 190 C194 190 196 214 174 214"/> <path d="M92 244 C110 252 174 252 192 244"/> <path d="M294 180 H230 V214 C230 232 244 240 262 240 C280 240 294 232 294 214 Z"/> <path d="M230 190 C210 190 208 214 230 214"/> <path d="M212 244 C230 252 294 252 312 244"/> <path class="illu-damp" d="M132 166 C124 154 140 146 132 132"/> <path class="illu-damp illu-damp--2" d="M152 166 C144 154 160 146 152 132"/> <path class="illu-damp" d="M254 166 C246 154 262 146 254 132"/> <path class="illu-damp illu-damp--2" d="M274 166 C266 154 282 146 274 132"/> <path d="M70 62 H168 A14 14 0 0 1 182 76 V104 A14 14 0 0 1 168 118 H112 L96 132 V118 H70 A14 14 0 0 1 56 104 V76 A14 14 0 0 1 70 62 Z"/> <circle cx="100" cy="90" r="3"/><circle cx="119" cy="90" r="3"/><circle cx="138" cy="90" r="3"/> <path d="M232 34 H330 A14 14 0 0 1 344 48 V78 A14 14 0 0 1 330 92 H318 V108 L300 92 H232 A14 14 0 0 1 218 78 V48 A14 14 0 0 1 232 34 Z"/> <path d="M234 56 H320"/><path d="M234 70 H298"/> <path d="M60 262 C130 254 190 268 260 260 S340 254 370 262"/></svg>
+        <form class="formulier" id="formContact" novalidate>
+          <div class="veld-rij">
+            <div class="veld">
+              <label for="ct-naam">Naam</label>
+              <input id="ct-naam" name="naam" type="text" autocomplete="name" required>
+            </div>
+            <div class="veld">
+              <label for="ct-tel">Telefoon</label>
+              <input id="ct-tel" name="telefoon" type="tel" autocomplete="tel">
+            </div>
           </div>
           <div class="veld">
-            <label for="ct-tel">Telefoon</label>
-            <input id="ct-tel" name="telefoon" type="tel" autocomplete="tel">
+            <label for="ct-mail">E-mailadres</label>
+            <input id="ct-mail" name="email" type="email" autocomplete="email" required>
           </div>
-        </div>
-        <div class="veld">
-          <label for="ct-mail">E-mailadres</label>
-          <input id="ct-mail" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="veld">
-          <label id="ct-onderwerp-label">Waarover gaat het?</label>
-          <div class="keuzes" role="group" aria-labelledby="ct-onderwerp-label">
-            <label class="keuze"><input type="radio" name="onderwerp" value="Verkopen" checked><span>Verkopen</span></label>
-            <label class="keuze"><input type="radio" name="onderwerp" value="Kopen"><span>Kopen</span></label>
-            <label class="keuze"><input type="radio" name="onderwerp" value="Verhuren"><span>Verhuren</span></label>
-            <label class="keuze"><input type="radio" name="onderwerp" value="Huren"><span>Huren</span></label>
-            <label class="keuze"><input type="radio" name="onderwerp" value="Iets anders"><span>Iets anders</span></label>
+          <div class="veld">
+            <label id="ct-onderwerp-label">Waarover gaat het?</label>
+            <div class="keuzes" role="group" aria-labelledby="ct-onderwerp-label">
+              <label class="keuze"><input type="radio" name="onderwerp" value="Verkopen" checked><span>Verkopen</span></label>
+              <label class="keuze"><input type="radio" name="onderwerp" value="Kopen"><span>Kopen</span></label>
+              <label class="keuze"><input type="radio" name="onderwerp" value="Verhuren"><span>Verhuren</span></label>
+              <label class="keuze"><input type="radio" name="onderwerp" value="Huren"><span>Huren</span></label>
+              <label class="keuze"><input type="radio" name="onderwerp" value="Iets anders"><span>Iets anders</span></label>
+            </div>
           </div>
-        </div>
-        <div class="veld">
-          <label for="ct-bericht">Jouw verhaal</label>
-          <textarea id="ct-bericht" name="bericht"></textarea>
-        </div>
-        <button class="knop knop--goud" type="submit" style="align-self:flex-start;">Verstuur</button>
-        <div class="bevestiging" id="ctBevestiging" hidden>
-          <p><strong>Bedankt voor je bericht.</strong> We nemen binnen twee werkdagen contact op.</p>
-        </div>
-      </form>
+          <div class="veld">
+            <label for="ct-bericht">Jouw verhaal</label>
+            <textarea id="ct-bericht" name="bericht"></textarea>
+          </div>
+          <button class="knop knop--goud" type="submit" style="align-self:flex-start;">Verstuur</button>
+          <div class="bevestiging" id="ctBevestiging" hidden>
+            <p><strong>Bedankt voor je bericht.</strong> We nemen binnen twee werkdagen contact op.</p>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -497,18 +562,13 @@
     <div class="voet-rooster">
       <div class="voet-kolom">
         <a class="merk" href="#home" style="margin-bottom:10px;">
-          <svg class="merk-mark" viewBox="0 0 100 100" aria-hidden="true">
-            <rect x="6" y="6" width="88" height="88" fill="none" stroke="#8A6D33" stroke-width="2"></rect>
-            <path d="M6 44 L50 68 L94 38" fill="none" stroke="#8A6D33" stroke-width="2"></path>
-            <path d="M50 68 L50 94" fill="none" stroke="#8A6D33" stroke-width="2"></path>
-            <text x="50" y="68" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="66" fill="#2A2724">T</text>
-          </svg>
+          <svg class="merk-mark" viewBox="0 0 100 100" aria-hidden="true"><use href="#merk"></use></svg>
           <span class="merk-tekst">
             <span class="merk-woord">TÈRRO</span>
             <span class="merk-sub">Gegrond in vastgoed</span>
           </span>
         </a>
-        <p class="stil" style="font-size:14px;max-width:34ch;">Persoonlijk vastgoed met een verhaal.</p>
+        <p class="voet-slogan">Waar vertrouwen thuis komt.</p>
       </div>
       <div class="voet-kolom">
         <h4>Navigatie</h4>
@@ -521,9 +581,19 @@
       </div>
       <div class="voet-kolom">
         <h4>Contact</h4>
-        <span class="stil" style="font-size:14px;">011 00 00 00</span>
-        <span class="stil" style="font-size:14px;">hallo@terro.be</span>
-        <span class="stil" style="font-size:14px;">Hasselt — op afspraak</span>
+        <a href="tel:+32470709999">0470 70 99 99</a>
+        <a href="mailto:hallo@terro.be">hallo@terro.be</a>
+        <span>Dendermondse Steenweg 10<br>9290 Berlare</span>
+        <span>Op afspraak</span>
+      </div>
+    </div>
+    <div class="voet-band">
+      <p class="voet-gegevens"><span>terro.be</span><span>0470 70 99 99</span><span>Dendermondse Steenweg 10, 9290 Berlare</span></p>
+      <!-- TODO: echte profiel-URL's invullen zodra de accounts bestaan -->
+      <div class="sociaal">
+        <a href="#" aria-label="TÈRRO op Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.2 6.8h.01"></path></svg></a>
+        <a href="#" aria-label="TÈRRO op Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8H16V5h-2a4 4 0 0 0-4 4v2H8v3h2v7h3v-7h2.2l.5-3H13V9.3c0-.8.5-1.3 1.5-1.3z"></path></svg></a>
+        <a href="#" aria-label="TÈRRO op LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9.5h3V19H5zM6.5 5.2a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2zM10.5 9.5h2.9v1.3c.5-.9 1.6-1.6 3.1-1.6 3 0 3.5 1.9 3.5 4.4V19h-3v-4.8c0-1.2 0-2.6-1.6-2.6s-1.9 1.2-1.9 2.5V19h-3z"></path></svg></a>
       </div>
     </div>
     <div class="voet-onder">

@@ -8,6 +8,7 @@ var PANDEN = [
   {
     slug:'herenhuis-hasselt',
     beeld:'images/pand-herenhuis-hasselt.jpg',
+    beeldAlt:'Makelaar hangt een TÈRRO-bord Te koop achter het raam van een gevel',
     titel:'Herenhuis met stadstuin',
     plaats:'Hasselt',
     type:'Woning',
@@ -32,6 +33,7 @@ var PANDEN = [
   {
     slug:'hoeve-borgloon',
     beeld:'images/pand-hoeve-borgloon.jpg',
+    beeldAlt:'Takken van een olijfboom tegen een donkere achtergrond',
     titel:'Hoeve met bijgebouw',
     plaats:'Borgloon',
     type:'Hoeve',
@@ -56,6 +58,7 @@ var PANDEN = [
   {
     slug:'appartement-tongeren',
     beeld:'images/pand-appartement-tongeren.jpg',
+    beeldAlt:'Koffiecorner op een taupe dressoir met een lamp, een plant en een kunstwerk',
     titel:'Lichtrijk appartement aan de wal',
     plaats:'Tongeren',
     type:'Appartement',
@@ -80,6 +83,7 @@ var PANDEN = [
   {
     slug:'pastorij-sint-truiden',
     beeld:'images/pand-pastorij-sint-truiden.jpg',
+    beeldAlt:'Lichte muur met houten wandplanken en de tekst If not now, when?',
     titel:'Pastorijwoning met kloostertuin',
     plaats:'Sint-Truiden',
     type:'Woning',
@@ -104,6 +108,7 @@ var PANDEN = [
   {
     slug:'nieuwbouw-lanaken',
     beeld:'images/pand-nieuwbouw-lanaken.jpg',
+    beeldAlt:'Makelaar stapt een gebouw binnen langs een witte gevel',
     titel:'Energiezuinige nieuwbouwwoning',
     plaats:'Lanaken',
     type:'Woning',
@@ -128,6 +133,7 @@ var PANDEN = [
   {
     slug:'loft-hasselt',
     beeld:'images/pand-loft-hasselt.jpg',
+    beeldAlt:'Makelaar werkt aan een laptop aan het raam met zicht op de stad',
     titel:'Loft in de oude brouwerij',
     plaats:'Hasselt',
     type:'Appartement',
@@ -155,6 +161,7 @@ var VERHALEN = [
   {
     slug:'ann-en-pieter',
     beeld:'images/verhaal-ann-en-pieter.jpg',
+    beeldAlt:'Smartphone en laptop op een tafel bij het raam, naast een kop koffie',
     citaat:'Wij wilden geen groter huis. We wilden een stiller huis.',
     mensen:'Ann & Pieter',
     plaats:'Borgloon',
@@ -170,6 +177,7 @@ var VERHALEN = [
   {
     slug:'familie-vandereyt',
     beeld:'images/verhaal-familie-vandereyt.jpg',
+    beeldAlt:'Iemand houdt een TÈRRO-visitekaartje omhoog',
     citaat:'Het duurde zeven maanden. Dat was precies goed.',
     mensen:'Familie Vandereyt',
     plaats:'Hasselt',
@@ -185,6 +193,7 @@ var VERHALEN = [
   {
     slug:'marleen',
     beeld:'images/verhaal-marleen.jpg',
+    beeldAlt:'Makelaar aan de telefoon aan een tafel bij het raam',
     citaat:'De keuken van mijn moeder stond er nog. Dat gaf de doorslag.',
     mensen:'Marleen',
     plaats:'Sint-Truiden',
@@ -263,7 +272,7 @@ function esc(s){
 // Eerste foto van een pand of verhaal, of niets zodat het beeldslot zichtbaar blijft.
 function beeldTag(item, alt){
   var src = item.beeld || (item.beelden && item.beelden[0]);
-  return src ? '<img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy">' : '';
+  return src ? '<img src="' + esc(src) + '" alt="' + esc(item.beeldAlt || alt) + '" loading="lazy">' : '';
 }
 
 function pandKaart(p,index){
@@ -503,6 +512,16 @@ window.addEventListener('resize',function(){
 });
 document.addEventListener('keydown',function(e){ if(e.key === 'Escape') sluitNav(); });
 sluitNav();
+
+/* ---------- hero-illustraties ----------
+   Elke lijn krijgt lengte 1 en een volgnummer, zodat de CSS ze na elkaar
+   kan laten tekenen. Zonder JS blijven de tekeningen gewoon zichtbaar. */
+document.querySelectorAll('.illu, .hero-merk').forEach(function(svg){
+  svg.querySelectorAll('path,rect,circle,ellipse').forEach(function(el,i){
+    el.setAttribute('pathLength','1');
+    el.style.setProperty('--i',i);
+  });
+});
 
 /* nu pas de eerste routering */
 route();
