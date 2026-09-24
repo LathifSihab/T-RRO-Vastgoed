@@ -672,6 +672,20 @@ main:focus{outline:none;}
 .artikel p + p{margin-top:1.15em;}
 .artikel-tekst{max-width:62ch;}
 
+/* ---------- privacyverklaring ---------- */
+.privacy{display:flex;flex-direction:column;gap:clamp(36px,5vw,52px);}
+.privacy ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:10px;}
+.privacy li::marker{color:var(--goud);}
+.privacy a,.formulier-privacy a,.voet-onder a{color:inherit;text-underline-offset:3px;text-decoration-color:var(--goud);}
+.privacy-gegevens{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 24px;}
+.privacy-gegevens > div{display:contents;}
+.privacy-gegevens dt{color:var(--houtskool-zacht);font-size:14px;}
+.privacy-gegevens dd{margin:0;}
+@media (max-width:480px){.privacy-gegevens{grid-template-columns:1fr;}.privacy-gegevens dd{margin-bottom:8px;}}
+/* nog in te vullen door de klant: valt bewust op */
+.invullen{background:#F2E1B8;color:var(--houtskool);padding:0 4px;}
+.formulier-privacy{margin:0;}
+
 /* ---------- formulier ---------- */
 .formulier{display:flex;flex-direction:column;gap:26px;max-width:560px;}
 .veld{display:flex;flex-direction:column;gap:9px;}

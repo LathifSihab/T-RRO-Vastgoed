@@ -52,7 +52,7 @@ const begin = main.indexOf('var VERHALEN = [');
 const verhalenBlok = begin === -1 ? '' : main.slice(begin, main.indexOf('];', begin));
 const verhalen = [...verhalenBlok.matchAll(/slug:'([a-z0-9-]+)'/g)].map(m => m[1]);
 
-const paginas = ['/', '/aanbod', '/over', '/verhalen', '/waardescan', '/woonprofiel', '/contact',
+const paginas = ['/', '/aanbod', '/over', '/verhalen', '/waardescan', '/woonprofiel', '/contact', '/privacy',
   ...verhalen.map(s => '/verhalen/' + s)];
 
 writeFileSync(join(UIT, 'sitemap-paginas.xml'), [

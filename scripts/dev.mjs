@@ -25,7 +25,7 @@ const TYPES = {
 };
 
 const poort = Number(process.env.PORT) || 8888;
-const ROUTES = [/^\/(aanbod|over|verhalen|waardescan|woonprofiel|contact)\/?$/, /^\/(aanbod|verhalen)\/[^/]+\/?$/];
+const ROUTES = [/^\/(aanbod|over|verhalen|waardescan|woonprofiel|contact|privacy)\/?$/, /^\/(aanbod|verhalen)\/[^/]+\/?$/];
 
 createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
