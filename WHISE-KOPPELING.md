@@ -44,9 +44,10 @@ scripts/dev.mjs               local server with the functions, no Netlify CLI ne
 4. **WHISE admin (done by the agency):** activate the estate details that should be public
    (admin > advanced > estate > details, mode `public`). Only those are returned by the API.
 5. **Detail page link for WHISE e-mails.** Register the site with
-   `PATCH /v1/admin/clients/settings/update` → `{ "ClientId": …, "DetailPageUrl": "https://terro.be/" }`.
-   The site accepts `?pand=123`, `?id=123` and `?estateid=123` and opens that property.
-   Confirm with WHISE which of those formats their e-mails use.
+   `PATCH /v1/admin/clients/settings/update` → `{ "ClientId": …, "DetailPageUrl": "https://terro.be/aanbod/" }`.
+   Property pages live at `/aanbod/<id>-<name>`; `/aanbod/<id>` alone also works. The site also
+   accepts `?pand=123`, `?id=123` and `?estateid=123` and redirects to the property.
+   Confirm with WHISE how their e-mails append the id.
 
 ## Behaviour without WHISE
 
@@ -54,7 +55,7 @@ scripts/dev.mjs               local server with the functions, no Netlify CLI ne
 |---|---|---|
 | No credentials set (demo mode) | Sample listings from `js/main.js` | Accepted, not forwarded (`demo: true`) |
 | WHISE unreachable on the live site | Calm message + phone number, no fake listings | Error message + phone number |
-| Opened locally (`file://`, `localhost`) | Sample listings | `file://`: simulated success |
+| Local preview (`localhost`) | Sample listings | Accepted (demo mode) |
 
 ## Local testing
 
@@ -62,6 +63,9 @@ scripts/dev.mjs               local server with the functions, no Netlify CLI ne
 cp .env.example .env      # fill in, or leave empty for demo mode
 node scripts/dev.mjs      # http://localhost:8888
 ```
+
+Opening `index.html` directly from disk no longer works: the site uses real paths
+(`/aanbod/…`) and absolute asset links, so it needs a server. Use `scripts/dev.mjs`.
 
 ## To verify once real data is available
 

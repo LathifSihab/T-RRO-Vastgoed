@@ -8,7 +8,7 @@
 var PANDEN = [
   {
     slug:'herenhuis-hasselt',
-    beeld:'images/pand-herenhuis-hasselt.jpg',
+    beeld:'/images/pand-herenhuis-hasselt.jpg',
     beeldAlt:'Makelaar hangt een TÈRRO-bord Te koop achter het raam van een gevel',
     titel:'Herenhuis met stadstuin',
     plaats:'Hasselt',
@@ -33,7 +33,7 @@ var PANDEN = [
   },
   {
     slug:'hoeve-borgloon',
-    beeld:'images/pand-hoeve-borgloon.jpg',
+    beeld:'/images/pand-hoeve-borgloon.jpg',
     beeldAlt:'Takken van een olijfboom tegen een donkere achtergrond',
     titel:'Hoeve met bijgebouw',
     plaats:'Borgloon',
@@ -58,7 +58,7 @@ var PANDEN = [
   },
   {
     slug:'appartement-tongeren',
-    beeld:'images/pand-appartement-tongeren.jpg',
+    beeld:'/images/pand-appartement-tongeren.jpg',
     beeldAlt:'Koffiecorner op een taupe dressoir met een lamp, een plant en een kunstwerk',
     titel:'Lichtrijk appartement aan de wal',
     plaats:'Tongeren',
@@ -83,7 +83,7 @@ var PANDEN = [
   },
   {
     slug:'pastorij-sint-truiden',
-    beeld:'images/pand-pastorij-sint-truiden.jpg',
+    beeld:'/images/pand-pastorij-sint-truiden.jpg',
     beeldAlt:'Lichte muur met houten wandplanken en de tekst If not now, when?',
     titel:'Pastorijwoning met kloostertuin',
     plaats:'Sint-Truiden',
@@ -108,7 +108,7 @@ var PANDEN = [
   },
   {
     slug:'nieuwbouw-lanaken',
-    beeld:'images/pand-nieuwbouw-lanaken.jpg',
+    beeld:'/images/pand-nieuwbouw-lanaken.jpg',
     beeldAlt:'Makelaar stapt een gebouw binnen langs een witte gevel',
     titel:'Energiezuinige nieuwbouwwoning',
     plaats:'Lanaken',
@@ -133,7 +133,7 @@ var PANDEN = [
   },
   {
     slug:'loft-hasselt',
-    beeld:'images/pand-loft-hasselt.jpg',
+    beeld:'/images/pand-loft-hasselt.jpg',
     beeldAlt:'Makelaar werkt aan een laptop aan het raam met zicht op de stad',
     titel:'Loft in de oude brouwerij',
     plaats:'Hasselt',
@@ -161,7 +161,7 @@ var PANDEN = [
 var VERHALEN = [
   {
     slug:'ann-en-pieter',
-    beeld:'images/verhaal-ann-en-pieter.jpg',
+    beeld:'/images/verhaal-ann-en-pieter.jpg',
     beeldAlt:'Smartphone en laptop op een tafel bij het raam, naast een kop koffie',
     citaat:'Wij wilden geen groter huis. We wilden een stiller huis.',
     mensen:'Ann & Pieter',
@@ -177,7 +177,7 @@ var VERHALEN = [
   },
   {
     slug:'familie-vandereyt',
-    beeld:'images/verhaal-familie-vandereyt.jpg',
+    beeld:'/images/verhaal-familie-vandereyt.jpg',
     beeldAlt:'Iemand houdt een TÈRRO-visitekaartje omhoog',
     citaat:'Het duurde zeven maanden. Dat was precies goed.',
     mensen:'Familie Vandereyt',
@@ -193,7 +193,7 @@ var VERHALEN = [
   },
   {
     slug:'marleen',
-    beeld:'images/verhaal-marleen.jpg',
+    beeld:'/images/verhaal-marleen.jpg',
     beeldAlt:'Makelaar aan de telefoon aan een tafel bij het raam',
     citaat:'De keuken van mijn moeder stond er nog. Dat gaf de doorslag.',
     mensen:'Marleen',
@@ -254,6 +254,27 @@ function prijsTekst(p){
   return euro.format(p.prijs) + (p.periodiek ? ' / maand' : '');
 }
 
+/* ---------- adressen ----------
+   Een pand uit WHISE krijgt /aanbod/<id>-<leesbare-naam>; alleen het id
+   telt bij het opzoeken, de naam is er voor mensen en zoekmachines. */
+function slugify(s){
+  return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,70);
+}
+// "Titel in Plaats", zonder de plaats te herhalen als de titel die al noemt
+function titelMetPlaats(p){
+  var plaats = p.plaats || '';
+  if(!plaats || p.titel.toLowerCase().indexOf(plaats.toLowerCase()) !== -1) return p.titel;
+  return p.titel + ' in ' + plaats;
+}
+function pandPad(p){
+  return '/aanbod/' + (p.id ? p.id + '-' + slugify(titelMetPlaats(p)) : p.slug);
+}
+function zoekPand(deel){
+  var id = (String(deel).match(/^(\d+)(-|$)/) || [])[1];
+  return PANDEN.filter(function(x){ return id ? String(x.id) === id : x.slug === deel; })[0];
+}
+
 function esc(s){
   return String(s == null ? '' : s).replace(/[&<>"']/g,function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
@@ -273,7 +294,7 @@ function pandKaart(p,index){
   if(p.perceel) feiten.push(getal.format(p.perceel) + ' m² perceel');
 
   return '' +
-    '<a class="pand" href="#pand-' + esc(p.slug) + '">' +
+    '<a class="pand" href="' + esc(pandPad(p)) + '">' +
       '<div class="beeld" data-slot="Beeldslot · ' + esc(p.titel) + '">' +
         beeldTag(p, p.titel + ' in ' + p.plaats) +
         '<span class="status" data-status="' + (p.status === 'sealed' ? 'sealed' : 'actief') + '">' + esc(STATUS_TEKST[p.status]) + '</span>' +
@@ -291,7 +312,7 @@ function pandKaart(p,index){
 
 function verhaalKaart(v){
   return '' +
-    '<a class="verhaal-kaart" href="#verhaal-' + esc(v.slug) + '">' +
+    '<a class="verhaal-kaart" href="/verhalen/' + esc(v.slug) + '">' +
       '<div class="beeld" data-slot="Beeldslot · ' + esc(v.mensen) + '">' + beeldTag(v, 'Het verhaal van ' + v.mensen) + '</div>' +
       '<div class="stapel stapel-8">' +
         '<p class="pand-plaats">' + esc(v.mensen) + ' — ' + esc(v.plaats) + '</p>' +
@@ -444,16 +465,22 @@ function bezoekFormHtml(p){
 
 function toonPand(slug){
   var doel = document.getElementById('pandInhoud');
-  var terug = '<a class="terug" href="#aanbod"><span aria-hidden="true">←</span> Terug naar het aanbod</a>';
+  var terug = '<a class="terug" href="/aanbod"><span aria-hidden="true">←</span> Terug naar het aanbod</a>';
   if(!AANBOD.klaar){
     doel.innerHTML = terug + LADEN_HTML;
     return;
   }
-  var p = PANDEN.filter(function(x){ return x.slug === slug; })[0];
+  var p = zoekPand(slug);
   if(!p){
     doel.innerHTML = '<p class="stil">Dit pand is niet langer beschikbaar.</p>' + terug;
+    zetMeta({titel:'Pand niet gevonden', beschrijving:PAGINA.aanbod.beschrijving, noindex:true});
     return;
   }
+  if(location.pathname !== pandPad(p)) history.replaceState(null,'',pandPad(p));
+  zetMeta({
+    titel: titelMetPlaats(p),
+    beschrijving: (p.kort || (p.type + ' ' + (STATUS_TEKST[p.status] || '').toLowerCase() + (p.plaats ? ' in ' + p.plaats : '') + '. ' + prijsTekst(p) + '.')).slice(0,160)
+  });
 
   var specs = [
     ['Type', p.type],
@@ -503,8 +530,8 @@ function toonPand(slug){
       '</div>' +
       '<div class="knoppen">' +
         (sealed
-          ? '<a class="knop knop--goud" href="#woonprofiel">Maak jouw woonprofiel</a>'
-          : '<button class="knop knop--goud" type="button" id="bezoekKnop" aria-expanded="false" aria-controls="formBezoek">Plan een bezichtiging</button><a class="knop knop--lijn" href="#woonprofiel">Maak jouw woonprofiel</a>') +
+          ? '<a class="knop knop--goud" href="/woonprofiel">Maak jouw woonprofiel</a>'
+          : '<button class="knop knop--goud" type="button" id="bezoekKnop" aria-expanded="false" aria-controls="formBezoek">Plan een bezichtiging</button><a class="knop knop--lijn" href="/woonprofiel">Maak jouw woonprofiel</a>') +
       '</div>' +
     '</div>' +
     (sealed ? '' : bezoekFormHtml(p));
@@ -548,11 +575,13 @@ function toonVerhaal(slug){
   var doel = document.getElementById('verhaalInhoud');
   if(!v){
     doel.innerHTML = '<p class="stil">Dit verhaal bestaat niet.</p>' +
-      '<a class="terug" href="#verhalen"><span aria-hidden="true">←</span> Terug naar de verhalen</a>';
+      '<a class="terug" href="/verhalen"><span aria-hidden="true">←</span> Terug naar de verhalen</a>';
+    zetMeta({titel:'Verhaal niet gevonden', beschrijving:PAGINA.verhalen.beschrijving, noindex:true});
     return;
   }
+  zetMeta({titel:'“' + v.citaat + '” — ' + v.mensen, beschrijving:v.intro});
   doel.innerHTML = '' +
-    '<a class="terug" href="#verhalen"><span aria-hidden="true">←</span> Terug naar de verhalen</a>' +
+    '<a class="terug" href="/verhalen"><span aria-hidden="true">←</span> Terug naar de verhalen</a>' +
     '<div class="duo duo--verspringend">' +
       '<div class="stapel stapel-16">' +
         '<p class="eyebrow">' + esc(v.mensen) + ' — ' + esc(v.plaats) + '</p>' +
@@ -567,48 +596,116 @@ function toonVerhaal(slug){
     '<div class="stapel stapel-16" style="align-items:flex-start;">' +
       '<h3>Ook toe aan een volgend hoofdstuk?</h3>' +
       '<div class="knoppen">' +
-        '<a class="knop knop--goud" href="#contact">Vertel ons jouw verhaal</a>' +
-        '<a class="knop knop--lijn" href="#waardescan">Vraag je waardescan aan</a>' +
+        '<a class="knop knop--goud" href="/contact">Vertel ons jouw verhaal</a>' +
+        '<a class="knop knop--lijn" href="/waardescan">Vraag je waardescan aan</a>' +
       '</div>' +
     '</div>';
 }
 
 /* ============================================================
-   ROUTERING — hash met enkel toegelaten tekens
+   ROUTERING — echte adressen (/aanbod, /aanbod/123-naam, …)
+   Netlify stuurt die paden naar index.html (zie netlify.toml);
+   de router kiest hier welk zicht zichtbaar is.
    ============================================================ */
-var ZICHTEN = ['home','aanbod','pand','over','verhalen','verhaal','waardescan','woonprofiel','contact'];
+var ZICHTEN = ['home','aanbod','pand','over','verhalen','verhaal','waardescan','woonprofiel','contact','nietgevonden'];
+var ENKELVOUDIG = ['aanbod','over','verhalen','waardescan','woonprofiel','contact'];
+
+var PAGINA = {
+  home:        {titel:'', beschrijving:document.querySelector('meta[name="description"]').content},
+  aanbod:      {titel:'Aanbod', beschrijving:'Een bewust klein aanbod: elk pand krijgt de voorbereiding, de fotografie en de tijd die het verdient.'},
+  over:        {titel:'Over TÈRRO', beschrijving:'TÈRRO vertrekt niet bij vierkante meters, maar bij mensen. Persoonlijk vastgoed met een verhaal.'},
+  verhalen:    {titel:'Verhalen', beschrijving:'Gesprekken met de mensen die wij begeleidden, over verhuizen, loslaten en opnieuw beginnen.'},
+  waardescan:  {titel:'Waardescan', beschrijving:'Een onderbouwde waardebepaling na een bezoek ter plaatse, met uitleg bij elk cijfer. Vrijblijvend.'},
+  woonprofiel: {titel:'Maak jouw woonprofiel', beschrijving:'Vertel ons hoe je wil wonen. Wij leggen jouw profiel naast elk pand dat binnenkomt.'},
+  contact:     {titel:'Contact', beschrijving:'Bel of schrijf TÈRRO Vastgoed. Een eerste gesprek is vrijblijvend. Dendermondse Steenweg 10, 9290 Berlare.'},
+  nietgevonden:{titel:'Pagina niet gevonden', beschrijving:'Deze pagina bestaat niet (meer).', noindex:true}
+};
+
+function metaTag(naam){
+  var el = document.querySelector('meta[name="' + naam + '"]');
+  if(!el){ el = document.createElement('meta'); el.name = naam; document.head.appendChild(el); }
+  return el;
+}
+
+function zetMeta(m){
+  document.title = m.titel ? m.titel + ' — TÈRRO Vastgoed' : 'TÈRRO Vastgoed — Gegrond in vastgoed';
+  metaTag('description').content = m.beschrijving || PAGINA.home.beschrijving;
+  metaTag('robots').content = m.noindex ? 'noindex' : 'index, follow';
+  var canon = document.getElementById('canonical');
+  if(canon) canon.href = 'https://terro.be' + (location.pathname.replace(/\/+$/,'') || '/');
+}
 
 function toonZicht(naam){
   ZICHTEN.forEach(function(z){
     var el = document.getElementById('zicht-' + z);
     if(el) el.hidden = (z !== naam);
   });
+  var navNaam = naam === 'pand' ? 'aanbod' : naam === 'verhaal' ? 'verhalen' : naam;
   Array.prototype.forEach.call(document.querySelectorAll('.nav a[data-nav]'),function(a){
-    if(a.dataset.nav === naam) a.setAttribute('aria-current','page');
+    if(a.dataset.nav === navNaam) a.setAttribute('aria-current','page');
     else a.removeAttribute('aria-current');
   });
 }
 
-function route(){
-  var h = (location.hash || '#home').slice(1);
+function route(opties){
+  var delen = location.pathname.split('/').filter(Boolean).map(decodeURIComponent);
+  var zicht;
+  if(!delen.length) zicht = 'home';
+  else if(delen.length === 1 && ENKELVOUDIG.indexOf(delen[0]) !== -1) zicht = delen[0];
+  else if(delen.length === 2 && delen[0] === 'aanbod') zicht = 'pand';
+  else if(delen.length === 2 && delen[0] === 'verhalen') zicht = 'verhaal';
+  else zicht = 'nietgevonden';
 
-  if(h.indexOf('pand-') === 0){
-    toonPand(h.slice(5));
-    toonZicht('pand');
-  } else if(h.indexOf('verhaal-') === 0){
-    toonVerhaal(h.slice(8));
-    toonZicht('verhaal');
-  } else if(ZICHTEN.indexOf(h) !== -1 && h !== 'pand' && h !== 'verhaal'){
-    toonZicht(h);
-  } else {
-    toonZicht('home');
-  }
+  // pand en verhaal zetten hun eigen titel en beschrijving
+  if(zicht === 'pand') toonPand(delen[1]);
+  else if(zicht === 'verhaal') toonVerhaal(delen[1]);
+  else zetMeta(PAGINA[zicht]);
+  toonZicht(zicht);
 
   sluitNav();
   window.scrollTo({top:0,behavior:'auto'});
+
+  // bij navigatie binnen de site: focus naar de nieuwe paginatitel (schermlezers)
+  if(opties && opties.focus){
+    var h1 = document.querySelector('#zicht-' + zicht + ' h1');
+    if(h1){ h1.setAttribute('tabindex','-1'); h1.focus({preventScroll:true}); }
+  }
 }
 
-window.addEventListener('hashchange',route);
+function ga(pad){
+  if(pad !== location.pathname + location.search) history.pushState(null,'',pad);
+  route({focus:true});
+}
+
+// interne links zonder herladen volgen
+document.addEventListener('click',function(e){
+  if(e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  var a = e.target.closest('a[href]');
+  if(!a || a.target || a.hasAttribute('download')) return;
+  var url = new URL(a.href, location.href);
+  if(url.origin !== location.origin) return;
+  if(/^\/(api|images|css|js)\//.test(url.pathname)) return;
+  if(url.hash && url.pathname === location.pathname) return;   // anker op dezelfde pagina
+  e.preventDefault();
+  ga(url.pathname + url.search);
+});
+window.addEventListener('popstate',function(){ route(); });
+
+/* Oude of externe links omzetten naar de echte adressen:
+   #aanbod, #pand-123, #verhaal-marleen (vorige versie van de site) en
+   ?pand=123 / ?id=123 / ?estateid=123 (links uit WHISE-mails). */
+(function(){
+  var h = location.hash.slice(1);
+  var nieuw = null;
+  if(/^pand-.+/.test(h)) nieuw = '/aanbod/' + h.slice(5);
+  else if(/^verhaal-.+/.test(h)) nieuw = '/verhalen/' + h.slice(8);
+  else if(h === 'home') nieuw = '/';
+  else if(ENKELVOUDIG.indexOf(h) !== -1) nieuw = '/' + h;
+  var q = new URLSearchParams(location.search);
+  var id = q.get('pand') || q.get('id') || q.get('estateid') || q.get('estateId');
+  if(!nieuw && id && /^\d+$/.test(id)) nieuw = '/aanbod/' + id;
+  if(nieuw) history.replaceState(null,'',nieuw);
+})();
 /* route() wordt pas onderaan aangeroepen: het gebruikt sluitNav(),
    en die heeft het menu hieronder nodig. */
 
@@ -655,16 +752,6 @@ document.querySelectorAll('.illu, .hero-merk').forEach(function(svg){
   });
 });
 
-/* Links uit WHISE-mails (DetailPageUrl) komen binnen als ?pand=123,
-   ?id=123 of ?estateid=123: zet ze om naar de eigen route #pand-123. */
-(function(){
-  var q = new URLSearchParams(location.search);
-  var id = q.get('pand') || q.get('id') || q.get('estateid') || q.get('estateId');
-  if(id && /^\d+$/.test(id) && !location.hash){
-    history.replaceState(null,'',location.pathname + '#pand-' + id);
-  }
-})();
-
 /* nu pas de eerste routering */
 route();
 
@@ -673,7 +760,8 @@ laadAanbod().then(function(){
   AANBOD.klaar = true;
   vulHomePanden();
   toonAanbod();
-  if(location.hash.indexOf('#pand-') === 0) toonPand(location.hash.slice(6));
+  var delen = location.pathname.split('/').filter(Boolean);
+  if(delen.length === 2 && delen[0] === 'aanbod') toonPand(decodeURIComponent(delen[1]));
 });
 
 /* ---------- kop bij scroll ---------- */

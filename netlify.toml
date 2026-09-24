@@ -16,6 +16,48 @@
 # Site configuration → Environment variables:
 #   WHISE_USERNAME, WHISE_PASSWORD, WHISE_CLIENT_ID, WHISE_OFFICE_ID
 
+# Echte adressen: deze paden tonen index.html, de router in js/main.js
+# kiest het zicht. Alle andere onbekende paden krijgen 404.html (status 404).
+[[redirects]]
+  from = "/aanbod"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/aanbod/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/over"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/verhalen"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/verhalen/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/waardescan"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/woonprofiel"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/index.html"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]

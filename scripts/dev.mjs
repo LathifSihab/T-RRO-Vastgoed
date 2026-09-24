@@ -24,6 +24,7 @@ const TYPES = {
 };
 
 const poort = Number(process.env.PORT) || 8888;
+const ROUTES = [/^\/(aanbod|over|verhalen|waardescan|woonprofiel|contact)\/?$/, /^\/(aanbod|verhalen)\/[^/]+\/?$/];
 
 createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
@@ -43,12 +44,15 @@ createServer(async (req, res) => {
   }
   let pad = normalize(decodeURIComponent(url.pathname)).replace(/^([/\\])+/, '');
   if (!pad || pad.endsWith('/') || pad.endsWith('\\')) pad = join(pad, 'index.html');
-  if (pad.startsWith('..') || !existsSync(pad) || !statSync(pad).isFile()) {
-    res.writeHead(404).end('Niet gevonden');
+  if (!pad.startsWith('..') && existsSync(pad) && statSync(pad).isFile()) {
+    res.writeHead(200, { 'Content-Type': TYPES[extname(pad).toLowerCase()] || 'application/octet-stream' });
+    res.end(readFileSync(pad));
     return;
   }
-  res.writeHead(200, { 'Content-Type': TYPES[extname(pad).toLowerCase()] || 'application/octet-stream' });
-  res.end(readFileSync(pad));
+  // zoals netlify.toml: bekende paden → index.html, al de rest → 404 met dezelfde pagina
+  const bekend = ROUTES.some(r => r.test(url.pathname));
+  res.writeHead(bekend ? 200 : 404, { 'Content-Type': TYPES['.html'] });
+  res.end(readFileSync('index.html'));
 }).listen(poort, () => {
   const modus = process.env.WHISE_USERNAME ? 'WHISE' : 'demomodus (geen .env)';
   console.log(`TÈRRO lokaal: http://localhost:${poort}  —  ${modus}`);
