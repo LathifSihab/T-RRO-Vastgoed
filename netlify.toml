@@ -1,0 +1,29 @@
+# Netlify: de site is statisch, WHISE loopt via twee functies
+# (netlify/functions/aanbod.mjs en lead.mjs, bereikbaar op /api/...).
+
+[build]
+  command = "node scripts/build.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# WHISE-gegevens horen NIET in dit bestand, maar in
+# Site configuration → Environment variables:
+#   WHISE_USERNAME, WHISE_PASSWORD, WHISE_CLIENT_ID, WHISE_OFFICE_ID
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
