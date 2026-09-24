@@ -25,6 +25,7 @@ netlify.toml                  build + functions config
 netlify/lib/whise.mjs         login + token cache, estate → site mapping, form → contact mapping
 netlify/functions/aanbod.mjs  GET  /api/aanbod  (CDN-cached 10 min)
 netlify/functions/lead.mjs    POST /api/lead    (validation, honeypot, same-origin check)
+netlify/functions/sitemap-aanbod.mjs  GET /sitemap-aanbod.xml  (all WHISE listings, for Google)
 scripts/build.mjs             copies only public files to dist/
 scripts/dev.mjs               local server with the functions, no Netlify CLI needed
 .env.example                  variable names
@@ -41,6 +42,8 @@ scripts/dev.mjs               local server with the functions, no Netlify CLI ne
    Never put them in the code or in `netlify.toml`.
 3. **Deploy.** Netlify runs `node scripts/build.mjs` and publishes `dist/`.
    Check `https://<site>/api/aanbod`: it should say `"bron":"whise"`.
+   Then submit `https://terro.be/sitemap.xml` in Google Search Console. It lists the fixed pages
+   (built at deploy) and every WHISE listing (live). Set `SITE_URL` in Netlify if the domain differs.
 4. **WHISE admin (done by the agency):** activate the estate details that should be public
    (admin > advanced > estate > details, mode `public`). Only those are returned by the API.
 5. **Detail page link for WHISE e-mails.** Register the site with

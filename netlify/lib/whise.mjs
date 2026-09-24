@@ -155,6 +155,17 @@ function alineas(tekst) {
   return blokken.length > 1 ? blokken : schoon.split('\n').map(s => s.trim()).filter(Boolean);
 }
 
+/* Zelfde adresregels als js/main.js (slugify, titelMetPlaats), zodat de
+   sitemap en de pagina precies hetzelfde adres gebruiken. */
+export function slugify(s) {
+  return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70);
+}
+function titelMetPlaats(titel, plaats) {
+  if (!plaats || titel.toLowerCase().includes(plaats.toLowerCase())) return titel;
+  return titel + ' in ' + plaats;
+}
+
 function getal(v) {
   const n = typeof v === 'number' ? v : parseFloat(String(v || '').replace(',', '.'));
   return Number.isFinite(n) && n > 0 ? n : null;
@@ -195,6 +206,8 @@ export function naarPand(e, taal = 'nl-BE') {
   return {
     id: e.id,
     slug: String(e.id),
+    pad: '/aanbod/' + e.id + '-' + slugify(titelMetPlaats(titel, plaats)),
+    bijgewerkt: e.updateDateTime || e.putOnlineDateTime || null,
     titel,
     plaats,
     type,

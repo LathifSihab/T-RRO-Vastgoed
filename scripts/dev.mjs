@@ -15,7 +15,8 @@ if (existsSync('.env')) {
 
 const functies = {
   '/api/aanbod': (await import('../netlify/functions/aanbod.mjs')).default,
-  '/api/lead': (await import('../netlify/functions/lead.mjs')).default
+  '/api/lead': (await import('../netlify/functions/lead.mjs')).default,
+  '/sitemap-aanbod.xml': (await import('../netlify/functions/sitemap-aanbod.mjs')).default
 };
 
 const TYPES = {

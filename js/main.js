@@ -268,6 +268,7 @@ function titelMetPlaats(p){
   return p.titel + ' in ' + plaats;
 }
 function pandPad(p){
+  if(p.pad) return p.pad;   // uit WHISE: door de server berekend (zelfde regels)
   return '/aanbod/' + (p.id ? p.id + '-' + slugify(titelMetPlaats(p)) : p.slug);
 }
 function zoekPand(deel){
