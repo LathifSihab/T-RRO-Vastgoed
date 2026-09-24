@@ -87,6 +87,8 @@ p{margin:0;}
 a{color:inherit;}
 
 img{max-width:100%;display:block;}
+/* <picture> is enkel een verpakking voor de WebP-bronnen: geen eigen vak */
+picture{display:contents;}
 
 ::selection{background:var(--zand);}
 
@@ -318,14 +320,15 @@ img{max-width:100%;display:block;}
   text-transform:uppercase;
   color:rgba(43,35,31,.5);
 }
-.beeld > img{
+.beeld > img,
+.beeld > picture > img{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
 }
-.beeld:has(> img)::after{content:none;}
+.beeld:has(img)::after{content:none;}
 .beeld--breed{--ratio:16/10;}
 .beeld--vierkant{--ratio:1/1;}
 .beeld--hoog{--ratio:3/4;}

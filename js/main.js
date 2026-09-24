@@ -281,10 +281,35 @@ function esc(s){
   });
 }
 
+/* ---------- foto's ----------
+   Eigen foto's in /images hebben WebP-versies in meerdere breedtes
+   (scripts/webp.py). De browser kiest de kleinste die past; de JPG blijft
+   terugval. Foto's van WHISE worden getoond zoals WHISE ze levert. */
+/* BEELDMATEN:begin (gegenereerd door scripts/webp.py) */
+var BEELDMATEN = {"contact-koffie-kaartjes":[480,800,1200,1800],"hero-home":[640,1024,1440,2000],"pand-appartement-tongeren":[480,726],"pand-herenhuis-hasselt":[480,800,1200],"pand-hoeve-borgloon":[480,690],"pand-loft-hasselt":[480,800,1200],"pand-nieuwbouw-lanaken":[480,800,1200],"pand-pastorij-sint-truiden":[480,800,1200],"portret-makelaar":[480,800,1131],"verhaal-ann-en-pieter":[480,800,1200],"verhaal-familie-vandereyt":[480,800,1200],"verhaal-marleen":[480,800,1200],"waardescan-bord-koffie":[480,800,1200],"waardescan-laptop":[480,800,1200,1800],"woonprofiel-wandeling":[480,800,1164]};
+/* BEELDMATEN:eind */
+
+var MAAT_KAART = '(max-width: 760px) 100vw, 560px';
+var MAAT_BREED = '(max-width: 1180px) 100vw, 1180px';
+
+function webpSet(src){
+  var m = /^\/images\/([^/]+)\.jpg$/.exec(src || '');
+  var maten = m && BEELDMATEN[m[1]];
+  if(!maten) return '';
+  return maten.map(function(b){ return '/images/' + m[1] + '-' + b + '.webp ' + b + 'w'; }).join(', ');
+}
+
+function fotoHtml(src, alt, maat, extra){
+  var img = '<img src="' + esc(src) + '" alt="' + esc(alt) + '"' + (extra ? ' ' + extra : '') + '>';
+  var set = webpSet(src);
+  return set ? '<picture><source type="image/webp" srcset="' + set + '" sizes="' + maat + '">' + img + '</picture>' : img;
+}
+
 // Eerste foto van een pand of verhaal, of niets zodat het beeldslot zichtbaar blijft.
-function beeldTag(item, alt){
+function beeldTag(item, alt, maat){
   var src = item.beeld || (item.beelden && item.beelden[0]);
-  return src ? '<img src="' + esc(src) + '" alt="' + esc(item.beeldAlt || alt) + '" loading="lazy">' : '';
+  if(src && typeof src === 'object') src = src.kaart || src.src;
+  return src ? fotoHtml(src, item.beeldAlt || alt, maat || MAAT_KAART, 'loading="lazy"') : '';
 }
 
 function pandKaart(p,index){
@@ -394,7 +419,7 @@ function galerijHtml(p){
   return '' +
     '<div class="galerij" data-galerij tabindex="-1" aria-roledescription="fotogalerij" aria-label="Foto\'s van ' + esc(p.titel) + '">' +
       '<div class="beeld beeld--breed galerij-hoofd">' +
-        '<img id="galerijBeeld" src="' + esc(fotos[0].src) + '" alt="' + esc(fotos[0].alt || standaardAlt) + '">' +
+        fotoHtml(fotos[0].src, fotos[0].alt || standaardAlt, MAAT_BREED, 'id="galerijBeeld"') +
         status +
         (meer ?
           '<button class="galerij-knop galerij-knop--vorige" type="button" data-stap="-1" aria-label="Vorige foto"><span aria-hidden="true">←</span></button>' +
@@ -422,6 +447,8 @@ function toonFoto(i){
   var f = galerij.fotos[galerij.index];
   var img = document.getElementById('galerijBeeld');
   if(!img) return;
+  var bron = img.parentNode.tagName === 'PICTURE' ? img.previousElementSibling : null;
+  if(bron) bron.srcset = webpSet(f.src);   // leeg = geen webp, de browser neemt de img
   img.src = f.src;
   img.alt = f.alt || galerij.alt;
   var teller = document.getElementById('galerijTeller');
@@ -591,7 +618,7 @@ function toonVerhaal(slug){
         '<p class="lead">' + esc(v.intro) + '</p>' +
       '</div>' +
     '</div>' +
-    '<div class="beeld beeld--breed" data-slot="Beeldslot · portret ' + esc(v.mensen) + '">' + beeldTag(v, 'Het verhaal van ' + v.mensen) + '</div>' +
+    '<div class="beeld beeld--breed" data-slot="Beeldslot · portret ' + esc(v.mensen) + '">' + beeldTag(v, 'Het verhaal van ' + v.mensen, MAAT_BREED) + '</div>' +
     '<div class="artikel artikel-tekst stil">' + v.tekst.map(function(t){ return '<p>' + esc(t) + '</p>'; }).join('') + '</div>' +
     '<div class="stapel stapel-16" style="align-items:flex-start;">' +
       '<h3>Ook toe aan een volgend hoofdstuk?</h3>' +
