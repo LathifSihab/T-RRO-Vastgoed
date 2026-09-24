@@ -1,2 +1,6 @@
 .vscode
 _originelen/
+dist/
+.env
+node_modules/
+.netlify/
