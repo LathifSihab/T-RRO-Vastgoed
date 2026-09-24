@@ -31,7 +31,7 @@ function wis(pad) {
 
 wis(UIT);
 mkdirSync(UIT);
-for (const item of ['index.html', 'css', 'js', 'images']) kopieer(item, join(UIT, item));
+for (const item of ['index.html', 'css', 'js', 'images', 'fonts']) kopieer(item, join(UIT, item));
 // Netlify toont 404.html (met status 404) voor onbekende paden; de router
 // in main.js ziet het onbekende pad en toont het 'niet gevonden'-zicht.
 copyFileSync('index.html', join(UIT, '404.html'));

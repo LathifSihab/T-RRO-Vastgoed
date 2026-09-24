@@ -684,7 +684,7 @@ document.addEventListener('click',function(e){
   if(!a || a.target || a.hasAttribute('download')) return;
   var url = new URL(a.href, location.href);
   if(url.origin !== location.origin) return;
-  if(/^\/(api|images|css|js)\//.test(url.pathname)) return;
+  if(/^\/(api|images|css|js|fonts)\//.test(url.pathname)) return;
   if(url.hash && url.pathname === location.pathname) return;   // anker op dezelfde pagina
   e.preventDefault();
   ga(url.pathname + url.search);
