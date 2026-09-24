@@ -996,6 +996,24 @@ main:focus{outline:none;}
 .hero-donker-inhoud.intro > :nth-child(6){animation-delay:1.45s;}
 @keyframes streep-groei{from{transform:scaleX(0);}to{transform:scaleX(1);}}
 
+/* waarden op de startpagina: iconen tekenen zich bij het in beeld scrollen.
+   De beginstand geldt alleen als main.js .wacht heeft gezet (dus nooit zonder JS). */
+/* svg > * i.p.v. [pathLength]: Chromium herberekent een attribuutselector met
+   hoofdletters niet wanneer enkel de klasse op de lijst wijzigt */
+.merkwaarden-lijst.wacht svg > *{stroke-dasharray:1;stroke-dashoffset:1;}
+.merkwaarden-lijst.wacht li > h3,
+.merkwaarden-lijst.wacht li > p{opacity:0;}
+.merkwaarden-lijst.zichtbaar svg > *{
+  animation:teken 1.3s cubic-bezier(.45,.05,.25,1) forwards;
+  /* --i = icoon × 3 + lijnnummer (main.js): één variabele, want Chromium laat
+     een calc() met twee var()'s hier de hele animatie vallen */
+  animation-delay:calc(var(--i,0) * 60ms);
+}
+.merkwaarden-lijst.zichtbaar li > h3,
+.merkwaarden-lijst.zichtbaar li > p{animation:opkomen .8s cubic-bezier(.2,.7,.2,1) both;}
+.merkwaarden-lijst.zichtbaar li > h3{animation-delay:calc(var(--li,0) * 180ms + .45s);}
+.merkwaarden-lijst.zichtbaar li > p{animation-delay:calc(var(--li,0) * 180ms + .6s);}
+
 @media (max-width:760px){
   .pagina-kop{grid-template-columns:1fr;}
   .pagina-kop .illu{width:min(100%,320px);justify-self:center;order:-1;}

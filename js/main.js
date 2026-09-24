@@ -690,6 +690,8 @@ function route(opties){
   else if(zicht === 'verhaal') toonVerhaal(delen[1]);
   else zetMeta(PAGINA[zicht]);
   toonZicht(zicht);
+  // bij terugkeer naar de startpagina tekenen de waarden opnieuw
+  if(zicht !== 'home' && typeof waardenLijst !== 'undefined' && waardenLijst) waardenLijst.classList.remove('zichtbaar');
 
   sluitNav();
   window.scrollTo({top:0,behavior:'auto'});
@@ -790,12 +792,31 @@ sluitNav();
 /* ---------- hero-illustraties ----------
    Elke lijn krijgt lengte 1 en een volgnummer, zodat de CSS ze na elkaar
    kan laten tekenen. Zonder JS blijven de tekeningen gewoon zichtbaar. */
-document.querySelectorAll('.illu, .hero-merk').forEach(function(svg){
+document.querySelectorAll('.illu, .hero-merk, .merkwaarden-lijst svg').forEach(function(svg){
   svg.querySelectorAll('path,rect,circle,ellipse').forEach(function(el,i){
     el.setAttribute('pathLength','1');
     el.style.setProperty('--i',i);
   });
 });
+
+/* ---------- waarden: tekenen bij in beeld scrollen ----------
+   Speelt opnieuw af telkens de startpagina weer getoond wordt. */
+var waardenLijst = document.querySelector('.merkwaarden-lijst');
+if(waardenLijst){
+  Array.prototype.forEach.call(waardenLijst.children,function(li,k){
+    li.style.setProperty('--li',k);
+    // lijnvertraging: 180 ms per icoon (= 3 × 60 ms) plus 60 ms per lijn
+    Array.prototype.forEach.call(li.querySelectorAll('[pathLength]'),function(el,i){ el.style.setProperty('--i', k * 3 + i); });
+  });
+  if('IntersectionObserver' in window){
+    waardenLijst.classList.add('wacht');
+    new IntersectionObserver(function(items){
+      items.forEach(function(item){
+        if(item.isIntersecting) waardenLijst.classList.add('zichtbaar');
+      });
+    },{threshold:0.35}).observe(waardenLijst);
+  }
+}
 
 /* nu pas de eerste routering */
 route();
