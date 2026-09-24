@@ -471,6 +471,7 @@ function bezoekFormHtml(p){
       '<input type="hidden" name="pandId" value="' + esc(id) + '">' +
       '<input type="hidden" name="pandTitel" value="' + esc(p.titel + (p.plaats ? ' — ' + p.plaats : '')) + '">' +
       honeypotHtml() +
+      '<p class="veld-hulp formulier-hint">Velden met <span aria-hidden="true">*</span> zijn verplicht.</p>' +
       '<div class="veld-rij">' +
         '<div class="veld"><label for="bz-naam">Naam</label><input id="bz-naam" name="naam" type="text" autocomplete="name" required></div>' +
         '<div class="veld"><label for="bz-tel">Telefoon</label><input id="bz-tel" name="telefoon" type="tel" autocomplete="tel"></div>' +
@@ -551,7 +552,7 @@ function toonPand(slug){
     '<dl class="specs">' + specHtml + '</dl>' +
     '<div class="duo" style="align-items:center;">' +
       '<div class="stapel stapel-16">' +
-        '<h3>' + (sealed ? 'Dit pand is SEALED.' : 'Iets voor jou? Kom gerust kijken.') + '</h3>' +
+        '<h2 class="kop-h3">' + (sealed ? 'Dit pand is SEALED.' : 'Iets voor jou? Kom gerust kijken.') + '</h2>' +
         '<p class="stil">' + (sealed
             ? 'Laat je woonprofiel achter, dan brengen we je op de hoogte zodra er iets vergelijkbaars binnenkomt.'
             : 'Een bezichtiging duurt bij ons minstens een uur. We nemen de tijd om je alles te tonen — ook de dingen die op foto niet te zien zijn.') + '</p>' +
@@ -622,7 +623,7 @@ function toonVerhaal(slug){
     '<div class="beeld beeld--breed" data-slot="Beeldslot · portret ' + esc(v.mensen) + '">' + beeldTag(v, 'Het verhaal van ' + v.mensen, MAAT_BREED) + '</div>' +
     '<div class="artikel artikel-tekst stil">' + v.tekst.map(function(t){ return '<p>' + esc(t) + '</p>'; }).join('') + '</div>' +
     '<div class="stapel stapel-16" style="align-items:flex-start;">' +
-      '<h3>Ook toe aan een volgend hoofdstuk?</h3>' +
+      '<h2 class="kop-h3">Ook toe aan een volgend hoofdstuk?</h2>' +
       '<div class="knoppen">' +
         '<a class="knop knop--goud" href="/contact">Vertel ons jouw verhaal</a>' +
         '<a class="knop knop--lijn" href="/waardescan">Vraag je waardescan aan</a>' +
@@ -747,9 +748,14 @@ function openNav(){
   nav.hidden = false;
   navKnop.setAttribute('aria-expanded','true');
   document.body.style.overflow = 'hidden';
+  // focus naar het menu, zodat toetsenbord en schermlezer erin terechtkomen
+  var eerste = nav.querySelector('a');
+  if(eerste) eerste.focus();
 }
 function sluitNav(){
   if(!nav || !navKnop) return;
+  var wasOpen = navKnop.getAttribute('aria-expanded') === 'true';
+  var focusInMenu = nav.contains(document.activeElement);   // vóór het verbergen bepalen
   if(mobiel()){
     nav.hidden = true;
     navKnop.setAttribute('aria-expanded','false');
@@ -757,7 +763,18 @@ function sluitNav(){
     nav.hidden = false;
   }
   document.body.style.overflow = '';
+  // focus terug naar de menuknop, tenzij een link intussen een nieuwe pagina opende
+  if(wasOpen && mobiel() && focusInMenu) navKnop.focus();
 }
+
+// Tab blijft binnen het open menu op mobiel
+nav.addEventListener('keydown',function(e){
+  if(e.key !== 'Tab' || !mobiel() || nav.hidden) return;
+  var doelen = nav.querySelectorAll('a, button');
+  var eerste = doelen[0], laatste = doelen[doelen.length - 1];
+  if(e.shiftKey && document.activeElement === eerste){ e.preventDefault(); laatste.focus(); }
+  else if(!e.shiftKey && document.activeElement === laatste){ e.preventDefault(); eerste.focus(); }
+});
 
 navKnop.addEventListener('click',openNav);
 document.getElementById('navSluit').addEventListener('click',sluitNav);

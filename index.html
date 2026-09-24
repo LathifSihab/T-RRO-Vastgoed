@@ -55,6 +55,7 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<a class="skiplink" href="#main">Naar de inhoud</a>
 
 <!-- beeldmerk: één keer gedefinieerd, overal hergebruikt met <use href="#merk">.
      De T volgt de tekstkleur (currentColor), lijnen en kader zijn merkgoud. -->
@@ -88,7 +89,7 @@
       </span>
     </a>
 
-    <button class="nav-knop" id="navKnop" aria-label="Menu openen" aria-expanded="false">
+    <button class="nav-knop" id="navKnop" aria-label="Menu openen" aria-expanded="false" aria-controls="nav">
       <svg width="24" height="14" viewBox="0 0 24 14" aria-hidden="true"><path d="M0 1h24M0 13h24" stroke="currentColor" stroke-width="1.2"></path></svg>
     </button>
 
@@ -105,7 +106,7 @@
   </div>
 </header>
 
-<main id="main">
+<main id="main" tabindex="-1">
 
 <!-- ============================== HOME ============================== -->
 <section class="zicht" id="zicht-home" hidden>
@@ -179,17 +180,17 @@
       <div class="stappen">
         <div class="stap">
           <p class="stap-nr">01</p>
-          <h4>Kennismaking</h4>
+          <h3 class="kop-klein">Kennismaking</h3>
           <p class="stil">Aan tafel, zonder verkooppraat. We luisteren naar je verhaal, je timing en je twijfels. Pas daarna kijken we naar cijfers.</p>
         </div>
         <div class="stap">
           <p class="stap-nr">02</p>
-          <h4>Voorbereiding</h4>
+          <h3 class="kop-klein">Voorbereiding</h3>
           <p class="stil">Waardescan, fotografie, styling en dossieropbouw. Alles ligt klaar vóór de eerste bezichtiging, zodat niets je later inhaalt.</p>
         </div>
         <div class="stap">
           <p class="stap-nr">03</p>
-          <h4>SEALED</h4>
+          <h3 class="kop-klein">SEALED</h3>
           <p class="stil">Onderhandeling, compromis en notaris. Wij blijven aan boord tot de sleutel effectief van hand wisselt.</p>
         </div>
       </div>
@@ -261,6 +262,7 @@
       <button class="filter" data-filter="sealed" aria-pressed="false">SEALED</button>
     </div>
 
+    <h2 class="visueel-verborgen">Alle panden</h2>
     <div class="rooster" id="aanbodRooster"></div>
     <p class="stil" id="aanbodLeeg" hidden>Er zijn op dit moment geen panden in deze selectie. Laat je woonprofiel achter en wij brengen je op de hoogte zodra er iets binnenkomt.</p>
   </div>
@@ -299,23 +301,23 @@
     <p class="eyebrow">Waar wij op staan</p>
     <div class="waarden">
       <div class="waarde">
-        <h4>Vertrouwen</h4>
+        <h3 class="kop-klein">Vertrouwen</h3>
         <p class="stil">Wat we in het eerste gesprek zeggen, geldt ook bij het compromis.</p>
       </div>
       <div class="waarde">
-        <h4>Menselijkheid</h4>
+        <h3 class="kop-klein">Menselijkheid</h3>
         <p class="stil">Een dossier is nooit alleen een dossier. Er zit altijd iemand achter.</p>
       </div>
       <div class="waarde">
-        <h4>Kwaliteit</h4>
+        <h3 class="kop-klein">Kwaliteit</h3>
         <p class="stil">Liever één pand goed voorbereid dan vijf haastig online gezet.</p>
       </div>
       <div class="waarde">
-        <h4>Eerlijk advies</h4>
+        <h3 class="kop-klein">Eerlijk advies</h3>
         <p class="stil">Ook wanneer dat betekent dat we je aanraden nog niet te verkopen.</p>
       </div>
       <div class="waarde">
-        <h4>Persoonlijke begeleiding</h4>
+        <h3 class="kop-klein">Persoonlijke begeleiding</h3>
         <p class="stil">Eén vast aanspreekpunt, van kennismaking tot sleuteloverdracht.</p>
       </div>
     </div>
@@ -331,17 +333,17 @@
       <div class="stappen">
         <div class="stap">
           <p class="stap-nr">01</p>
-          <h4>Kennismaking</h4>
+          <h3 class="kop-klein">Kennismaking</h3>
           <p class="stil">We komen langs, drinken koffie en stellen vooral vragen. Wat is de aanleiding? Wat is je timing? Wat mag zeker niet gebeuren? Dit gesprek is vrijblijvend en kost je niets.</p>
         </div>
         <div class="stap">
           <p class="stap-nr">02</p>
-          <h4>Voorbereiding</h4>
+          <h3 class="kop-klein">Voorbereiding</h3>
           <p class="stil">Waardescan, alle attesten, professionele fotografie en waar nodig styling. We gaan pas online wanneer het dossier volledig is — dat scheelt later weken discussie.</p>
         </div>
         <div class="stap">
           <p class="stap-nr">03</p>
-          <h4>SEALED</h4>
+          <h3 class="kop-klein">SEALED</h3>
           <p class="stil">Wij voeren de onderhandeling, stellen het compromis op en begeleiden je tot bij de notaris. Pas wanneer de akte is verleden, is het dossier voor ons afgesloten.</p>
         </div>
       </div>
@@ -390,6 +392,7 @@
         <svg class="illu illu--waardescan illu--boven-form" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M40 244 H320"/> <path d="M84 244 V112 L150 64 L216 112 V244"/> <rect x="104" y="132" width="28" height="34"/><rect x="168" y="132" width="28" height="34"/> <rect x="104" y="186" width="28" height="34"/> <rect x="166" y="196" width="32" height="48"/> <circle cx="150" cy="100" r="8"/> <g class="illu-wieg"> <circle cx="252" cy="150" r="54"/> <circle cx="252" cy="150" r="46"/> <path d="M290 188 L334 232"/><path d="M298 180 L342 224"/><path d="M334 232 L342 224"/> <path d="M220 166 L238 152 L254 160 L280 132"/><path d="M270 132 H280 V142"/> </g> <rect x="60" y="262" width="280" height="16"/> <path d="M80 262 V270 M100 262 V268 M120 262 V270 M140 262 V268 M160 262 V270 M180 262 V268 M200 262 V274 M220 262 V268 M240 262 V270 M260 262 V268 M280 262 V270 M300 262 V268 M320 262 V270"/></svg>
         <form class="formulier" id="formWaardescan" data-soort="waardescan" novalidate>
             <div class="veld-verborgen" aria-hidden="true"><label>Laat dit veld leeg<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <p class="veld-hulp formulier-hint">Velden met <span aria-hidden="true">*</span> zijn verplicht.</p>
           <div class="veld-rij">
             <div class="veld">
               <label for="ws-naam">Naam</label>
@@ -459,6 +462,7 @@
         <svg class="illu illu--woonprofiel illu--boven-form" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M50 206 C50 156 112 136 154 156 C196 176 206 226 166 246 C126 266 50 256 50 206 Z"/> <path d="M82 206 C82 176 120 166 146 178 C172 190 176 220 152 232 C126 244 82 236 82 206 Z"/> <path d="M110 206 C110 192 128 186 140 194 C152 202 150 218 138 222 C124 226 110 220 110 206 Z"/> <path d="M224 282 C246 250 298 240 344 258"/><path d="M246 292 C266 268 310 260 352 274"/> <path d="M30 150 C60 120 100 110 130 116"/> <path class="illu-stip" d="M146 206 C176 202 204 222 236 216 C252 213 262 212 268 214"/> <g class="illu-dobber"> <path d="M270 206 C250 176 222 150 222 118 A48 48 0 0 1 318 118 C318 150 290 176 270 206 Z"/> <path d="M250 136 V114 L270 98 L290 114 V136 Z"/> <path d="M265 136 V124 H275 V136"/> </g> <ellipse cx="270" cy="216" rx="24" ry="5"/></svg>
         <form class="formulier" id="formWoonprofiel" data-soort="woonprofiel" novalidate>
             <div class="veld-verborgen" aria-hidden="true"><label>Laat dit veld leeg<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <p class="veld-hulp formulier-hint">Velden met <span aria-hidden="true">*</span> zijn verplicht.</p>
           <div class="veld-rij">
             <div class="veld">
               <label for="wp-naam">Naam</label>
@@ -530,12 +534,12 @@
         <p class="lead meet">Bel gerust, of laat hieronder iets achter. Een eerste gesprek is vrijblijvend en kost je niets dan een uur koffie.</p>
 
         <div class="stapel stapel-24" style="max-width:420px;">
-          <div class="specs" style="grid-template-columns:1fr;">
+          <dl class="specs" style="grid-template-columns:1fr;margin:0;">
             <div class="spec"><dt>Telefoon</dt><dd><a href="tel:+32470709999" id="telNummer">0470 70 99 99</a></dd></div>
             <div class="spec"><dt>E-mail</dt><dd><span id="mailAdres">hallo@terro.be</span></dd></div>
             <div class="spec"><dt>Kantoor</dt><dd>Dendermondse Steenweg 10<br>9290 Berlare</dd></div>
             <div class="spec"><dt>Op afspraak</dt><dd>ma – za</dd></div>
-          </div>
+          </dl>
           <button class="knop knop--lijn" id="kopieerKnop" type="button" style="align-self:flex-start;">Kopieer e-mailadres</button>
         </div>
 
@@ -546,6 +550,7 @@
         <svg class="illu illu--contact illu--boven-form" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M40 240 H360"/> <path d="M110 180 H174 V214 C174 232 160 240 142 240 C124 240 110 232 110 214 Z"/> <path d="M174 190 C194 190 196 214 174 214"/> <path d="M92 244 C110 252 174 252 192 244"/> <path d="M294 180 H230 V214 C230 232 244 240 262 240 C280 240 294 232 294 214 Z"/> <path d="M230 190 C210 190 208 214 230 214"/> <path d="M212 244 C230 252 294 252 312 244"/> <path class="illu-damp" d="M132 166 C124 154 140 146 132 132"/> <path class="illu-damp illu-damp--2" d="M152 166 C144 154 160 146 152 132"/> <path class="illu-damp" d="M254 166 C246 154 262 146 254 132"/> <path class="illu-damp illu-damp--2" d="M274 166 C266 154 282 146 274 132"/> <path d="M70 62 H168 A14 14 0 0 1 182 76 V104 A14 14 0 0 1 168 118 H112 L96 132 V118 H70 A14 14 0 0 1 56 104 V76 A14 14 0 0 1 70 62 Z"/> <circle cx="100" cy="90" r="3"/><circle cx="119" cy="90" r="3"/><circle cx="138" cy="90" r="3"/> <path d="M232 34 H330 A14 14 0 0 1 344 48 V78 A14 14 0 0 1 330 92 H318 V108 L300 92 H232 A14 14 0 0 1 218 78 V48 A14 14 0 0 1 232 34 Z"/> <path d="M234 56 H320"/><path d="M234 70 H298"/> <path d="M60 262 C130 254 190 268 260 260 S340 254 370 262"/></svg>
         <form class="formulier" id="formContact" data-soort="contact" novalidate>
             <div class="veld-verborgen" aria-hidden="true"><label>Laat dit veld leeg<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+            <p class="veld-hulp formulier-hint">Velden met <span aria-hidden="true">*</span> zijn verplicht.</p>
           <div class="veld-rij">
             <div class="veld">
               <label for="ct-naam">Naam</label>
@@ -616,7 +621,7 @@
         <p class="voet-slogan">Waar vertrouwen thuis komt.</p>
       </div>
       <div class="voet-kolom">
-        <h4>Navigatie</h4>
+        <h2>Navigatie</h2>
         <a href="/aanbod">Aanbod</a>
         <a href="/over">Over TÈRRO</a>
         <a href="/verhalen">Verhalen</a>
@@ -625,7 +630,7 @@
         <a href="/contact">Contact</a>
       </div>
       <div class="voet-kolom">
-        <h4>Contact</h4>
+        <h2>Contact</h2>
         <a href="tel:+32470709999">0470 70 99 99</a>
         <a href="mailto:hallo@terro.be">hallo@terro.be</a>
         <span>Dendermondse Steenweg 10<br>9290 Berlare</span>
