@@ -841,7 +841,9 @@ scrollKop();
 /* ---------- formulieren ----------
    Elk formulier gaat naar /api/lead (Netlify Function), die er een
    contact in WHISE van maakt. data-soort op het formulier zegt welk
-   soort aanvraag het is. */
+   soort aanvraag het is. Daarna gaat een kopie naar Netlify Forms
+   (formuliernaam = data-soort), zodat geen aanvraag verloren gaat
+   wanneer WHISE nog niet gekoppeld is of even hapert. */
 function honeypotHtml(){
   // verborgen voor mensen; bots vullen het in en worden stil genegeerd
   return '<div class="veld-verborgen" aria-hidden="true"><label>Laat dit veld leeg' +
@@ -861,20 +863,49 @@ function formulierData(form){
   return data;
 }
 
-function verstuur(data){
-  // lokaal als bestand geopend: geen server, doe alsof het lukte
-  if(location.protocol === 'file:') return new Promise(function(klaar){ setTimeout(klaar,400); });
+function naarWhise(data){
+  // geeft altijd een antwoord terug: { status, ok, demo, fout }
   return fetch('/api/lead',{
     method:'POST',
     headers:{'Content-Type':'application/json',Accept:'application/json'},
     body:JSON.stringify(data)
   }).then(function(r){
     return r.json().catch(function(){ return {}; }).then(function(antwoord){
-      if(r.ok && antwoord.ok) return antwoord;
-      return Promise.reject(antwoord.fout || 'Versturen is niet gelukt.');
+      antwoord.status = r.status;
+      antwoord.ok = r.ok && antwoord.ok === true;
+      return antwoord;
     });
   },function(){
-    return Promise.reject('Er is geen verbinding.');
+    return { status:0, ok:false, fout:'Er is geen verbinding.' };
+  });
+}
+
+function naarNetlify(data){
+  // Netlify Forms verwacht een gewone formulierpost met form-name
+  var velden = new URLSearchParams();
+  velden.append('form-name',data.soort);
+  Object.keys(data).forEach(function(naam){
+    if(naam === 'soort' || naam === 'form-name') return;
+    velden.append(naam,[].concat(data[naam]).join(', '));
+  });
+  return fetch('/',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:velden.toString()
+  }).then(function(r){ return r.ok; },function(){ return false; });
+}
+
+function verstuur(data){
+  // lokaal als bestand geopend: geen server, doe alsof het lukte
+  if(location.protocol === 'file:') return new Promise(function(klaar){ setTimeout(klaar,400); });
+  return naarWhise(data).then(function(whise){
+    // fout in de invoer (bv. geen naam): meteen tonen, niets bewaren
+    if(whise.status >= 400 && whise.status < 500) return Promise.reject(whise.fout || 'Versturen is niet gelukt.');
+    return naarNetlify(data).then(function(bewaard){
+      // gelukt zodra de aanvraag echt ergens terechtkwam
+      if(bewaard || (whise.ok && !whise.demo)) return whise;
+      return Promise.reject(whise.fout || 'Versturen is niet gelukt.');
+    });
   });
 }
 
