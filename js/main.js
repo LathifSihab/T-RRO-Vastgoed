@@ -486,6 +486,7 @@ function bezoekFormHtml(p){
       '</div>' +
       '<div class="veld"><label for="bz-bericht">Wil je ons nog iets laten weten?</label><textarea id="bz-bericht" name="bericht"></textarea></div>' +
       '<button class="knop knop--goud" type="submit" style="align-self:flex-start;">Vraag een bezichtiging aan</button>' +
+      '<p class="veld-hulp formulier-privacy">We gebruiken je gegevens enkel om je aanvraag op te volgen. Lees meer in onze <a href="/privacy">privacyverklaring</a>.</p>' +
       '<div class="bevestiging" id="bzBevestiging" hidden>' +
         '<p><strong>Bedankt.</strong> We nemen binnen twee werkdagen contact op om een moment af te spreken.</p>' +
       '</div>' +
@@ -636,8 +637,8 @@ function toonVerhaal(slug){
    Netlify stuurt die paden naar index.html (zie netlify.toml);
    de router kiest hier welk zicht zichtbaar is.
    ============================================================ */
-var ZICHTEN = ['home','aanbod','pand','over','verhalen','verhaal','waardescan','woonprofiel','contact','nietgevonden'];
-var ENKELVOUDIG = ['aanbod','over','verhalen','waardescan','woonprofiel','contact'];
+var ZICHTEN = ['home','aanbod','pand','over','verhalen','verhaal','waardescan','woonprofiel','contact','privacy','nietgevonden'];
+var ENKELVOUDIG = ['aanbod','over','verhalen','waardescan','woonprofiel','contact','privacy'];
 
 var PAGINA = {
   home:        {titel:'', beschrijving:document.querySelector('meta[name="description"]').content},
@@ -647,6 +648,7 @@ var PAGINA = {
   waardescan:  {titel:'Waardescan', beschrijving:'Een onderbouwde waardebepaling na een bezoek ter plaatse, met uitleg bij elk cijfer. Vrijblijvend.'},
   woonprofiel: {titel:'Maak jouw woonprofiel', beschrijving:'Vertel ons hoe je wil wonen. Wij leggen jouw profiel naast elk pand dat binnenkomt.'},
   contact:     {titel:'Contact', beschrijving:'Bel of schrijf TÈRRO Vastgoed. Een eerste gesprek is vrijblijvend. Dendermondse Steenweg 10, 9290 Berlare.'},
+  privacy:     {titel:'Privacyverklaring', beschrijving:'Hoe TÈRRO Vastgoed omgaat met de persoonsgegevens die je via de website doorgeeft, en wat je rechten zijn.'},
   nietgevonden:{titel:'Pagina niet gevonden', beschrijving:'Deze pagina bestaat niet (meer).', noindex:true}
 };
 

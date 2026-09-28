@@ -36,7 +36,7 @@
   "image": "https://terro.be/images/og-terro.jpg",
   "logo": "https://terro.be/images/favicon.svg",
   "telephone": "+32 470 70 99 99",
-  "email": "hallo@terro.be",
+  "email": "info@terro.be",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Dendermondse Steenweg 10",
@@ -44,6 +44,11 @@
     "addressLocality": "Berlare",
     "addressCountry": "BE"
   },
+  "vatID": "BE0600846605",
+  "sameAs": [
+    "https://www.instagram.com/terrovastgoed",
+    "https://www.facebook.com/terrovastgoed.be"
+  ],
   "areaServed": "Oost-Vlaanderen",
   "priceRange": "€€"
 }
@@ -58,22 +63,14 @@
 <a class="skiplink" href="#main">Naar de inhoud</a>
 
 <!-- beeldmerk: één keer gedefinieerd, overal hergebruikt met <use href="#merk">.
-     De T volgt de tekstkleur (currentColor), lijnen en kader zijn merkgoud. -->
+     De T volgt de tekstkleur (currentColor), lijnen en kader zijn merkgoud.
+     Nagetekend naar het logo; de T is de Cormorant Garamond-T (gewicht 600) als pad. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <clipPath id="merk-clip"><rect x="4" y="4" width="92" height="92" rx="13"></rect></clipPath>
     <symbol id="merk" viewBox="0 0 100 100">
-      <g clip-path="url(#merk-clip)" fill="none" stroke="#B08D57" stroke-width="1" stroke-linecap="round">
-        <path d="M2 59 C14 51 26 53 38 59 C50 65 60 63 72 59 C82 56 92 57 102 61"></path>
-        <path d="M2 66 C14 59 26 61 38 67 C50 73 62 71 74 67 C84 64 92 66 102 70"></path>
-        <path d="M2 73 C12 67 24 69 36 75 C48 81 62 79 76 75 C86 72 94 75 102 79"></path>
-        <path d="M2 81 C12 76 22 78 34 83 C46 88 60 87 72 84 C84 81 93 84 102 89"></path>
-        <path d="M2 90 C10 86 20 87 30 91 C40 95 50 96 60 97"></path>
-        <path d="M70 99 C76 93 88 92 102 96"></path>
-        <path d="M84 72 C88 76 90 82 88 90"></path>
-      </g>
-      <rect x="4" y="4" width="92" height="92" rx="13" fill="none" stroke="#B08D57" stroke-width="1.6"></rect>
-      <text x="50" y="61" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="66" fill="currentColor">T</text>
+      <rect x="1.3" y="1.3" width="97.4" height="97.4" fill="none" stroke="#B08D57" stroke-width="2.6"></rect>
+      <g fill="none" stroke="#B08D57" stroke-width="1"><path d="M2.6 50.5 41 77.6"></path><path d="M31.5 69.4 41 68.7"></path><path d="M58.6 66.7 69.4 65.8"></path><path d="M97.4 50.3 74.4 63.8V97.4"></path><path d="M59.9 91.2 69.4 97.4"></path></g>
+      <path fill="currentColor" d="M36.95 17.74Q29.8 17.74 25.32 22.11Q20.83 26.47 18.38 35.16Q18.29 35.47 17.68 35.43Q17.07 35.39 17.07 35.07Q17.3 33.51 17.55 30.63Q17.8 27.75 18.07 24.38Q18.34 21.01 18.52 17.88Q18.69 14.74 18.69 12.71Q18.69 12.13 19.35 12.13Q20 12.13 20 12.71Q20 13.87 21.19 14.4Q22.37 14.92 23.91 15.09Q25.44 15.27 26.49 15.27Q36.47 15.61 49.82 15.61Q57.97 15.61 62.83 15.44Q67.69 15.27 72.21 15.27Q76.3 15.27 78.44 14.74Q80.59 14.22 81.17 12.36Q81.29 11.9 81.91 11.9Q82.53 11.9 82.53 12.36Q82.33 14.19 82.14 17.39Q81.95 20.58 81.79 24.11Q81.64 27.64 81.52 30.62Q81.4 33.6 81.4 35.07Q81.4 35.39 80.79 35.39Q80.18 35.39 80.09 35.07Q78.83 25.97 74.51 21.86Q70.19 17.74 63.02 17.74Q59.84 17.74 58.21 18.32Q56.57 18.89 56.04 20.42Q55.51 21.94 55.51 24.9V78.4Q55.51 81.77 56.23 83.51Q56.96 85.25 59.12 85.83Q61.28 86.41 65.71 86.41Q66.03 86.41 66.03 87.1Q66.03 87.8 65.71 87.8Q62.53 87.8 58.54 87.68Q54.56 87.57 49.82 87.57Q45.3 87.57 41.32 87.68Q37.34 87.8 34.04 87.8Q33.72 87.8 33.72 87.1Q33.72 86.41 34.04 86.41Q38.35 86.41 40.57 85.83Q42.79 85.25 43.57 83.51Q44.36 81.77 44.36 78.4V24.67Q44.36 21.79 43.81 20.31Q43.26 18.83 41.65 18.29Q40.04 17.74 36.95 17.74Z"></path>
     </symbol>
   </defs>
 </svg>
@@ -114,7 +111,7 @@
   <div class="hero-donker">
     <picture><source type="image/webp" srcset="/images/hero-home-640.webp 640w, /images/hero-home-1024.webp 1024w, /images/hero-home-1440.webp 1440w, /images/hero-home-2000.webp 2000w" sizes="100vw"><img class="hero-donker-beeld" src="/images/hero-home.jpg" alt="" fetchpriority="high"></picture>
     <div class="wrap hero-donker-inhoud intro">
-      <svg class="hero-merk" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><!-- eigen kopie van het beeldmerk, zodat alleen dit exemplaar zichzelf tekent --><rect x="4" y="4" width="92" height="92" rx="13" fill="none" stroke="#B08D57" stroke-width="1.6"></rect><g clip-path="url(#merk-clip)" fill="none" stroke="#B08D57" stroke-width="1" stroke-linecap="round"><path d="M2 59 C14 51 26 53 38 59 C50 65 60 63 72 59 C82 56 92 57 102 61"></path><path d="M2 66 C14 59 26 61 38 67 C50 73 62 71 74 67 C84 64 92 66 102 70"></path><path d="M2 73 C12 67 24 69 36 75 C48 81 62 79 76 75 C86 72 94 75 102 79"></path><path d="M2 81 C12 76 22 78 34 83 C46 88 60 87 72 84 C84 81 93 84 102 89"></path><path d="M2 90 C10 86 20 87 30 91 C40 95 50 96 60 97"></path><path d="M70 99 C76 93 88 92 102 96"></path><path d="M84 72 C88 76 90 82 88 90"></path></g><text class="hero-merk-t" x="50" y="61" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="66" fill="currentColor">T</text></svg>
+      <svg class="hero-merk" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><!-- eigen kopie van het beeldmerk, zodat alleen dit exemplaar zichzelf tekent --><rect x="1.3" y="1.3" width="97.4" height="97.4" fill="none" stroke="#B08D57" stroke-width="2.6"></rect><g fill="none" stroke="#B08D57" stroke-width="1"><path d="M2.6 50.5 41 77.6"></path><path d="M31.5 69.4 41 68.7"></path><path d="M58.6 66.7 69.4 65.8"></path><path d="M97.4 50.3 74.4 63.8V97.4"></path><path d="M59.9 91.2 69.4 97.4"></path></g><path class="hero-merk-t" fill="currentColor" d="M36.95 17.74Q29.8 17.74 25.32 22.11Q20.83 26.47 18.38 35.16Q18.29 35.47 17.68 35.43Q17.07 35.39 17.07 35.07Q17.3 33.51 17.55 30.63Q17.8 27.75 18.07 24.38Q18.34 21.01 18.52 17.88Q18.69 14.74 18.69 12.71Q18.69 12.13 19.35 12.13Q20 12.13 20 12.71Q20 13.87 21.19 14.4Q22.37 14.92 23.91 15.09Q25.44 15.27 26.49 15.27Q36.47 15.61 49.82 15.61Q57.97 15.61 62.83 15.44Q67.69 15.27 72.21 15.27Q76.3 15.27 78.44 14.74Q80.59 14.22 81.17 12.36Q81.29 11.9 81.91 11.9Q82.53 11.9 82.53 12.36Q82.33 14.19 82.14 17.39Q81.95 20.58 81.79 24.11Q81.64 27.64 81.52 30.62Q81.4 33.6 81.4 35.07Q81.4 35.39 80.79 35.39Q80.18 35.39 80.09 35.07Q78.83 25.97 74.51 21.86Q70.19 17.74 63.02 17.74Q59.84 17.74 58.21 18.32Q56.57 18.89 56.04 20.42Q55.51 21.94 55.51 24.9V78.4Q55.51 81.77 56.23 83.51Q56.96 85.25 59.12 85.83Q61.28 86.41 65.71 86.41Q66.03 86.41 66.03 87.1Q66.03 87.8 65.71 87.8Q62.53 87.8 58.54 87.68Q54.56 87.57 49.82 87.57Q45.3 87.57 41.32 87.68Q37.34 87.8 34.04 87.8Q33.72 87.8 33.72 87.1Q33.72 86.41 34.04 86.41Q38.35 86.41 40.57 85.83Q42.79 85.25 43.57 83.51Q44.36 81.77 44.36 78.4V24.67Q44.36 21.79 43.81 20.31Q43.26 18.83 41.65 18.29Q40.04 17.74 36.95 17.74Z"></path></svg>
       <p class="eyebrow eyebrow--licht">Gegrond in vastgoed.</p>
       <span class="streep" aria-hidden="true"></span>
       <h1>Hier begint thuis.</h1>
@@ -437,6 +434,7 @@
           </div>
           <button class="knop knop--goud" type="submit" style="align-self:flex-start;">Vraag je waardescan aan</button>
           <p class="stil" style="font-size:13px;">Wij nemen binnen twee werkdagen contact op om een moment af te spreken.</p>
+          <p class="veld-hulp formulier-privacy">We gebruiken je gegevens enkel om je aanvraag op te volgen. Lees meer in onze <a href="/privacy">privacyverklaring</a>.</p>
           <div class="bevestiging" id="wsBevestiging" hidden>
             <p><strong>Bedankt.</strong> Je aanvraag staat genoteerd — we bellen je binnen twee werkdagen om langs te komen.</p>
           </div>
@@ -515,6 +513,7 @@
             <textarea id="wp-verhaal" name="verhaal" placeholder="Waarom verhuis je? Wat mag zeker niet ontbreken?"></textarea>
           </div>
           <button class="knop knop--goud" type="submit" style="align-self:flex-start;">Maak jouw woonprofiel</button>
+          <p class="veld-hulp formulier-privacy">We gebruiken je gegevens enkel om je aanvraag op te volgen. Lees meer in onze <a href="/privacy">privacyverklaring</a>.</p>
           <div class="bevestiging" id="wpBevestiging" hidden>
             <p><strong>Je woonprofiel staat genoteerd.</strong> Vanaf nu kijken we bij elk nieuw pand of het bij jou past.</p>
           </div>
@@ -536,7 +535,7 @@
         <div class="stapel stapel-24" style="max-width:420px;">
           <dl class="specs" style="grid-template-columns:1fr;margin:0;">
             <div class="spec"><dt>Telefoon</dt><dd><a href="tel:+32470709999" id="telNummer">0470 70 99 99</a></dd></div>
-            <div class="spec"><dt>E-mail</dt><dd><span id="mailAdres">hallo@terro.be</span></dd></div>
+            <div class="spec"><dt>E-mail</dt><dd><span id="mailAdres">info@terro.be</span></dd></div>
             <div class="spec"><dt>Kantoor</dt><dd>Dendermondse Steenweg 10<br>9290 Berlare</dd></div>
             <div class="spec"><dt>Op afspraak</dt><dd>ma – za</dd></div>
           </dl>
@@ -580,11 +579,93 @@
             <textarea id="ct-bericht" name="bericht"></textarea>
           </div>
           <button class="knop knop--goud" type="submit" style="align-self:flex-start;">Verstuur</button>
+          <p class="veld-hulp formulier-privacy">We gebruiken je gegevens enkel om je aanvraag op te volgen. Lees meer in onze <a href="/privacy">privacyverklaring</a>.</p>
           <div class="bevestiging" id="ctBevestiging" hidden>
             <p><strong>Bedankt voor je bericht.</strong> We nemen binnen twee werkdagen contact op.</p>
           </div>
         </form>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PRIVACY ============================== -->
+<section class="zicht" id="zicht-privacy" hidden>
+  <div class="wrap sectie--kort stapel stapel-48">
+    <div class="stapel stapel-24 meet intro">
+      <p class="eyebrow">Privacy</p>
+      <h1>Privacyverklaring</h1>
+      <p class="lead">Wie ons contacteert, vertrouwt ons persoonlijke gegevens toe. Hier lees je welke gegevens we bewaren, waarom, en wat je rechten zijn.</p>
+      <p class="veld-hulp">Laatst bijgewerkt: <mark class="invullen">[datum van publicatie]</mark></p>
+    </div>
+
+    <div class="privacy artikel-tekst">
+      <section class="stapel stapel-16">
+        <h2 class="kop-h3">1. Wie is verantwoordelijk?</h2>
+        <p>TÈRRO Vastgoed is verantwoordelijk voor de verwerking van je persoonsgegevens via deze website.</p>
+        <dl class="privacy-gegevens">
+          <div><dt>Naam</dt><dd><mark class="invullen">[juridische naam van de onderneming]</mark></dd></div>
+          <div><dt>Adres</dt><dd>Dendermondse Steenweg 10, 9290 Berlare</dd></div>
+          <div><dt>Ondernemingsnummer</dt><dd>BE 0600.846.605</dd></div>
+          <div><dt>BIV-nummer</dt><dd>513037</dd></div>
+          <div><dt>E-mail</dt><dd>info@terro.be</dd></div>
+          <div><dt>Telefoon</dt><dd>0470 70 99 99</dd></div>
+        </dl>
+      </section>
+
+      <section class="stapel stapel-16">
+        <h2 class="kop-h3">2. Welke gegevens verzamelen we?</h2>
+        <p>Enkel wat je zelf invult in een formulier op deze website:</p>
+        <ul>
+          <li><strong>Contact:</strong> je naam, e-mailadres, telefoonnummer (optioneel), het onderwerp en je bericht.</li>
+          <li><strong>Waardescan:</strong> dezelfde contactgegevens, het adres en type van je woning, wanneer je denkt te verkopen en wat je ons erover vertelt.</li>
+          <li><strong>Woonprofiel:</strong> je contactgegevens en wat je zoekt: kopen of huren, type woning, budget, aantal slaapkamers, gemeenten of postcodes en je toelichting.</li>
+          <li><strong>Bezichtiging:</strong> je contactgegevens, het pand dat je wil bezoeken, je voorkeursmoment en je bericht.</li>
+        </ul>
+        <p>We vragen geen gegevens die we niet nodig hebben, en je bent nooit verplicht een formulier in te vullen.</p>
+      </section>
+
+      <section class="stapel stapel-16">
+        <h2 class="kop-h3">3. Waarom gebruiken we ze?</h2>
+        <ul>
+          <li>Om je vraag te beantwoorden en je aanvraag op te volgen (een waardescan, een bezichtiging of een gesprek). Dat gebeurt op jouw verzoek, voorafgaand aan een mogelijke overeenkomst.</li>
+          <li>Om je te verwittigen wanneer er een pand binnenkomt dat bij je woonprofiel past. Dat doen we omdat je daar zelf om vraagt; je kan het op elk moment stopzetten.</li>
+          <li>Om te voldoen aan de wettelijke verplichtingen van een vastgoedmakelaar, zoals de antiwitwaswetgeving, wanneer het tot een transactie komt.</li>
+        </ul>
+        <p>We gebruiken je gegevens niet voor reclame van derden en we verkopen ze nooit.</p>
+      </section>
+
+      <section class="stapel stapel-16">
+        <h2 class="kop-h3">4. Wie krijgt je gegevens te zien?</h2>
+        <ul>
+          <li><strong>WHISE</strong> (Belgische vastgoedsoftware): je aanvraag komt terecht in ons klantenbestand bij WHISE, dat de gegevens enkel voor ons bewaart.</li>
+          <li><strong>Netlify</strong> (hosting van deze website): verwerkt je aanvraag technisch op weg naar WHISE. Netlify is een Amerikaans bedrijf; doorgifte buiten de Europese Unie gebeurt met de waarborgen die de Europese regelgeving voorschrijft, zoals de standaardcontractbepalingen van de Europese Commissie.</li>
+          <li>Wanneer het tot een verkoop of verhuur komt, delen we het nodige met de betrokken partijen, zoals de notaris, en enkel met jouw medeweten.</li>
+        </ul>
+      </section>
+
+      <section class="stapel stapel-16">
+        <h2 class="kop-h3">5. Hoe lang bewaren we ze?</h2>
+        <p>Zolang nodig om je aanvraag op te volgen, en daarna maximaal <mark class="invullen">[3 jaar — te bevestigen]</mark> na ons laatste contact, tenzij de wet ons verplicht ze langer te bewaren. Een woonprofiel verwijderen we zodra je laat weten dat je niet meer zoekt.</p>
+      </section>
+
+      <section class="stapel stapel-16">
+        <h2 class="kop-h3">6. Cookies</h2>
+        <p>Deze website gebruikt geen cookies en geen bezoekersstatistieken of advertentiediensten. Ook de lettertypes worden door de website zelf geleverd, zodat er geen gegevens naar externe diensten gaan. Onze hostingpartner houdt technische logboeken bij (zoals je IP-adres) om de website veilig en bereikbaar te houden.</p>
+      </section>
+
+      <section class="stapel stapel-16">
+        <h2 class="kop-h3">7. Je rechten</h2>
+        <p>Je kan ons altijd vragen om je gegevens in te kijken, te verbeteren of te laten verwijderen. Je kan ook bezwaar maken tegen een verwerking, ze laten beperken, je gegevens in een gangbaar formaat opvragen, of een gegeven toestemming intrekken.</p>
+        <p>Stuur daarvoor een e-mail naar info@terro.be. We antwoorden binnen de maand.</p>
+        <p>Ben je niet tevreden over hoe we met je gegevens omgaan, dan kan je een klacht indienen bij de Gegevensbeschermingsautoriteit, Drukpersstraat 35, 1000 Brussel, <a href="https://www.gegevensbeschermingsautoriteit.be" target="_blank" rel="noopener">www.gegevensbeschermingsautoriteit.be</a>.</p>
+      </section>
+
+      <section class="stapel stapel-16">
+        <h2 class="kop-h3">8. Beveiliging en wijzigingen</h2>
+        <p>De website werkt uitsluitend via een beveiligde verbinding (https). Toegang tot je gegevens in WHISE is beperkt tot de mensen die je aanvraag opvolgen.</p>
+        <p>Als we deze verklaring aanpassen, vind je de nieuwe versie altijd op deze pagina, met de datum van de laatste wijziging bovenaan.</p>
+      </section>
     </div>
   </div>
 </section>
@@ -632,23 +713,22 @@
       <div class="voet-kolom">
         <h2>Contact</h2>
         <a href="tel:+32470709999">0470 70 99 99</a>
-        <a href="mailto:hallo@terro.be">hallo@terro.be</a>
+        <a href="mailto:info@terro.be">info@terro.be</a>
         <span>Dendermondse Steenweg 10<br>9290 Berlare</span>
         <span>Op afspraak</span>
       </div>
     </div>
     <div class="voet-band">
       <p class="voet-gegevens"><span>terro.be</span><span>0470 70 99 99</span><span>Dendermondse Steenweg 10, 9290 Berlare</span></p>
-      <!-- TODO: echte profiel-URL's invullen zodra de accounts bestaan -->
       <div class="sociaal">
-        <a href="#" aria-label="TÈRRO op Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.2 6.8h.01"></path></svg></a>
-        <a href="#" aria-label="TÈRRO op Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8H16V5h-2a4 4 0 0 0-4 4v2H8v3h2v7h3v-7h2.2l.5-3H13V9.3c0-.8.5-1.3 1.5-1.3z"></path></svg></a>
-        <a href="#" aria-label="TÈRRO op LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9.5h3V19H5zM6.5 5.2a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2zM10.5 9.5h2.9v1.3c.5-.9 1.6-1.6 3.1-1.6 3 0 3.5 1.9 3.5 4.4V19h-3v-4.8c0-1.2 0-2.6-1.6-2.6s-1.9 1.2-1.9 2.5V19h-3z"></path></svg></a>
+        <a href="https://www.instagram.com/terrovastgoed" aria-label="TÈRRO op Instagram" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.2 6.8h.01"></path></svg></a>
+        <a href="https://www.facebook.com/terrovastgoed.be" aria-label="TÈRRO op Facebook" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8H16V5h-2a4 4 0 0 0-4 4v2H8v3h2v7h3v-7h2.2l.5-3H13V9.3c0-.8.5-1.3 1.5-1.3z"></path></svg></a>
       </div>
     </div>
     <div class="voet-onder">
       <span>© <span id="jaar">2026</span> TÈRRO — Gegrond in vastgoed</span>
-      <span>BIV-nummer · Ondernemingsnummer · Privacyverklaring</span>
+      <span>BIV 513037 · Ondernemingsnummer BE 0600.846.605 · <a href="/privacy">Privacyverklaring</a></span>
+      <span>Website gemaakt door One Man Agency</span>
     </div>
   </div>
 </footer>
