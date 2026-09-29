@@ -35,7 +35,7 @@ function wis(pad) {
 
 wis(UIT);
 mkdirSync(UIT);
-for (const item of ['index.html', 'css', 'js', 'images', 'fonts']) kopieer(item, join(UIT, item));
+for (const item of ['index.html', 'llms.txt', 'css', 'js', 'images', 'fonts']) kopieer(item, join(UIT, item));
 // Netlify toont 404.html (met status 404) voor onbekende paden; de router
 // in main.js ziet het onbekende pad en toont het 'niet gevonden'-zicht.
 copyFileSync('index.html', join(UIT, '404.html'));
@@ -45,9 +45,37 @@ copyFileSync('index.html', join(UIT, '404.html'));
 const SITE = (process.env.SITE_URL || 'https://terro.be').replace(/\/$/, '');
 const vandaag = new Date().toISOString().slice(0, 10);
 const NL = '\n';
+const main = readFileSync('js/main.js', 'utf8');
+
+// ---------- één HTML-bestand per vaste pagina ----------
+// Zoekmachines en AI-assistenten (ChatGPT, Perplexity, Claude …) voeren vaak
+// geen JavaScript uit. Zonder dit zag elke URL eruit als de startpagina.
+// Titel en beschrijving komen uit PAGINA in js/main.js, zodat ze gelijk lopen
+// met wat de router zet; het juiste zicht staat meteen zichtbaar.
+const bron = readFileSync('index.html', 'utf8');
+const attr = t => t.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+function metaVan(naam) {
+  const m = main.match(new RegExp(naam + ":\\s*\\{titel:'([^']*)', beschrijving:'([^']*)'"));
+  if (!m) throw new Error('PAGINA.' + naam + ' niet gevonden in js/main.js');
+  return { titel: m[1] + ' — TÈRRO Vastgoed', beschrijving: m[2] };
+}
+function pagina(zicht, pad, meta) {
+  const html = bron.replace(`<section class="zicht" id="zicht-${zicht}" hidden>`, `<section class="zicht" id="zicht-${zicht}">`);
+  if (!meta) return html;
+  const url = SITE + pad;
+  return html
+    .replace(/<title>[^<]*<\/title>/, `<title>${attr(meta.titel)}</title>`)
+    .replace(/(<meta name="description" content=")[^"]*/, '$1' + attr(meta.beschrijving))
+    .replace(/(<meta property="og:title" content=")[^"]*/, '$1' + attr(meta.titel))
+    .replace(/(<meta property="og:description" content=")[^"]*/, '$1' + attr(meta.beschrijving))
+    .replace(/(<meta property="og:url" content=")[^"]*/, '$1' + url)
+    .replace(/(<link rel="canonical" href=")[^"]*/, '$1' + url);
+}
+const VASTE = ['aanbod', 'over', 'verhalen', 'waardescan', 'woonprofiel', 'contact', 'privacy'];
+writeFileSync(join(UIT, 'index.html'), pagina('home', '/'));
+for (const naam of VASTE) writeFileSync(join(UIT, naam + '.html'), pagina(naam, '/' + naam, metaVan(naam)));
 
 // de verhalen staan in js/main.js; hun slugs worden daaruit gelezen
-const main = readFileSync('js/main.js', 'utf8');
 const begin = main.indexOf('var VERHALEN = [');
 const verhalenBlok = begin === -1 ? '' : main.slice(begin, main.indexOf('];', begin));
 const verhalen = [...verhalenBlok.matchAll(/slug:'([a-z0-9-]+)'/g)].map(m => m[1]);
