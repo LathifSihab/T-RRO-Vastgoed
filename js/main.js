@@ -976,6 +976,22 @@ koppelFormulier('formWaardescan','wsBevestiging');
 koppelFormulier('formWoonprofiel','wpBevestiging');
 koppelFormulier('formContact','ctBevestiging');
 
+/* ---------- kaart: Google Maps pas na een klik ---------- */
+var kaartKnop = document.getElementById('kaartKnop');
+if(kaartKnop){
+  kaartKnop.addEventListener('click',function(){
+    var f = document.createElement('iframe');
+    f.src = 'https://www.google.com/maps?q=' + encodeURIComponent('TÈRRO Vastgoed, Dendermondse Steenweg 10, 9290 Overmere') + '&output=embed';
+    f.title = 'Kaart: TÈRRO Vastgoed, Dendermondse Steenweg 10, 9290 Overmere';
+    f.referrerPolicy = 'no-referrer-when-downgrade';
+    f.allowFullscreen = true;
+    var kaart = document.getElementById('kaart');
+    kaart.innerHTML = '';
+    kaart.appendChild(f);
+    f.focus();
+  });
+}
+
 /* ---------- e-mail kopiëren ---------- */
 var kopieerKnop = document.getElementById('kopieerKnop');
 if(kopieerKnop){
