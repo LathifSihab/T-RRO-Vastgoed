@@ -355,7 +355,9 @@ function vulHomePanden(){
   var el = document.getElementById('homePanden');
   if(!AANBOD.klaar){ el.innerHTML = LADEN_HTML; return; }
   if(AANBOD.fout){ el.innerHTML = FOUT_HTML; return; }
-  el.innerHTML = PANDEN.filter(function(p){ return p.status !== 'sealed'; }).slice(0,2).map(pandKaart).join('');
+  var lijst = PANDEN.filter(function(p){ return p.status !== 'sealed'; }).slice(0,2);
+  el.innerHTML = lijst.map(pandKaart).join('');
+  document.getElementById('homeBinnenkort').hidden = lijst.length > 0;
 }
 
 document.getElementById('homeVerhalen').innerHTML =
@@ -370,11 +372,19 @@ var huidigFilter = 'alles';
 function toonAanbod(){
   var rooster = document.getElementById('aanbodRooster');
   var leeg = document.getElementById('aanbodLeeg');
+  var binnenkort = document.getElementById('aanbodBinnenkort');
+  var filters = document.getElementById('filters');
   if(!AANBOD.klaar || AANBOD.fout){
     rooster.innerHTML = AANBOD.fout ? FOUT_HTML : LADEN_HTML;
-    leeg.hidden = true;
+    leeg.hidden = binnenkort.hidden = true;
+    filters.hidden = false;
     return;
   }
+  // nog helemaal geen panden: tekst van TÈRRO in plaats van filters en rooster
+  var geenAanbod = PANDEN.length === 0;
+  binnenkort.hidden = !geenAanbod;
+  filters.hidden = geenAanbod;
+  if(geenAanbod){ rooster.innerHTML = ''; leeg.hidden = true; return; }
   // 'In optie' blijft zichtbaar bij koop of huur, volgens het doel van het pand
   var lijst = PANDEN.filter(function(p){
     if(huidigFilter === 'alles')  return true;
@@ -647,7 +657,7 @@ var PAGINA = {
   verhalen:    {titel:'Verhalen', beschrijving:'Gesprekken met de mensen die wij begeleidden, over verhuizen, loslaten en opnieuw beginnen.'},
   waardescan:  {titel:'Waardescan', beschrijving:'Een onderbouwde waardebepaling na een bezoek ter plaatse, met uitleg bij elk cijfer. Vrijblijvend.'},
   woonprofiel: {titel:'Maak jouw woonprofiel', beschrijving:'Vertel ons hoe je wil wonen. Wij leggen jouw profiel naast elk pand dat binnenkomt.'},
-  contact:     {titel:'Contact', beschrijving:'Bel of schrijf TÈRRO Vastgoed. Een eerste gesprek is vrijblijvend. Dendermondse Steenweg 10, 9290 Berlare.'},
+  contact:     {titel:'Contact', beschrijving:'Bel of schrijf TÈRRO Vastgoed. Een eerste gesprek is vrijblijvend. Dendermondse Steenweg 10, 9290 Overmere.'},
   privacy:     {titel:'Privacyverklaring', beschrijving:'Hoe TÈRRO Vastgoed omgaat met de persoonsgegevens die je via de website doorgeeft, en wat je rechten zijn.'},
   nietgevonden:{titel:'Pagina niet gevonden', beschrijving:'Deze pagina bestaat niet (meer).', noindex:true}
 };
@@ -895,15 +905,24 @@ function naarNetlify(data){
   }).then(function(r){ return r.ok; },function(){ return false; });
 }
 
+var lokaleHost = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+
 function verstuur(data){
   // lokaal als bestand geopend: geen server, doe alsof het lukte
   if(location.protocol === 'file:') return new Promise(function(klaar){ setTimeout(klaar,400); });
   return naarWhise(data).then(function(whise){
+    // 404/405: /api/lead bestaat hier niet (bv. VS Code Live Server), geen invoerfout
+    var geenApi = whise.status === 404 || whise.status === 405;
     // fout in de invoer (bv. geen naam): meteen tonen, niets bewaren
-    if(whise.status >= 400 && whise.status < 500) return Promise.reject(whise.fout || 'Versturen is niet gelukt.');
+    if(!geenApi && whise.status >= 400 && whise.status < 500) return Promise.reject(whise.fout || 'Versturen is niet gelukt.');
     return naarNetlify(data).then(function(bewaard){
       // gelukt zodra de aanvraag echt ergens terechtkwam
       if(bewaard || (whise.ok && !whise.demo)) return whise;
+      // lokale statische server: nergens om naartoe te sturen, doe alsof het lukte
+      if(lokaleHost && geenApi){
+        console.warn('Geen /api/lead op deze server: aanvraag niet verstuurd. Gebruik node scripts/dev.mjs om de functies te testen.', data);
+        return whise;
+      }
       return Promise.reject(whise.fout || 'Versturen is niet gelukt.');
     });
   });

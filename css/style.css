@@ -829,6 +829,19 @@ main:focus{outline:none;}
   color:#A89C90;
 }
 
+.voet-wettelijk{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid rgba(176,141,87,.18);
+  display:grid;
+  gap:4px;
+  font-size:11.5px;
+  line-height:1.6;
+  color:#A89C90;
+}
+.voet-wettelijk a{color:inherit;text-underline-offset:3px;text-decoration-color:var(--goud);}
+.aanbod-binnenkort{align-items:start;}
+
 /* ---------- terug ---------- */
 .terug{
   display:inline-flex;
