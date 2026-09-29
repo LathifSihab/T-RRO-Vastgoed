@@ -4,13 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<meta name="description" content="TÈRRO — persoonlijk vastgoed met een verhaal. Wij vertrekken niet bij een woning, maar bij een mens. Waardescan, begeleiding bij verkoop en verhuur in Hasselt en omgeving.">
+<meta name="description" content="TÈRRO — persoonlijk vastgoed met een verhaal. Wij vertrekken niet bij een woning, maar bij een mens. Waardescan, begeleiding bij verkoop en verhuur in Overmere, Berlare en omgeving.">
+<!-- ligging van het kantoor (lokale zoekresultaten) -->
+<meta name="geo.region" content="BE-VOV">
+<meta name="geo.placename" content="Overmere">
+<meta name="geo.position" content="51.0472;3.9607">
+<meta name="ICBM" content="51.0472, 3.9607">
 <meta name="theme-color" content="#F7F4EF">
 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_BE">
 <meta property="og:site_name" content="TÈRRO">
+<meta property="og:url" content="https://terro.be/">
 <meta property="og:title" content="TÈRRO — Gegrond in vastgoed">
 <meta property="og:description" content="Persoonlijk vastgoed met een verhaal. Hier begint thuis.">
 <!-- deelafbeelding (Facebook, LinkedIn, WhatsApp): moet een volledige URL zijn;
@@ -21,36 +27,72 @@
 <meta property="og:image:alt" content="TÈRRO — Gegrond in vastgoed">
 <meta name="twitter:card" content="summary_large_image">
 
-<title>TÈRRO Vastgoed</title>
+<title>TÈRRO Vastgoed — Gegrond in vastgoed</title>
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="TÈRRO Vastgoed voor AI-assistenten">
 <link rel="canonical" href="https://terro.be/" id="canonical">
 <!-- gestructureerde gegevens voor zoekmachines (schema.org) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  "@id": "https://terro.be/#kantoor",
-  "name": "TÈRRO Vastgoed",
-  "slogan": "Gegrond in vastgoed.",
-  "description": "Persoonlijk vastgoed met een verhaal. Waardescan, begeleiding bij verkoop en verhuur.",
-  "url": "https://terro.be/",
-  "image": "https://terro.be/images/og-terro.jpg",
-  "logo": "https://terro.be/images/favicon.svg",
-  "telephone": "+32 470 70 99 99",
-  "email": "info@terro.be",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Dendermondse Steenweg 10",
-    "postalCode": "9290",
-    "addressLocality": "Overmere",
-    "addressCountry": "BE"
-  },
-  "vatID": "BE0600846605",
-  "sameAs": [
-    "https://www.instagram.com/terrovastgoed",
-    "https://www.facebook.com/terrovastgoed.be"
-  ],
-  "areaServed": "Oost-Vlaanderen",
-  "priceRange": "€€"
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://terro.be/#kantoor",
+      "name": "TÈRRO Vastgoed",
+      "alternateName": "TÈRRO",
+      "slogan": "Gegrond in vastgoed.",
+      "description": "Erkend vastgoedmakelaar in Overmere (Berlare, Oost-Vlaanderen). Persoonlijke begeleiding bij verkoop en verhuur van woningen, met een vrijblijvende waardescan ter plaatse.",
+      "url": "https://terro.be/",
+      "image": "https://terro.be/images/og-terro.jpg",
+      "logo": {"@type": "ImageObject", "url": "https://terro.be/images/logo-terro.jpg", "width": 887, "height": 887},
+      "telephone": "+32 470 70 99 99",
+      "email": "info@terro.be",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dendermondse Steenweg 10",
+        "postalCode": "9290",
+        "addressLocality": "Overmere",
+        "addressRegion": "Oost-Vlaanderen",
+        "addressCountry": "BE"
+      },
+      "geo": {"@type": "GeoCoordinates", "latitude": 51.0472, "longitude": 3.9607},
+      "hasMap": "https://www.openstreetmap.org/?mlat=51.0472&mlon=3.9607#map=18/51.0472/3.9607",
+      "areaServed": [
+        {"@type": "Place", "name": "Overmere"},
+        {"@type": "City", "name": "Berlare"},
+        {"@type": "AdministrativeArea", "name": "Oost-Vlaanderen"}
+      ],
+      "knowsLanguage": "nl",
+      "knowsAbout": ["verkoop van woningen", "verhuur van woningen", "waardebepaling van vastgoed", "vastgoedbemiddeling"],
+      "makesOffer": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Waardescan", "description": "Onderbouwde waardebepaling van een woning na een bezoek ter plaatse. Vrijblijvend.", "url": "https://terro.be/waardescan"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Begeleiding bij verkoop", "url": "https://terro.be/aanbod"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Begeleiding bij verhuur", "url": "https://terro.be/aanbod"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Woonprofiel", "description": "Zoekprofiel voor kopers en huurders: TÈRRO legt het naast elk nieuw pand.", "url": "https://terro.be/woonprofiel"}}
+      ],
+      "vatID": "BE0600846605",
+      "identifier": {"@type": "PropertyValue", "propertyID": "BIV", "value": "513.037"},
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Erkend vastgoedmakelaar-bemiddelaar (BIV 513.037)",
+        "credentialCategory": "beroepserkenning",
+        "recognizedBy": {"@type": "Organization", "name": "Beroepsinstituut van Vastgoedmakelaars (BIV)", "url": "https://www.biv.be/"}
+      },
+      "sameAs": [
+        "https://www.instagram.com/terrovastgoed",
+        "https://www.facebook.com/terrovastgoed.be"
+      ],
+      "priceRange": "€€"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://terro.be/#website",
+      "url": "https://terro.be/",
+      "name": "TÈRRO Vastgoed",
+      "inLanguage": "nl-BE",
+      "publisher": {"@id": "https://terro.be/#kantoor"}
+    }
+  ]
 }
 </script>
 
@@ -516,7 +558,7 @@
           </div>
           <div class="veld">
             <label for="wp-streek">Waar wil je wonen?</label>
-            <input id="wp-streek" name="streek" type="text" placeholder="Bv. 3500 Hasselt, 3840 Borgloon" aria-describedby="wp-streek-hulp">
+            <input id="wp-streek" name="streek" type="text" placeholder="Bv. 9290 Overmere, 9200 Dendermonde" aria-describedby="wp-streek-hulp">
             <small class="veld-hulp" id="wp-streek-hulp">Met postcodes kunnen we automatisch voor je zoeken.</small>
           </div>
           <div class="veld">

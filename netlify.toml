@@ -16,11 +16,12 @@
 # Site configuration → Environment variables:
 #   WHISE_USERNAME, WHISE_PASSWORD, WHISE_CLIENT_ID, WHISE_OFFICE_ID
 
-# Echte adressen: deze paden tonen index.html, de router in js/main.js
-# kiest het zicht. Alle andere onbekende paden krijgen 404.html (status 404).
+# Echte adressen: elke vaste pagina heeft een eigen HTML-bestand (gemaakt door
+# scripts/build.mjs, met eigen titel en canonical); panden en verhalen tonen
+# index.html. De router in js/main.js kiest het zicht. Alle andere onbekende paden krijgen 404.html (status 404).
 [[redirects]]
   from = "/aanbod"
-  to = "/index.html"
+  to = "/aanbod.html"
   status = 200
 
 [[redirects]]
@@ -30,12 +31,12 @@
 
 [[redirects]]
   from = "/over"
-  to = "/index.html"
+  to = "/over.html"
   status = 200
 
 [[redirects]]
   from = "/verhalen"
-  to = "/index.html"
+  to = "/verhalen.html"
   status = 200
 
 [[redirects]]
@@ -45,22 +46,22 @@
 
 [[redirects]]
   from = "/waardescan"
-  to = "/index.html"
+  to = "/waardescan.html"
   status = 200
 
 [[redirects]]
   from = "/woonprofiel"
-  to = "/index.html"
+  to = "/woonprofiel.html"
   status = 200
 
 [[redirects]]
   from = "/contact"
-  to = "/index.html"
+  to = "/contact.html"
   status = 200
 
 [[redirects]]
   from = "/privacy"
-  to = "/index.html"
+  to = "/privacy.html"
   status = 200
 
 [[headers]]
