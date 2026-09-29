@@ -35,7 +35,8 @@ function wis(pad) {
 
 wis(UIT);
 mkdirSync(UIT);
-for (const item of ['index.html', 'llms.txt', 'css', 'js', 'images', 'fonts']) kopieer(item, join(UIT, item));
+// google…html: eigendomsbewijs voor Google Search Console, niet verwijderen
+for (const item of ['index.html', 'llms.txt', 'google1943806656245000.html', 'css', 'js', 'images', 'fonts']) kopieer(item, join(UIT, item));
 // Netlify toont 404.html (met status 404) voor onbekende paden; de router
 // in main.js ziet het onbekende pad en toont het 'niet gevonden'-zicht.
 copyFileSync('index.html', join(UIT, '404.html'));
