@@ -372,7 +372,9 @@ main:focus{outline:none;}
   overflow:hidden;
   display:grid;
   align-items:center;
-  min-height:min(calc(100svh - 80px),820px);
+  /* vult het scherm onder de kop (--kop-hoogte wordt gemeten in main.js) */
+  min-height:calc(100vh - var(--kop-hoogte,82px));
+  min-height:calc(100svh - var(--kop-hoogte,82px));
   background:var(--donker);
   color:var(--donker-tekst);
   text-align:center;

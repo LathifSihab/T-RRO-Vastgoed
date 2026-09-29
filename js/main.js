@@ -851,6 +851,11 @@ function scrollKop(){ kop.dataset.gescrold = window.scrollY > 8 ? 'ja' : 'nee'; 
 window.addEventListener('scroll',scrollKop,{passive:true});
 scrollKop();
 
+// hoogte van de kop als CSS-variabele: de hero vult zo precies het scherm eronder
+function meetKop(){ document.documentElement.style.setProperty('--kop-hoogte', kop.offsetHeight + 'px'); }
+window.addEventListener('resize',meetKop,{passive:true});
+meetKop();
+
 /* ---------- formulieren ----------
    Elk formulier gaat naar /api/lead (Netlify Function), die er een
    contact in WHISE van maakt. data-soort op het formulier zegt welk
