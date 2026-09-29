@@ -41,7 +41,7 @@
     "@type": "PostalAddress",
     "streetAddress": "Dendermondse Steenweg 10",
     "postalCode": "9290",
-    "addressLocality": "Berlare",
+    "addressLocality": "Overmere",
     "addressCountry": "BE"
   },
   "vatID": "BE0600846605",
@@ -203,6 +203,7 @@
       <a class="tekstlink" href="/aanbod" style="justify-self:start;">Bekijk het volledige aanbod <span class="pijl" aria-hidden="true">→</span></a>
     </div>
     <div class="rooster" id="homePanden"></div>
+    <p class="lead meet" id="homeBinnenkort" hidden>Elk verhaal begint met een stevig fundament. Achter de schermen leggen we vandaag de fundamenten voor de eerste woningen die binnenkort op deze pagina een plaats krijgen.</p>
   </section>
 
   <section class="vlak">
@@ -262,6 +263,16 @@
     <h2 class="visueel-verborgen">Alle panden</h2>
     <div class="rooster" id="aanbodRooster"></div>
     <p class="stil" id="aanbodLeeg" hidden>Er zijn op dit moment geen panden in deze selectie. Laat je woonprofiel achter en wij brengen je op de hoogte zodra er iets binnenkomt.</p>
+    <!-- zolang er in WHISE nog geen enkel pand staat -->
+    <div class="duo aanbod-binnenkort" id="aanbodBinnenkort" hidden>
+      <h2 class="kop-h3">Elk verhaal begint met een stevig fundament.</h2>
+      <div class="stapel stapel-24">
+        <p class="meet">Ook het verhaal van TÈRRO Vastgoed. Nog voor een woning online verschijnt, begint er iets veel belangrijkers: een gesprek, een droom, een nieuwe stap. Achter de schermen leggen we vandaag de fundamenten voor de eerste verhalen die binnenkort op deze pagina een plaats krijgen.</p>
+        <p class="meet">Binnenkort vindt u hier woningen die niet alleen een adres hebben, maar ook een verhaal. Woningen die met dezelfde aandacht, betrokkenheid en zorg worden voorgesteld als waarmee wij onze klanten begeleiden.</p>
+        <p class="meet">Heeft u plannen om uw eigendom te verkopen of te verhuren? Dan bent u misschien wel één van de eerste eigenaars die mee het verhaal van TÈRRO Vastgoed schrijft.</p>
+        <a class="knop knop--goud" href="/waardescan" style="align-self:flex-start;">Vraag je waardescan aan</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -280,7 +291,7 @@
       <p class="lead meet">TÈRRO ontstond uit een eenvoudige vaststelling: in vastgoed gaat het bijna altijd over vierkante meters, en bijna nooit over mensen. Wij draaien dat om.</p>
       <svg class="illu illu--over" viewBox="0 0 400 300" aria-hidden="true" focusable="false"><path d="M30 236 H370"/> <path d="M122 236 C124 214 118 192 124 160"/> <path d="M123 188 C115 178 106 170 98 156"/><path d="M123 174 C135 163 145 156 156 146"/> <path d="M72 150 C60 120 90 92 120 102 C136 72 182 80 182 112 C206 122 200 162 172 162 C160 178 132 174 124 164 C110 178 78 174 72 150 Z"/> <path d="M121 236 C110 254 92 260 70 264"/><path d="M123 236 C130 256 148 264 172 268"/><path d="M122 236 C121 256 119 272 116 286"/> <path d="M226 236 V178 L270 142 L314 178 V236"/> <path d="M218 184 L270 140 L322 184"/> <path d="M296 160 V144 H306 V168"/> <rect x="240" y="192" width="14" height="16"/><rect x="288" y="192" width="14" height="16"/> <path d="M262 236 V206 H280 V236"/> <path d="M271 236 C266 252 254 262 238 272"/> <circle cx="336" cy="92" r="20"/> <path d="M60 256 C130 248 190 262 260 254 S340 248 372 256"/><path d="M92 278 C160 270 220 284 290 276"/></svg>
     </div>
-    <div class="beeld beeld--hoog intro-laat" data-slot="Beeldslot 03 · portret"><picture><source type="image/webp" srcset="/images/portret-makelaar-480.webp 480w, /images/portret-makelaar-800.webp 800w, /images/portret-makelaar-1131.webp 1131w" sizes="(max-width: 860px) 100vw, 520px"><img src="/images/portret-makelaar.jpg" alt="Makelaar van TÈRRO met een bos bloemen voor een witte gevel" loading="lazy"></picture></div>
+    <div class="beeld beeld--hoog intro-laat" data-slot="Beeldslot 03 · portret"><picture><source type="image/webp" srcset="/images/over-te-koop-bord-480.webp 480w, /images/over-te-koop-bord-800.webp 800w, /images/over-te-koop-bord-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 520px"><img src="/images/over-te-koop-bord.jpg" alt="Makelaar van TÈRRO hangt een Te koop-bord aan het raam van een witte gevel" loading="lazy"></picture></div>
   </div>
 
   <section class="wrap sectie--kort">
@@ -536,7 +547,7 @@
           <dl class="specs" style="grid-template-columns:1fr;margin:0;">
             <div class="spec"><dt>Telefoon</dt><dd><a href="tel:+32470709999" id="telNummer">0470 70 99 99</a></dd></div>
             <div class="spec"><dt>E-mail</dt><dd><span id="mailAdres">info@terro.be</span></dd></div>
-            <div class="spec"><dt>Kantoor</dt><dd>Dendermondse Steenweg 10<br>9290 Berlare</dd></div>
+            <div class="spec"><dt>Kantoor</dt><dd>Dendermondse Steenweg 10<br>9290 Overmere</dd></div>
             <div class="spec"><dt>Op afspraak</dt><dd>ma – za</dd></div>
           </dl>
           <button class="knop knop--lijn" id="kopieerKnop" type="button" style="align-self:flex-start;">Kopieer e-mailadres</button>
@@ -605,9 +616,9 @@
         <p>TÈRRO Vastgoed is verantwoordelijk voor de verwerking van je persoonsgegevens via deze website.</p>
         <dl class="privacy-gegevens">
           <div><dt>Naam</dt><dd><mark class="invullen">[juridische naam van de onderneming]</mark></dd></div>
-          <div><dt>Adres</dt><dd>Dendermondse Steenweg 10, 9290 Berlare</dd></div>
+          <div><dt>Adres</dt><dd>Dendermondse Steenweg 10, 9290 Overmere</dd></div>
           <div><dt>Ondernemingsnummer</dt><dd>BE 0600.846.605</dd></div>
-          <div><dt>BIV-nummer</dt><dd>513037</dd></div>
+          <div><dt>BIV-nummer</dt><dd>513.037</dd></div>
           <div><dt>E-mail</dt><dd>info@terro.be</dd></div>
           <div><dt>Telefoon</dt><dd>0470 70 99 99</dd></div>
         </dl>
@@ -714,12 +725,12 @@
         <h2>Contact</h2>
         <a href="tel:+32470709999">0470 70 99 99</a>
         <a href="mailto:info@terro.be">info@terro.be</a>
-        <span>Dendermondse Steenweg 10<br>9290 Berlare</span>
+        <span>Dendermondse Steenweg 10<br>9290 Overmere</span>
         <span>Op afspraak</span>
       </div>
     </div>
     <div class="voet-band">
-      <p class="voet-gegevens"><span>terro.be</span><span>0470 70 99 99</span><span>Dendermondse Steenweg 10, 9290 Berlare</span></p>
+      <p class="voet-gegevens"><span>terro.be</span><span>0470 70 99 99</span><span>Dendermondse Steenweg 10, 9290 Overmere</span></p>
       <div class="sociaal">
         <a href="https://www.instagram.com/terrovastgoed" aria-label="TÈRRO op Instagram" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.2 6.8h.01"></path></svg></a>
         <a href="https://www.facebook.com/terrovastgoed.be" aria-label="TÈRRO op Facebook" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8H16V5h-2a4 4 0 0 0-4 4v2H8v3h2v7h3v-7h2.2l.5-3H13V9.3c0-.8.5-1.3 1.5-1.3z"></path></svg></a>
@@ -727,8 +738,16 @@
     </div>
     <div class="voet-onder">
       <span>© <span id="jaar">2026</span> TÈRRO — Gegrond in vastgoed</span>
-      <span>BIV 513037 · Ondernemingsnummer BE 0600.846.605 · <a href="/privacy">Privacyverklaring</a></span>
+      <span><a href="/privacy">Privacyverklaring</a></span>
       <span>Website gemaakt door One Man Agency</span>
+    </div>
+    <!-- wettelijke vermeldingen vastgoedmakelaar (verplicht, BIV) -->
+    <div class="voet-wettelijk">
+      <p>Erkend vastgoedmakelaar-bemiddelaar – BIV 513.037</p>
+      <p>BTW: BE 0600.846.605 – BA en borgstelling: NV AXA Belgium (polisnr. 730.390.160)</p>
+      <p>Derdenrekening: BE88 1431 3674 4641</p>
+      <p>Toezichthoudende autoriteit: Beroepsinstituut van Vastgoedmakelaars, Luxemburgstraat 16 B, 1000 Brussel – <a href="tel:+3225053850">+32 2 505 38 50</a> – <a href="mailto:info@biv.be">info@biv.be</a></p>
+      <p>Onderworpen aan de <a href="https://www.biv.be/de-vastgoedmakelaar/deontologie-van-de-vastgoedmakelaar" rel="noopener">deontologische code van het BIV</a></p>
     </div>
   </div>
 </footer>
