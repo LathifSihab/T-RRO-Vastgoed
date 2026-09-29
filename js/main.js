@@ -215,10 +215,11 @@ var VERHALEN = [
    WHISE aanspreekt met de gegevens uit de serveromgeving. De
    browser ziet nooit een wachtwoord of token.
    - bron 'whise': de echte panden vervangen de voorbeelden;
-   - bron 'demo' : nog geen WHISE-gegevens → voorbeelden blijven;
+   - bron 'demo' : nog geen WHISE-gegevens → online geen panden
+     (de tekst van TÈRRO), lokaal blijven de voorbeelden;
    - fout online : een rustige melding in plaats van nep-aanbod.
    Lokaal openen (file:// of localhost zonder functies) toont de
-   voorbeelden.
+   voorbeelden. Online verschijnt er nooit een voorbeeldpand.
    ============================================================ */
 var AANBOD = { klaar:false, bron:'demo', fout:false };
 
@@ -234,6 +235,8 @@ function laadAanbod(){
       if(data && data.bron === 'whise' && Array.isArray(data.panden)){
         PANDEN = data.panden;
         AANBOD.bron = 'whise';
+      } else if(!lokaleVoorvertoning()){
+        PANDEN = [];
       }
     })
     .catch(function(){
