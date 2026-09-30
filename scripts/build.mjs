@@ -101,7 +101,8 @@ writeFileSync(join(UIT, 'sitemap.xml'), [
 ].join(NL));
 
 writeFileSync(join(UIT, 'robots.txt'), [
-  'User-agent: *', 'Allow: /', 'Disallow: /api/', '', `Sitemap: ${SITE}/sitemap.xml`, ''
+// /api/aanbod moet open blijven: Google laadt het om het aanbod en de pandpagina's te tekenen
+  'User-agent: *', 'Allow: /', 'Allow: /api/aanbod', 'Disallow: /api/', '', `Sitemap: ${SITE}/sitemap.xml`, ''
 ].join(NL));
 
 console.log(`dist/ klaar (${paginas.length} vaste pagina's in de sitemap)`);
