@@ -622,7 +622,7 @@ function toonVerhaal(slug){
     zetMeta({titel:'Verhaal niet gevonden', beschrijving:PAGINA.verhalen.beschrijving, noindex:true});
     return;
   }
-  zetMeta({titel:'“' + v.citaat + '” — ' + v.mensen, beschrijving:v.intro});
+  zetMeta({titel:v.mensen + ': “' + v.citaat + '”', beschrijving:v.intro});
   doel.innerHTML = '' +
     '<a class="terug" href="/verhalen"><span aria-hidden="true">←</span> Terug naar de verhalen</a>' +
     '<div class="duo duo--verspringend">' +
@@ -672,7 +672,7 @@ function metaTag(naam){
 }
 
 function zetMeta(m){
-  document.title = m.titel ? m.titel + ' — TÈRRO Vastgoed' : 'TÈRRO Vastgoed — Gegrond in vastgoed';
+  document.title = m.titel ? m.titel + ' | TÈRRO Vastgoed' : 'TÈRRO Vastgoed | Gegrond in vastgoed';
   metaTag('description').content = m.beschrijving || PAGINA.home.beschrijving;
   metaTag('robots').content = m.noindex ? 'noindex' : 'index, follow';
   var canon = document.getElementById('canonical');

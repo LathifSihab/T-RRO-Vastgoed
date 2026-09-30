@@ -58,7 +58,7 @@ const attr = t => t.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g,
 function metaVan(naam) {
   const m = main.match(new RegExp(naam + ":\\s*\\{titel:'([^']*)', beschrijving:'([^']*)'"));
   if (!m) throw new Error('PAGINA.' + naam + ' niet gevonden in js/main.js');
-  return { titel: m[1] + ' — TÈRRO Vastgoed', beschrijving: m[2] };
+  return { titel: m[1] + ' | TÈRRO Vastgoed', beschrijving: m[2] };
 }
 function pagina(zicht, pad, meta) {
   const html = bron.replace(`<section class="zicht" id="zicht-${zicht}" hidden>`, `<section class="zicht" id="zicht-${zicht}">`);
