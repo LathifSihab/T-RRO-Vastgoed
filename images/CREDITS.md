@@ -21,9 +21,8 @@ Vervang ze zodra echte foto's beschikbaar zijn (bestandsnaam behouden, of `beeld
 | images/pand-pastorij-sint-truiden.jpg | 46-FOTOGRAFIEBYCHELSEA-4279.JPG |
 | images/pand-nieuwbouw-lanaken.jpg | 36-FOTOGRAFIEBYCHELSEA-4259.JPG |
 | images/pand-loft-hasselt.jpg | 2-FOTOGRAFIEBYCHELSEA-4174.JPG |
-| images/verhaal-ann-en-pieter.jpg | 20-FOTOGRAFIEBYCHELSEA-4205.JPG |
-| images/verhaal-familie-vandereyt.jpg | 12-FOTOGRAFIEBYCHELSEA-4190.JPG |
-| images/verhaal-marleen.jpg | 15-FOTOGRAFIEBYCHELSEA-4196.JPG |
+| images/reviews-telefoon.jpg | 15-FOTOGRAFIEBYCHELSEA-4196.JPG |
+| images/reviews-koffie.jpg | 54-FOTOGRAFIEBYCHELSEA-4295.JPG |
 | images/og-terro.jpg | `FB banner.png` — deelafbeelding voor sociale media (1200 × 630) |
 
-Niet gebruikt: 4, 54, 72, 74, 77, 79 (staan wel in `_originelen/`).
+Niet gebruikt: 4, 12, 20, 72, 74, 77, 79 (staan wel in `_originelen/`).

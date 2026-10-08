@@ -662,14 +662,54 @@ main:focus{outline:none;}
 .vlak{background:var(--linnen);}
 
 /* ---------- verhalen ---------- */
-.verhaal-kaart{display:flex;flex-direction:column;gap:18px;text-decoration:none;color:inherit;}
-.verhaal-kaart .beeld{--ratio:3/4;transition:opacity .5s ease;}
-.verhaal-kaart:hover .beeld{opacity:.86;}
-.citaat{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:clamp(23px,2.6vw,31px);
-  line-height:1.3;
-  font-weight:300;
+/* foto links (blijft staan tijdens het scrollen), reviews rechts onder elkaar */
+.reviews-duo{
+  display:grid;
+  grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  gap:clamp(32px,5vw,72px);
+  align-items:start;
+}
+.reviews-beeld{
+  --ratio:2/3;
+  position:sticky;
+  top:calc(var(--kop-hoogte,82px) + 32px);
+  overflow:visible;
+  /* dun goudkader, verschoven achter de foto (zoals het kader rond het beeldmerk) */
+  box-shadow:16px 16px 0 -1px var(--ecru),16px 16px 0 0 var(--goud);
+}
+.reviews-lijst{display:flex;flex-direction:column;gap:clamp(28px,3.4vw,44px);}
+@media (max-width:860px){
+  .reviews-duo{grid-template-columns:1fr;}
+  .reviews-beeld{--ratio:4/3;position:relative;top:auto;margin-right:16px;}
+}
+.review{
+  position:relative;
+  margin:0;
+  display:flex;flex-direction:column;gap:28px;
+  padding:clamp(64px,7vw,84px) clamp(26px,3.6vw,48px) clamp(28px,3.4vw,40px);
+  background:var(--linnen) var(--hoogtelijnen) no-repeat right -90px bottom -60px / 420px auto;
+  border-top:2px solid var(--goud);
+}
+/* groot aanhalingsteken uit de Cormorant, als merkteken bovenaan */
+.review::before{
+  content:"“";
+  position:absolute;top:clamp(4px,1vw,10px);left:clamp(20px,3.2vw,42px);
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;
+  font-size:clamp(96px,10vw,128px);line-height:1;
+  color:var(--goud);
+}
+.review-tekst{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(20px,1.9vw,23px);line-height:1.5;font-weight:400;color:var(--houtskool);}
+.review-tekst p + p{margin-top:.7em;}
+.review-naam{
+  display:flex;align-items:center;gap:14px;
+  margin-top:auto;padding-top:22px;border-top:1px solid var(--goud-haar);
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--houtskool-zacht);
+}
+.review-initialen{
+  flex:none;display:grid;place-items:center;
+  width:42px;height:42px;border:1px solid var(--goud);border-radius:50%;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;letter-spacing:.04em;
+  color:var(--goud-tekst);
 }
 .artikel p + p{margin-top:1.15em;}
 .artikel-tekst{max-width:62ch;}

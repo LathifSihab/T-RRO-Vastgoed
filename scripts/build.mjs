@@ -76,13 +76,8 @@ const VASTE = ['aanbod', 'over', 'verhalen', 'waardescan', 'woonprofiel', 'conta
 writeFileSync(join(UIT, 'index.html'), pagina('home', '/'));
 for (const naam of VASTE) writeFileSync(join(UIT, naam + '.html'), pagina(naam, '/' + naam, metaVan(naam)));
 
-// de verhalen staan in js/main.js; hun slugs worden daaruit gelezen
-const begin = main.indexOf('var VERHALEN = [');
-const verhalenBlok = begin === -1 ? '' : main.slice(begin, main.indexOf('];', begin));
-const verhalen = [...verhalenBlok.matchAll(/slug:'([a-z0-9-]+)'/g)].map(m => m[1]);
 
-const paginas = ['/', '/aanbod', '/over', '/verhalen', '/waardescan', '/woonprofiel', '/contact', '/privacy',
-  ...verhalen.map(s => '/verhalen/' + s)];
+const paginas = ['/', '/aanbod', '/over', '/verhalen', '/waardescan', '/woonprofiel', '/contact', '/privacy'];
 
 writeFileSync(join(UIT, 'sitemap-paginas.xml'), [
   '<?xml version="1.0" encoding="UTF-8"?>',

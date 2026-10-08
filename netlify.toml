@@ -17,7 +17,7 @@
 #   WHISE_USERNAME, WHISE_PASSWORD, WHISE_CLIENT_ID, WHISE_OFFICE_ID
 
 # Echte adressen: elke vaste pagina heeft een eigen HTML-bestand (gemaakt door
-# scripts/build.mjs, met eigen titel en canonical); panden en verhalen tonen
+# scripts/build.mjs, met eigen titel en canonical); panden tonen
 # index.html. De router in js/main.js kiest het zicht. Alle andere onbekende paden krijgen 404.html (status 404).
 [[redirects]]
   from = "/aanbod"
@@ -41,8 +41,8 @@
 
 [[redirects]]
   from = "/verhalen/*"
-  to = "/index.html"
-  status = 200
+  to = "/verhalen"
+  status = 301
 
 [[redirects]]
   from = "/waardescan"
