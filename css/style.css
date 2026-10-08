@@ -662,15 +662,11 @@ main:focus{outline:none;}
 .vlak{background:var(--linnen);}
 
 /* ---------- verhalen ---------- */
-.verhaal-kaart{display:flex;flex-direction:column;gap:18px;text-decoration:none;color:inherit;}
-.verhaal-kaart .beeld{--ratio:3/4;transition:opacity .5s ease;}
-.verhaal-kaart:hover .beeld{opacity:.86;}
-.citaat{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:clamp(23px,2.6vw,31px);
-  line-height:1.3;
-  font-weight:300;
-}
+.review{margin:0;display:flex;flex-direction:column;gap:18px;padding-top:26px;border-top:1px solid var(--lijn);}
+.review-tekst{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(20px,1.9vw,23px);line-height:1.45;font-weight:400;}
+.review-tekst p + p{margin-top:.7em;}
+.review-tekst p:first-child::before{content:"\201C";}
+.review-tekst p:last-child::after{content:"\201D";}
 .artikel p + p{margin-top:1.15em;}
 .artikel-tekst{max-width:62ch;}
 

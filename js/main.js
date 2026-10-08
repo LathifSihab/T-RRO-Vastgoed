@@ -158,53 +158,25 @@ var PANDEN = [
   }
 ];
 
-var VERHALEN = [
+var REVIEWS = [
   {
-    slug:'ann-en-pieter',
-    beeld:'/images/verhaal-ann-en-pieter.jpg',
-    beeldAlt:'Smartphone en laptop op een tafel bij het raam, naast een kop koffie',
-    citaat:'Wij wilden geen groter huis. We wilden een stiller huis.',
-    mensen:'Ann & Pieter',
-    plaats:'Borgloon',
-    intro:'Na achttien jaar in een rijwoning in de stad verkochten ze alles voor een hoeve aan de rand van de fruitstreek. Niet voor de ruimte, zeggen ze, maar voor de stilte.',
+    naam:'Sabrina Van Eeckhout',
     tekst:[
-      'Het gesprek begon niet over vierkante meters. Het begon over slapen. Ann werkte al jaren in shift en werd elke ochtend wakker van het vrachtverkeer dat de straat in draaide. Pieter had zich daar allang bij neergelegd. Zij niet.',
-      '"We hebben eerst geprobeerd het op te lossen met ramen," vertelt Pieter. "Drievoudig glas, gordijnen, alles. Het hielp, maar het was pleisterwerk."',
-      'De zoektocht duurde elf maanden. Ze bezochten negen panden en haakten twee keer af nadat het bod al was uitgebracht. "Dat was lastig," zegt Ann. "Maar er werd nooit druk gezet. Dat is denk ik het belangrijkste wat ik erover kan zeggen."',
-      'De hoeve die het uiteindelijk werd, stond niet eens online. "We kregen een telefoon op een dinsdagavond. Of we zin hadden om iets te gaan bekijken dat de week erna pas in de verkoop ging. Dat is het verschil tussen een zoekertje en iemand die weet wat je zoekt."',
-      'Ze wonen er nu twee jaar. "Het eerste wat me opviel," zegt Ann, "was dat ik ’s nachts de koelkast hoorde. Dat was nieuw."'
+      'Zeer tevreden over de samenwerking met Clotilde. De communicatie verliep vanaf het begin heel vlot, duidelijk en professioneel. Na elk contact met een kandidaat-koper kregen we snel een uitgebreid en helder verslag, waardoor we steeds goed op de hoogte waren van de stand van zaken.',
+      'Reageert ook heel snel.',
+      'Een enthousiaste betrokken makelaar!'
     ]
   },
   {
-    slug:'familie-vandereyt',
-    beeld:'/images/verhaal-familie-vandereyt.jpg',
-    beeldAlt:'Iemand houdt een TÈRRO-visitekaartje omhoog',
-    citaat:'Het duurde zeven maanden. Dat was precies goed.',
-    mensen:'Familie Vandereyt',
-    plaats:'Hasselt',
-    intro:'Een verkoop na een overlijden vraagt een ander tempo. Drie kinderen, één ouderlijk huis en geen enkele haast.',
+    naam:'Merel De Vleeschauwer',
     tekst:[
-      'Toen hun moeder stierf, stond het huis er nog precies zoals zij het had achtergelaten. De drie kinderen woonden in drie verschillende provincies en waren het over vrijwel niets eens — behalve dat het niet snel moest gaan.',
-      '"Een andere makelaar had het binnen de maand online willen zetten," zegt de oudste dochter. "Dat konden we niet. We waren er nog niet klaar voor om vreemden door haar keuken te laten lopen."',
-      'Er werd een traject uitgetekend van zeven maanden. Eerst het praktische: attesten, keuring, schatting. Daarna pas het huis zelf, kamer per kamer, met de kinderen erbij.',
-      '"Het is gek om te zeggen, maar dat leegmaken samen is uiteindelijk het mooiste geweest. We hebben dingen gevonden waar we niet van wisten dat ze bestonden."',
-      'Het huis werd verkocht aan een jong gezin. "Ze hebben de kersenboom in de tuin laten staan. Dat was onze enige vraag."'
+      'Kent haar job! Steeds open communicatie, betrouwbaar advies en altijd bereikbaar. We kregen geregeld een update en Clotilde was zeer betrokken. Dacht niet aan haar eigen voordeel maar aan een correcte aankoop/verkoop voor de betrokken partijen! Echt top in haar job!'
     ]
   },
   {
-    slug:'marleen',
-    beeld:'/images/verhaal-marleen.jpg',
-    beeldAlt:'Makelaar aan de telefoon aan een tafel bij het raam',
-    citaat:'De keuken van mijn moeder stond er nog. Dat gaf de doorslag.',
-    mensen:'Marleen',
-    plaats:'Sint-Truiden',
-    intro:'Ze zocht een appartement en kocht een pastorij. Over hoe een woonprofiel soms iets anders oplevert dan je invulde.',
+    naam:'Vanessa Huyghe',
     tekst:[
-      'Marleen schreef bij haar woonprofiel: appartement, maximaal twee slaapkamers, geen tuin. Ze was net zestig, alleen, en had er geen zin in om nog eens een dak te moeten laten vernieuwen.',
-      '"Ik kreeg een telefoon over een pastorijwoning van tweehonderdachtenzestig vierkante meter. Ik dacht: die hebben mijn formulier niet gelezen."',
-      'Ze ging toch kijken. In de keuken stond een gietijzeren fornuis van hetzelfde model als dat van haar moeder, veertig jaar eerder, in een dorp twintig kilometer verderop.',
-      '"Dat klinkt sentimenteel en dat is het ook. Maar ik stond daar en ik wist het. Soms weet je dingen voor je ze kan uitleggen."',
-      'Ze woont er nu anderhalf jaar en verhuurt twee kamers aan studenten. "Het dak moet inderdaad vernieuwd worden. Volgend jaar. Ik heb er vrede mee."'
+      'Makkelaar Clotilde (naamgenoot mijn 2de naam was wel grappig aan telefoon) heb ik keren kennen half juli bij een bezoek aan een appertement in zele .Vanaf het telefoon contact was het me duidelijk dat zij anders was als makkelaar / als mens en dat werd bevestigd bij het bezoek ze geeft je de tijd om het pand te bekijken geeft tips over verkoop van je eigen woning wat er allemaal mogelijk is zonder en dat is uitzonderlijk haar op te dringen. Een tweede bezoek was ook geen enkel probleem. We hebben dan toch de stap niet gezet het was niet het appertement waar we ons huisje zou kunnen verkopen. Een hele lieve vrouw met het hart op juiste plaats.Ze maakt echt het verschil in immowereld . We wensen haar ontzettend veel succes met haar immo kantoor. Ik hoop echt met haar te kunnen samen werken in de toekomst voor de verkoop van onze woning. Veel liefs vanessa en filip'
     ]
   }
 ];
@@ -339,15 +311,12 @@ function pandKaart(p,index){
     '</a>';
 }
 
-function verhaalKaart(v){
+function reviewKaart(r){
   return '' +
-    '<a class="verhaal-kaart" href="/verhalen/' + esc(v.slug) + '">' +
-      '<div class="beeld" data-slot="Beeldslot · ' + esc(v.mensen) + '">' + beeldTag(v, 'Het verhaal van ' + v.mensen) + '</div>' +
-      '<div class="stapel stapel-8">' +
-        '<p class="pand-plaats">' + esc(v.mensen) + ' — ' + esc(v.plaats) + '</p>' +
-        '<p class="citaat">&ldquo;' + esc(v.citaat) + '&rdquo;</p>' +
-      '</div>' +
-    '</a>';
+    '<figure class="review">' +
+      '<blockquote class="review-tekst">' + r.tekst.map(function(t){ return '<p>' + esc(t) + '</p>'; }).join('') + '</blockquote>' +
+      '<figcaption class="pand-plaats">' + esc(r.naam) + '</figcaption>' +
+    '</figure>';
 }
 
 /* ---------- vullen ---------- */
@@ -364,10 +333,10 @@ function vulHomePanden(){
 }
 
 document.getElementById('homeVerhalen').innerHTML =
-  VERHALEN.slice(0,2).map(verhaalKaart).join('');
+  REVIEWS.slice(0,2).map(reviewKaart).join('');
 
 document.getElementById('verhalenRooster').innerHTML =
-  VERHALEN.map(verhaalKaart).join('');
+  REVIEWS.map(reviewKaart).join('');
 
 /* ---------- aanbod + filter ---------- */
 var huidigFilter = 'alles';
@@ -612,52 +581,19 @@ document.getElementById('pandInhoud').addEventListener('keydown',function(e){
   if(e.key === 'ArrowRight'){ e.preventDefault(); toonFoto(galerij.index + 1); }
 });
 
-/* ---------- verhaal detail ---------- */
-function toonVerhaal(slug){
-  var v = VERHALEN.filter(function(x){ return x.slug === slug; })[0];
-  var doel = document.getElementById('verhaalInhoud');
-  if(!v){
-    doel.innerHTML = '<p class="stil">Dit verhaal bestaat niet.</p>' +
-      '<a class="terug" href="/verhalen"><span aria-hidden="true">←</span> Terug naar de verhalen</a>';
-    zetMeta({titel:'Verhaal niet gevonden', beschrijving:PAGINA.verhalen.beschrijving, noindex:true});
-    return;
-  }
-  zetMeta({titel:v.mensen + ': “' + v.citaat + '”', beschrijving:v.intro});
-  doel.innerHTML = '' +
-    '<a class="terug" href="/verhalen"><span aria-hidden="true">←</span> Terug naar de verhalen</a>' +
-    '<div class="duo duo--verspringend">' +
-      '<div class="stapel stapel-16">' +
-        '<p class="eyebrow">' + esc(v.mensen) + ' — ' + esc(v.plaats) + '</p>' +
-        '<h1>&ldquo;' + esc(v.citaat) + '&rdquo;</h1>' +
-      '</div>' +
-      '<div class="stapel stapel-24">' +
-        '<p class="lead">' + esc(v.intro) + '</p>' +
-      '</div>' +
-    '</div>' +
-    '<div class="beeld beeld--breed" data-slot="Beeldslot · portret ' + esc(v.mensen) + '">' + beeldTag(v, 'Het verhaal van ' + v.mensen, MAAT_BREED) + '</div>' +
-    '<div class="artikel artikel-tekst stil">' + v.tekst.map(function(t){ return '<p>' + esc(t) + '</p>'; }).join('') + '</div>' +
-    '<div class="stapel stapel-16" style="align-items:flex-start;">' +
-      '<h2 class="kop-h3">Ook toe aan een volgend hoofdstuk?</h2>' +
-      '<div class="knoppen">' +
-        '<a class="knop knop--goud" href="/contact">Vertel ons jouw verhaal</a>' +
-        '<a class="knop knop--lijn" href="/waardescan">Vraag je waardescan aan</a>' +
-      '</div>' +
-    '</div>';
-}
-
 /* ============================================================
    ROUTERING — echte adressen (/aanbod, /aanbod/123-naam, …)
    Netlify stuurt die paden naar index.html (zie netlify.toml);
    de router kiest hier welk zicht zichtbaar is.
    ============================================================ */
-var ZICHTEN = ['home','aanbod','pand','over','verhalen','verhaal','waardescan','woonprofiel','contact','privacy','nietgevonden'];
+var ZICHTEN = ['home','aanbod','pand','over','verhalen','waardescan','woonprofiel','contact','privacy','nietgevonden'];
 var ENKELVOUDIG = ['aanbod','over','verhalen','waardescan','woonprofiel','contact','privacy'];
 
 var PAGINA = {
   home:        {titel:'', beschrijving:document.querySelector('meta[name="description"]').content},
   aanbod:      {titel:'Aanbod', beschrijving:'Een bewust klein aanbod: elk pand krijgt de voorbereiding, de fotografie en de tijd die het verdient.'},
   over:        {titel:'Over TÈRRO', beschrijving:'TÈRRO vertrekt niet bij vierkante meters, maar bij mensen. Persoonlijk vastgoed met een verhaal.'},
-  verhalen:    {titel:'Verhalen', beschrijving:'Gesprekken met de mensen die wij begeleidden, over verhuizen, loslaten en opnieuw beginnen.'},
+  verhalen:    {titel:'Verhalen', beschrijving:'Wat klanten vertellen over hun ervaring met TÈRRO Vastgoed, in hun eigen woorden.'},
   waardescan:  {titel:'Waardescan', beschrijving:'Een onderbouwde waardebepaling na een bezoek ter plaatse, met uitleg bij elk cijfer. Vrijblijvend.'},
   woonprofiel: {titel:'Maak jouw woonprofiel', beschrijving:'Vertel ons hoe je wil wonen. Wij leggen jouw profiel naast elk pand dat binnenkomt.'},
   contact:     {titel:'Contact', beschrijving:'Bel of schrijf TÈRRO Vastgoed. Een eerste gesprek is vrijblijvend. Dendermondse Steenweg 10, 9290 Overmere.'},
@@ -684,7 +620,7 @@ function toonZicht(naam){
     var el = document.getElementById('zicht-' + z);
     if(el) el.hidden = (z !== naam);
   });
-  var navNaam = naam === 'pand' ? 'aanbod' : naam === 'verhaal' ? 'verhalen' : naam;
+  var navNaam = naam === 'pand' ? 'aanbod' : naam;
   Array.prototype.forEach.call(document.querySelectorAll('.nav a[data-nav]'),function(a){
     if(a.dataset.nav === navNaam) a.setAttribute('aria-current','page');
     else a.removeAttribute('aria-current');
@@ -697,12 +633,10 @@ function route(opties){
   if(!delen.length) zicht = 'home';
   else if(delen.length === 1 && ENKELVOUDIG.indexOf(delen[0]) !== -1) zicht = delen[0];
   else if(delen.length === 2 && delen[0] === 'aanbod') zicht = 'pand';
-  else if(delen.length === 2 && delen[0] === 'verhalen') zicht = 'verhaal';
   else zicht = 'nietgevonden';
 
-  // pand en verhaal zetten hun eigen titel en beschrijving
+  // een pand zet zijn eigen titel en beschrijving
   if(zicht === 'pand') toonPand(delen[1]);
-  else if(zicht === 'verhaal') toonVerhaal(delen[1]);
   else zetMeta(PAGINA[zicht]);
   toonZicht(zicht);
   // bij terugkeer naar de startpagina tekenen de waarden opnieuw
@@ -744,7 +678,7 @@ window.addEventListener('popstate',function(){ route(); });
   var h = location.hash.slice(1);
   var nieuw = null;
   if(/^pand-.+/.test(h)) nieuw = '/aanbod/' + h.slice(5);
-  else if(/^verhaal-.+/.test(h)) nieuw = '/verhalen/' + h.slice(8);
+  else if(/^verhaal-.+/.test(h)) nieuw = '/verhalen';
   else if(h === 'home') nieuw = '/';
   else if(ENKELVOUDIG.indexOf(h) !== -1) nieuw = '/' + h;
   var q = new URLSearchParams(location.search);
