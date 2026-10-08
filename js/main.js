@@ -262,7 +262,7 @@ function esc(s){
    (scripts/webp.py). De browser kiest de kleinste die past; de JPG blijft
    terugval. Foto's van WHISE worden getoond zoals WHISE ze levert. */
 /* BEELDMATEN:begin (gegenereerd door scripts/webp.py) */
-var BEELDMATEN = {"contact-koffie-kaartjes":[480,800,1200,1800],"hero-home":[640,1024,1440,2000],"pand-appartement-tongeren":[480,726],"pand-herenhuis-hasselt":[480,800,1200],"pand-hoeve-borgloon":[480,690],"pand-loft-hasselt":[480,800,1200],"pand-nieuwbouw-lanaken":[480,800,1200],"pand-pastorij-sint-truiden":[480,800,1200],"portret-makelaar":[480,800,1131],"waardescan-bord-koffie":[480,800,1200],"waardescan-laptop":[480,800,1200,1800],"woonprofiel-wandeling":[480,800,1164]};
+var BEELDMATEN = {"contact-koffie-kaartjes":[480,800,1200,1800],"hero-home":[640,1024,1440,2000],"over-te-koop-bord":[480,800,1200],"pand-appartement-tongeren":[480,726],"pand-herenhuis-hasselt":[480,800,1200],"pand-hoeve-borgloon":[480,690],"pand-loft-hasselt":[480,800,1200],"pand-nieuwbouw-lanaken":[480,800,1200],"pand-pastorij-sint-truiden":[480,800,1200],"portret-makelaar":[480,800,1131],"reviews-koffie":[480,800,1200],"reviews-telefoon":[480,800,1200],"waardescan-bord-koffie":[480,800,1200],"waardescan-laptop":[480,800,1200,1800],"woonprofiel-wandeling":[480,800,1164]};
 /* BEELDMATEN:eind */
 
 var MAAT_KAART = '(max-width: 760px) 100vw, 560px';

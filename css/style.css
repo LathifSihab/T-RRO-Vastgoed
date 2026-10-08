@@ -662,9 +662,26 @@ main:focus{outline:none;}
 .vlak{background:var(--linnen);}
 
 /* ---------- verhalen ---------- */
-/* een oneven laatste review krijgt de volle breedte */
-.rooster--reviews > .review:last-child:nth-child(odd){grid-column:1 / -1;}
-.rooster--reviews > .review:last-child:nth-child(odd) .review-tekst{max-width:62ch;}
+/* foto links (blijft staan tijdens het scrollen), reviews rechts onder elkaar */
+.reviews-duo{
+  display:grid;
+  grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  gap:clamp(32px,5vw,72px);
+  align-items:start;
+}
+.reviews-beeld{
+  --ratio:2/3;
+  position:sticky;
+  top:calc(var(--kop-hoogte,82px) + 32px);
+  overflow:visible;
+  /* dun goudkader, verschoven achter de foto (zoals het kader rond het beeldmerk) */
+  box-shadow:16px 16px 0 -1px var(--ecru),16px 16px 0 0 var(--goud);
+}
+.reviews-lijst{display:flex;flex-direction:column;gap:clamp(28px,3.4vw,44px);}
+@media (max-width:860px){
+  .reviews-duo{grid-template-columns:1fr;}
+  .reviews-beeld{--ratio:4/3;position:relative;top:auto;margin-right:16px;}
+}
 .review{
   position:relative;
   margin:0;
