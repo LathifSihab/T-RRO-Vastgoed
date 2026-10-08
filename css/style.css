@@ -662,11 +662,38 @@ main:focus{outline:none;}
 .vlak{background:var(--linnen);}
 
 /* ---------- verhalen ---------- */
-.review{margin:0;display:flex;flex-direction:column;gap:18px;padding-top:26px;border-top:1px solid var(--lijn);}
-.review-tekst{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(20px,1.9vw,23px);line-height:1.45;font-weight:400;}
+/* een oneven laatste review krijgt de volle breedte */
+.rooster--reviews > .review:last-child:nth-child(odd){grid-column:1 / -1;}
+.rooster--reviews > .review:last-child:nth-child(odd) .review-tekst{max-width:62ch;}
+.review{
+  position:relative;
+  margin:0;
+  display:flex;flex-direction:column;gap:28px;
+  padding:clamp(64px,7vw,84px) clamp(26px,3.6vw,48px) clamp(28px,3.4vw,40px);
+  background:var(--linnen) var(--hoogtelijnen) no-repeat right -90px bottom -60px / 420px auto;
+  border-top:2px solid var(--goud);
+}
+/* groot aanhalingsteken uit de Cormorant, als merkteken bovenaan */
+.review::before{
+  content:"“";
+  position:absolute;top:clamp(4px,1vw,10px);left:clamp(20px,3.2vw,42px);
+  font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;
+  font-size:clamp(96px,10vw,128px);line-height:1;
+  color:var(--goud);
+}
+.review-tekst{margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(20px,1.9vw,23px);line-height:1.5;font-weight:400;color:var(--houtskool);}
 .review-tekst p + p{margin-top:.7em;}
-.review-tekst p:first-child::before{content:"\201C";}
-.review-tekst p:last-child::after{content:"\201D";}
+.review-naam{
+  display:flex;align-items:center;gap:14px;
+  margin-top:auto;padding-top:22px;border-top:1px solid var(--goud-haar);
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--houtskool-zacht);
+}
+.review-initialen{
+  flex:none;display:grid;place-items:center;
+  width:42px;height:42px;border:1px solid var(--goud);border-radius:50%;
+  font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;letter-spacing:.04em;
+  color:var(--goud-tekst);
+}
 .artikel p + p{margin-top:1.15em;}
 .artikel-tekst{max-width:62ch;}
 

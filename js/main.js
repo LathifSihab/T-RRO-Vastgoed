@@ -262,7 +262,7 @@ function esc(s){
    (scripts/webp.py). De browser kiest de kleinste die past; de JPG blijft
    terugval. Foto's van WHISE worden getoond zoals WHISE ze levert. */
 /* BEELDMATEN:begin (gegenereerd door scripts/webp.py) */
-var BEELDMATEN = {"contact-koffie-kaartjes":[480,800,1200,1800],"hero-home":[640,1024,1440,2000],"pand-appartement-tongeren":[480,726],"pand-herenhuis-hasselt":[480,800,1200],"pand-hoeve-borgloon":[480,690],"pand-loft-hasselt":[480,800,1200],"pand-nieuwbouw-lanaken":[480,800,1200],"pand-pastorij-sint-truiden":[480,800,1200],"portret-makelaar":[480,800,1131],"verhaal-ann-en-pieter":[480,800,1200],"verhaal-familie-vandereyt":[480,800,1200],"verhaal-marleen":[480,800,1200],"waardescan-bord-koffie":[480,800,1200],"waardescan-laptop":[480,800,1200,1800],"woonprofiel-wandeling":[480,800,1164]};
+var BEELDMATEN = {"contact-koffie-kaartjes":[480,800,1200,1800],"hero-home":[640,1024,1440,2000],"pand-appartement-tongeren":[480,726],"pand-herenhuis-hasselt":[480,800,1200],"pand-hoeve-borgloon":[480,690],"pand-loft-hasselt":[480,800,1200],"pand-nieuwbouw-lanaken":[480,800,1200],"pand-pastorij-sint-truiden":[480,800,1200],"portret-makelaar":[480,800,1131],"waardescan-bord-koffie":[480,800,1200],"waardescan-laptop":[480,800,1200,1800],"woonprofiel-wandeling":[480,800,1164]};
 /* BEELDMATEN:eind */
 
 var MAAT_KAART = '(max-width: 760px) 100vw, 560px';
@@ -281,7 +281,7 @@ function fotoHtml(src, alt, maat, extra){
   return set ? '<picture><source type="image/webp" srcset="' + set + '" sizes="' + maat + '">' + img + '</picture>' : img;
 }
 
-// Eerste foto van een pand of verhaal, of niets zodat het beeldslot zichtbaar blijft.
+// Eerste foto van een pand, of niets zodat het beeldslot zichtbaar blijft.
 function beeldTag(item, alt, maat){
   var src = item.beeld || (item.beelden && item.beelden[0]);
   if(src && typeof src === 'object') src = src.kaart || src.src;
@@ -311,11 +311,19 @@ function pandKaart(p,index){
     '</a>';
 }
 
+function initialen(naam){
+  return naam.split(/\s+/).filter(function(w){ return /^[A-ZÀ-Þ]/.test(w); })
+    .map(function(w){ return w.charAt(0); }).filter(function(c, i, a){ return i === 0 || i === a.length - 1; }).join('');
+}
+
 function reviewKaart(r){
   return '' +
     '<figure class="review">' +
       '<blockquote class="review-tekst">' + r.tekst.map(function(t){ return '<p>' + esc(t) + '</p>'; }).join('') + '</blockquote>' +
-      '<figcaption class="pand-plaats">' + esc(r.naam) + '</figcaption>' +
+      '<figcaption class="review-naam">' +
+        '<span class="review-initialen" aria-hidden="true">' + esc(initialen(r.naam)) + '</span>' +
+        '<span>' + esc(r.naam) + '</span>' +
+      '</figcaption>' +
     '</figure>';
 }
 
